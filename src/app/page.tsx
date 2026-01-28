@@ -7,7 +7,12 @@ interface Business {
   id: number;
   name: string;
   category: string;
+  originalCategory: string | null;
+  subcategory: string | null;
   address: string;
+  phone: string | null;
+  website: string | null;
+  email: string | null;
   description: string;
   rating: number;
   reviewCount: number;
@@ -58,13 +63,13 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-6 py-12">
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {["All", "Food", "Shopping", "Services"].map((cat) => (
+          {["All", "Food", "Services", "Shopping", "Community"].map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
               className={`px-6 py-2 rounded-full border transition-all ${filter === cat
-                  ? "bg-white text-black border-white font-bold"
-                  : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500"
+                ? "bg-white text-black border-white font-bold"
+                : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500"
                 }`}
             >
               {cat}
@@ -97,6 +102,21 @@ export default function Home() {
                 <div className="text-sm text-neutral-500 flex items-center gap-2">
                   <span>📍</span> {biz.address}
                 </div>
+                {biz.phone && (
+                  <div className="text-sm text-neutral-400 flex items-center gap-2 mt-2">
+                    <span>📞</span> {biz.phone}
+                  </div>
+                )}
+                {biz.website && (
+                  <a
+                    href={`https://${biz.website}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-blue-400 hover:underline flex items-center gap-2 mt-1"
+                  >
+                    <span>🌐</span> {biz.website}
+                  </a>
+                )}
               </div>
             </div>
           ))}

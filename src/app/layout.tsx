@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DFW Vietnamese Directory",
-  description: "Discover the best Vietnamese businesses in DFW",
+  title: "DFW Vietnamese Business Directory - Danh Bạ Doanh Nghiệp Việt",
+  description: "Tìm kiếm 239+ doanh nghiệp Việt Nam tại Dallas-Fort Worth",
 };
 
 export default function RootLayout({

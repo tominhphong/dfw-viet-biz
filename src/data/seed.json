@@ -1,92 +1,30 @@
 [
   {
     "id": 1,
-    "name": "Pho Chau",
-    "category": "Food",
-    "address": "1640 W Mockingbird Ln, Dallas, TX 75235",
-    "description": "Authentic Vietnamese beef Pho and generous portions.",
-    "rating": 4.5,
-    "reviewCount": 500
+    "name": "JnD Auto Repair",
+    "category": "Services",
+    "originalCategory": "Automotive",
+    "subcategory": "Auto Repair",
+    "address": "3030 Naaman School Rd, TX 75040",
+    "phone": "(972) 495-8080",
+    "website": "jndautorepair.com",
+    "email": null,
+    "description": "Auto Repair. Auto repair, master mechanic. Don Tran - owner",
+    "rating": 4.1,
+    "reviewCount": 57
   },
   {
     "id": 2,
-    "name": "Ngon Vietnamese Kitchen",
-    "category": "Food",
-    "address": "1907 Greenville Ave, Dallas, TX 75206",
-    "description": "Michelin Bib Gourmand honoree serving North Vietnamese cuisine.",
-    "rating": 4.7,
-    "reviewCount": 350
-  },
-  {
-    "id": 3,
-    "name": "Pho DK",
-    "category": "Food",
-    "address": "Dallas, TX",
-    "description": "High-quality Pho and Grilled Pork Banh Mi.",
-    "rating": 4.4,
-    "reviewCount": 200
-  },
-  {
-    "id": 4,
-    "name": "Thuy Nguyen Cafe",
-    "category": "Food",
-    "address": "100 W. Pioneer Pkwy, Arlington, TX",
-    "description": "Famous for Bánh Bèo and strong Café Sữa Đá.",
-    "rating": 4.3,
-    "reviewCount": 150
-  },
-  {
-    "id": 5,
-    "name": "Pho District",
-    "category": "Food",
-    "address": "2401 W 7th St, Fort Worth, TX 76107",
-    "description": "Modern spot for fresh Vietnamese dishes.",
+    "name": "Toyota of Dallas - Vietnamese Sales Team",
+    "category": "Services",
+    "originalCategory": "Automotive",
+    "subcategory": "Car Dealership",
+    "address": "2610 Forest Ln, TX 75234",
+    "phone": "(844) 866-5826",
+    "website": "toyotaofdallas.com",
+    "email": null,
+    "description": "Car Dealership. Vietnamese sales team. Sam Mau - Vietnamese Sales Manager",
     "rating": 4.2,
-    "reviewCount": 180
-  },
-  {
-    "id": 6,
-    "name": "Hiep Thai Market",
-    "category": "Shopping",
-    "address": "Garland, TX",
-    "description": "Large Asian grocery store with many Vietnamese products.",
-    "rating": 4.5,
-    "reviewCount": 1000
-  },
-  {
-    "id": 7,
-    "name": "Cali Saigon Mall",
-    "category": "Shopping",
-    "address": "Garland, TX",
-    "description": "Shopping center with food court and various Vietnamese businesses.",
-    "rating": 4.1,
-    "reviewCount": 800
-  },
-  {
-    "id": 8,
-    "name": "Bistro B",
-    "category": "Food",
-    "address": "9780 Walnut St, Dallas, TX 75243",
-    "description": "Huge menu with everything from Pho to rice platters.",
-    "rating": 4.0,
-    "reviewCount": 1200
-  },
-  {
-    "id": 9,
-    "name": "La Me",
-    "category": "Food",
-    "address": "9780 Walnut St, Dallas, TX 75243",
-    "description": "Known for Bún Bò Huế and other noodle soups.",
-    "rating": 4.3,
-    "reviewCount": 400
-  },
-  {
-    "id": 10,
-    "name": "Quoc Bao Bakery",
-    "category": "Food",
-    "address": "3419 W Walnut St, Garland, TX 75042",
-    "description": "Popular spot for Banh Mi and fresh bread.",
-    "rating": 4.6,
-    "reviewCount": 600
+    "reviewCount": 64
   }
 ]
