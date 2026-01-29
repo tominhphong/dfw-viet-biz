@@ -1,0 +1,53 @@
+{
+    "name": "DFW Vietnamese Biz",
+    "short_name": "VietBiz DFW",
+    "description": "Hướng dẫn toàn diện về ẩm thực, mua sắm và dịch vụ Việt Nam tại Dallas-Fort Worth",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#171717",
+    "theme_color": "#f59e0b",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "vi",
+    "categories": [
+        "business",
+        "food",
+        "lifestyle"
+    ],
+    "icons": [
+        {
+            "src": "/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icons/icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/icons/icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [],
+    "shortcuts": [
+        {
+            "name": "Tìm kiếm",
+            "short_name": "Tìm",
+            "description": "Tìm kiếm doanh nghiệp Việt Nam",
+            "url": "/?focus=search",
+            "icons": []
+        }
+    ]
+}

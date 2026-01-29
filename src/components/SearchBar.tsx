@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 interface SearchBarProps {
     onSearch: (query: string) => void;
@@ -10,6 +11,7 @@ interface SearchBarProps {
 }
 
 export default function SearchBar({ onSearch, onSort, resultCount, totalCount }: SearchBarProps) {
+    const { t } = useLanguage();
     const [query, setQuery] = useState("");
     const [sortBy, setSortBy] = useState("name");
 
@@ -55,8 +57,8 @@ export default function SearchBar({ onSearch, onSort, resultCount, totalCount }:
                     type="text"
                     value={query}
                     onChange={handleInputChange}
-                    placeholder="Search businesses by name..."
-                    className="w-full pl-12 pr-12 py-4 bg-neutral-800 border border-neutral-700 rounded-xl text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-lg"
+                    placeholder={t("searchPlaceholder")}
+                    className="w-full pl-12 pr-12 py-3 md:py-4 bg-neutral-800 border border-neutral-700 rounded-xl text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-base md:text-lg"
                 />
                 {query && (
                     <button
@@ -71,22 +73,22 @@ export default function SearchBar({ onSearch, onSort, resultCount, totalCount }:
             {/* Sort & Results Count */}
             <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
                 <div className="flex items-center gap-2">
-                    <span className="text-neutral-400">Sort by:</span>
+                    <span className="text-neutral-400">{t("sortBy")}:</span>
                     <select
                         value={sortBy}
                         onChange={handleSortChange}
                         className="bg-neutral-800 border border-neutral-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                     >
-                        <option value="name">Name A-Z</option>
-                        <option value="name-desc">Name Z-A</option>
-                        <option value="rating">Rating ⭐</option>
-                        <option value="reviews">Most Reviews</option>
+                        <option value="name">{t("sortNameAZ")}</option>
+                        <option value="name-desc">{t("sortNameZA")}</option>
+                        <option value="rating">{t("sortRating")}</option>
+                        <option value="reviews">{t("sortReviews")}</option>
                     </select>
                 </div>
 
                 <div className="text-neutral-400">
-                    Showing <span className="text-white font-bold">{resultCount}</span> of{" "}
-                    <span className="text-white">{totalCount}</span> businesses
+                    {t("showing")} <span className="text-white font-bold">{resultCount}</span> {t("of")}{" "}
+                    <span className="text-white">{totalCount}</span> {t("businesses")}
                 </div>
             </div>
         </div>

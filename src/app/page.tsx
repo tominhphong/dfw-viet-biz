@@ -5,6 +5,7 @@ import Link from "next/link";
 import seedData from "../data/seed.json";
 import SubmitBusinessModal from "../components/SubmitBusinessModal";
 import SearchBar from "../components/SearchBar";
+import { useLanguage } from "../context/LanguageContext";
 
 interface Business {
   id: number;
@@ -24,20 +25,53 @@ interface Business {
   linkType: string | null;
 }
 
+// Main categories derived from originalCategory
+const MAIN_CATEGORIES = [
+  "All",
+  "Restaurant",
+  "Healthcare",
+  "Retail",
+  "Automotive",
+  "Beauty & Personal Care",
+  "Professional Services",
+  "Religious",
+  "Community",
+];
+
 export default function Home() {
+  const { language, toggleLanguage, t, tc } = useLanguage();
   const [data] = useState<Business[]>(seedData as Business[]);
   const [filter, setFilter] = useState("All");
+  const [subcategoryFilter, setSubcategoryFilter] = useState("All");
   const [randomPick, setRandomPick] = useState<Business | null>(null);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("name");
 
+  // Get subcategories for current main category
+  const availableSubcategories = useMemo(() => {
+    const filtered = filter === "All"
+      ? data
+      : data.filter((item) => item.originalCategory === filter);
+
+    const subs = new Set<string>();
+    filtered.forEach((item) => {
+      if (item.subcategory) subs.add(item.subcategory);
+    });
+    return Array.from(subs).sort();
+  }, [data, filter]);
+
   const filteredData = useMemo(() => {
     let result = data;
 
-    // Filter by category
+    // Filter by main category (originalCategory)
     if (filter !== "All") {
-      result = result.filter((item) => item.category === filter);
+      result = result.filter((item) => item.originalCategory === filter);
+    }
+
+    // Filter by subcategory
+    if (subcategoryFilter !== "All") {
+      result = result.filter((item) => item.subcategory === subcategoryFilter);
     }
 
     // Filter by search query
@@ -64,56 +98,89 @@ export default function Home() {
     });
 
     return result;
-  }, [data, filter, searchQuery, sortBy]);
+  }, [data, filter, subcategoryFilter, searchQuery, sortBy]);
 
   const handleRandomize = () => {
     const randomIndex = Math.floor(Math.random() * data.length);
     setRandomPick(data[randomIndex]);
   };
 
+  const handleCategoryChange = (cat: string) => {
+    setFilter(cat);
+    setSubcategoryFilter("All"); // Reset subcategory when main category changes
+  };
+
   return (
     <div className="min-h-screen bg-neutral-900 text-neutral-100 font-sans">
       {/* Hero Section */}
-      <header className="py-20 px-6 text-center bg-gradient-to-b from-neutral-800 to-neutral-900 border-b border-neutral-800">
-        <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500 mb-4">
-          DFW Vietnamese Biz
+      <header className="py-16 px-6 text-center bg-gradient-to-b from-neutral-800 to-neutral-900 border-b border-neutral-800">
+        {/* Language Toggle */}
+        <div className="absolute top-4 right-4 md:top-6 md:right-6">
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-full text-sm font-medium hover:bg-neutral-700 transition-colors"
+          >
+            {language === "vi" ? "🇻🇳 VI" : "🇺🇸 EN"}
+          </button>
+        </div>
+
+        <h1 className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500 mb-4">
+          {t("title")}
         </h1>
-        <p className="text-xl text-neutral-400 max-w-2xl mx-auto mb-8">
-          The ultimate guide to Vietnamese cuisine, shopping, and services in Dallas-Fort Worth.
+        <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto mb-8">
+          {t("subtitle")}
         </p>
-        <div className="flex justify-center gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           <button
             onClick={handleRandomize}
-            className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform animate-pulse text-white"
+            className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-500 rounded-full font-bold text-base md:text-lg shadow-lg hover:scale-105 transition-transform animate-pulse text-white"
           >
-            🎲 Let the Universe Decide
+            {t("randomButton")}
           </button>
           <button
             onClick={() => setShowSubmitModal(true)}
-            className="px-8 py-4 bg-neutral-800 border border-neutral-700 rounded-full font-bold text-lg hover:bg-neutral-700 transition-colors text-white"
+            className="px-6 md:px-8 py-3 md:py-4 bg-neutral-800 border border-neutral-700 rounded-full font-bold text-base md:text-lg hover:bg-neutral-700 transition-colors text-white"
           >
-            ➕ Add Your Biz
+            {t("addBizButton")}
           </button>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {["All", "Food", "Services", "Shopping", "Community"].map((cat) => (
+      <main className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        {/* Main Category Filters */}
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6">
+          {MAIN_CATEGORIES.map((cat) => (
             <button
               key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-full border transition-all ${filter === cat
-                ? "bg-white text-black border-white font-bold"
-                : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500"
+              onClick={() => handleCategoryChange(cat)}
+              className={`px-4 md:px-5 py-2 rounded-full border text-sm md:text-base transition-all ${filter === cat
+                  ? "bg-white text-black border-white font-bold"
+                  : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500"
                 }`}
             >
-              {cat}
+              {tc(cat)}
             </button>
           ))}
         </div>
+
+        {/* Subcategory Filter */}
+        {availableSubcategories.length > 0 && (
+          <div className="flex justify-center mb-6">
+            <select
+              value={subcategoryFilter}
+              onChange={(e) => setSubcategoryFilter(e.target.value)}
+              className="bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 max-w-xs"
+            >
+              <option value="All">{t("allSubcategories")}</option>
+              {availableSubcategories.map((sub) => (
+                <option key={sub} value={sub}>
+                  {sub}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
 
         {/* Search Bar */}
         <SearchBar
@@ -124,22 +191,29 @@ export default function Home() {
         />
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredData.map((biz) => (
             <div
               key={biz.id}
               className="group relative bg-neutral-800 rounded-2xl overflow-hidden hover:bg-neutral-750 transition-colors border border-neutral-800 hover:border-neutral-600"
             >
-              <div className="p-6">
+              <div className="p-5 md:p-6">
                 <div className="flex justify-between items-start mb-2">
-                  <span className="text-xs font-bold text-yellow-500 uppercase tracking-wider">
-                    {biz.category}
-                  </span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-bold text-yellow-500 uppercase tracking-wider">
+                      {tc(biz.originalCategory || biz.category)}
+                    </span>
+                    {biz.subcategory && (
+                      <span className="text-xs text-neutral-500">
+                        {biz.subcategory}
+                      </span>
+                    )}
+                  </div>
                   <span className="text-sm bg-neutral-900 px-2 py-1 rounded text-neutral-300">
                     ★ {biz.rating} ({biz.reviewCount})
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-yellow-400 transition-colors">
+                <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-yellow-400 transition-colors">
                   {biz.name}
                 </h3>
                 <p className="text-neutral-400 text-sm mb-4 line-clamp-2">
@@ -155,7 +229,7 @@ export default function Home() {
                 )}
                 {biz.website && (
                   <a
-                    href={`https://${biz.website}`}
+                    href={biz.website.startsWith("http") ? biz.website : `https://${biz.website}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-blue-400 hover:underline flex items-center gap-2 mt-1"
@@ -173,14 +247,14 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-sm font-medium rounded-lg transition-colors"
                     >
-                      📍 Maps
+                      📍 {t("openMaps")}
                     </a>
                   )}
                   <Link
                     href={`/business/${biz.slug}`}
                     className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 text-white text-sm font-medium rounded-lg transition-colors"
                   >
-                    👁️ View Details
+                    👁️ {t("viewDetails")}
                   </Link>
                 </div>
               </div>
@@ -188,7 +262,7 @@ export default function Home() {
           ))}
           {filteredData.length === 0 && (
             <div className="col-span-full text-center py-20 text-neutral-500">
-              No businesses found in this category yet. Be the first to add one!
+              {t("noResults")}
             </div>
           )}
         </div>
@@ -196,39 +270,52 @@ export default function Home() {
 
       {/* Random Pick Modal */}
       {randomPick && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-700 rounded-3xl p-8 max-w-md w-full relative shadow-2xl animate-in zoom-in fade-in duration-300">
-            <button
-              onClick={() => setRandomPick(null)}
-              className="absolute top-4 right-4 text-neutral-500 hover:text-white"
-            >
-              ✕
-            </button>
-            <div className="text-center">
-              <span className="text-sm text-yellow-500 font-bold uppercase tracking-wider mb-2 block">
-                The Universe Chose
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-neutral-800 rounded-3xl p-6 md:p-8 max-w-md w-full text-center border border-neutral-700 animate-scale-in">
+            <h2 className="text-2xl font-bold mb-4 text-yellow-400">
+              ✨ {t("universeChose")}
+            </h2>
+            <div className="bg-neutral-900 rounded-2xl p-5 md:p-6 mb-6">
+              <span className="text-xs font-bold text-yellow-500 uppercase tracking-wider">
+                {tc(randomPick.originalCategory || randomPick.category)}
               </span>
-              <h2 className="text-4xl font-extrabold mb-4 text-white">
-                {randomPick.name}
-              </h2>
-              <div className="text-xl text-neutral-300 mb-6">
+              <h3 className="text-2xl font-bold my-2">{randomPick.name}</h3>
+              <p className="text-neutral-400 text-sm mb-3 line-clamp-2">
                 {randomPick.description}
-              </div>
-              <p className="text-neutral-400 mb-8">{randomPick.address}</p>
-              <div className="flex justify-center gap-4">
-                <button
-                  onClick={() => setRandomPick(null)}
-                  className="px-6 py-3 bg-white text-black rounded-xl font-bold hover:bg-neutral-200 transition-colors"
+              </p>
+              <p className="text-sm text-neutral-500">📍 {randomPick.address}</p>
+              <div className="flex justify-center gap-2 mt-4">
+                {randomPick.googleMapsLink && (
+                  <a
+                    href={randomPick.googleMapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg font-medium text-sm transition-colors"
+                  >
+                    📍 {t("openMaps")}
+                  </a>
+                )}
+                <Link
+                  href={`/business/${randomPick.slug}`}
+                  className="px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg font-medium text-sm transition-colors"
                 >
-                  Great choice!
-                </button>
-                <button
-                  onClick={handleRandomize}
-                  className="px-6 py-3 bg-neutral-800 text-white border border-neutral-700 rounded-xl font-bold hover:bg-neutral-700 transition-colors"
-                >
-                  Spin Again
-                </button>
+                  {t("viewDetails")}
+                </Link>
               </div>
+            </div>
+            <div className="flex gap-3 justify-center">
+              <button
+                onClick={() => setRandomPick(null)}
+                className="px-6 py-3 bg-neutral-700 text-white rounded-xl font-bold hover:bg-neutral-600 transition-colors"
+              >
+                {t("close")}
+              </button>
+              <button
+                onClick={handleRandomize}
+                className="px-6 py-3 bg-neutral-800 text-white border border-neutral-700 rounded-xl font-bold hover:bg-neutral-700 transition-colors"
+              >
+                {t("spinAgain")}
+              </button>
             </div>
           </div>
         </div>
