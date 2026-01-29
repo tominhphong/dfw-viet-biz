@@ -16,6 +16,8 @@ interface Business {
   description: string;
   rating: number;
   reviewCount: number;
+  googleMapsLink: string | null;
+  linkType: string | null;
 }
 
 export default function Home() {
@@ -115,6 +117,16 @@ export default function Home() {
                     className="text-sm text-blue-400 hover:underline flex items-center gap-2 mt-1"
                   >
                     <span>🌐</span> {biz.website}
+                  </a>
+                )}
+                {biz.googleMapsLink && (
+                  <a
+                    href={biz.googleMapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-sm font-medium rounded-lg transition-colors"
+                  >
+                    <span>📍</span> Open in Google Maps
                   </a>
                 )}
               </div>

@@ -1,0 +1,28 @@
+============================================================
+VIETNAMESE BUSINESS DATABASE - GOOGLE MAPS LINK REPORT
+Generated: 2026-01-28 22:44:22
+============================================================
+
+SUMMARY
+----------------------------------------
+Total Businesses Processed: 348
+Successfully Matched (Place ID): 343
+Fallback Search Links: 5
+Skipped (No Data): 0
+
+Success Rate: 98.6%
+
+FILES GENERATED
+----------------------------------------
+Output CSV: /Volumes/homes/phongto/GitHub/dfw-viet-biz/Vietnamese_Businesses_WITH_MAPS_VERIFIED.csv
+Report: /Volumes/homes/phongto/GitHub/dfw-viet-biz/maps_processing_report.txt
+
+ENTRIES REQUIRING MANUAL REVIEW
+----------------------------------------
+Row 74: Hao Pham Construction - ZERO_RESULTS
+Row 120: Minh Hoang - Realtor - ZERO_RESULTS
+Row 132: Tracy Nguyen - Mobile Notary - ZERO_RESULTS
+Row 245: Phá»Ÿ ThiÃªn Ã - HTTP Error 400: Bad Request
+Row 289: Phá»Ÿ ThiÃªn Ã Deli - HTTP Error 400: Bad Request
+
+============================================================
