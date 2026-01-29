@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import seedData from "../data/seed.json";
+import SubmitBusinessModal from "../components/SubmitBusinessModal";
 
 interface Business {
   id: number;
@@ -24,6 +25,7 @@ export default function Home() {
   const [data] = useState<Business[]>(seedData);
   const [filter, setFilter] = useState("All");
   const [randomPick, setRandomPick] = useState<Business | null>(null);
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
 
   const filteredData =
     filter === "All"
@@ -52,12 +54,12 @@ export default function Home() {
           >
             🎲 Let the Universe Decide
           </button>
-          <a
-            href="mailto:submit@dfwnietbiz.com?subject=New Business Submission"
+          <button
+            onClick={() => setShowSubmitModal(true)}
             className="px-8 py-4 bg-neutral-800 border border-neutral-700 rounded-full font-bold text-lg hover:bg-neutral-700 transition-colors text-white"
           >
             ➕ Add Your Biz
-          </a>
+          </button>
         </div>
       </header>
 
@@ -179,6 +181,12 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Submit Business Modal */}
+      <SubmitBusinessModal
+        isOpen={showSubmitModal}
+        onClose={() => setShowSubmitModal(false)}
+      />
     </div>
   );
 }
