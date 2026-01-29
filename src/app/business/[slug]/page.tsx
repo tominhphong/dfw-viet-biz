@@ -38,20 +38,46 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const business = (seedData as Business[]).find((b) => b.slug === slug);
 
     if (!business) {
-        return {
-            title: "Business Not Found | DFW Vietnamese Biz",
-        };
+        return { title: "Business Not Found | DFW Vietnamese Biz" };
     }
 
+    const city = extractCity(business.address);
     return {
-        title: `${business.name} | DFW Vietnamese Biz`,
-        description: business.description || `${business.name} - Vietnamese business in ${business.address}. ${business.category} category.`,
+        title: `${business.name} | ${business.subcategory || business.category} tại ${city}`,
+        description: `${business.name} - ${business.subcategory || business.category} tại ${city}. ⭐ ${business.rating}/5 (${business.reviewCount} đánh giá). ${business.description || "Doanh nghiệp Việt Nam uy tín."}`,
         openGraph: {
             title: `${business.name} | DFW Vietnamese Biz`,
-            description: business.description || `${business.name} - Vietnamese business in Dallas-Fort Worth`,
+            description: `${business.subcategory || business.category} - ⭐ ${business.rating}/5`,
             type: "website",
         },
     };
+}
+
+// Extract city from address
+function extractCity(address: string): string {
+    const parts = address.split(",");
+    if (parts.length >= 2) {
+        // Get the part before state (TX)
+        const cityPart = parts[parts.length - 2].trim();
+        return cityPart.replace(/\d+/g, "").trim() || "DFW";
+    }
+    return "Dallas-Fort Worth";
+}
+
+// Get rating tier
+function getRatingTier(rating: number): { label: string; color: string; emoji: string } {
+    if (rating >= 4.5) return { label: "Xuất sắc", color: "text-green-400", emoji: "🏆" };
+    if (rating >= 4.0) return { label: "Rất tốt", color: "text-yellow-400", emoji: "⭐" };
+    if (rating >= 3.5) return { label: "Tốt", color: "text-blue-400", emoji: "👍" };
+    return { label: "Bình thường", color: "text-neutral-400", emoji: "📍" };
+}
+
+// Get review tier
+function getReviewTier(count: number): string {
+    if (count >= 200) return "Rất phổ biến";
+    if (count >= 100) return "Phổ biến";
+    if (count >= 50) return "Được nhiều người biết";
+    return "";
 }
 
 export default async function BusinessDetailPage({ params }: PageProps) {
@@ -61,6 +87,10 @@ export default async function BusinessDetailPage({ params }: PageProps) {
     if (!business) {
         notFound();
     }
+
+    const city = extractCity(business.address);
+    const ratingInfo = getRatingTier(business.rating);
+    const popularityLabel = getReviewTier(business.reviewCount);
 
     const categoryColors: Record<string, string> = {
         Food: "from-orange-500 to-red-500",
@@ -78,33 +108,42 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                         href="/"
                         className="inline-flex items-center gap-2 text-neutral-400 hover:text-white transition-colors mb-6"
                     >
-                        ← Back to Directory
+                        ← Quay lại Danh bạ
                     </Link>
 
                     <div className="flex items-start gap-4">
                         <div
-                            className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${categoryColors[business.category] || "from-gray-500 to-gray-600"
-                                } flex items-center justify-center text-3xl font-bold text-white shadow-lg`}
+                            className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${categoryColors[business.category] || "from-gray-500 to-gray-600"
+                                } flex items-center justify-center text-3xl md:text-4xl font-bold text-white shadow-lg`}
                         >
                             {business.name.charAt(0)}
                         </div>
 
                         <div className="flex-1">
-                            <span
-                                className={`inline-block px-3 py-1 text-xs font-bold rounded-full bg-gradient-to-r ${categoryColors[business.category] || "from-gray-500 to-gray-600"
-                                    } text-white mb-2`}
-                            >
-                                {business.category}
-                            </span>
-                            <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-2">
+                            <div className="flex flex-wrap items-center gap-2 mb-2">
+                                <span
+                                    className={`inline-block px-3 py-1 text-xs font-bold rounded-full bg-gradient-to-r ${categoryColors[business.category] || "from-gray-500 to-gray-600"
+                                        } text-white`}
+                                >
+                                    {business.subcategory || business.category}
+                                </span>
+                                {popularityLabel && (
+                                    <span className="px-2 py-1 text-xs bg-neutral-700 rounded-full text-neutral-300">
+                                        🔥 {popularityLabel}
+                                    </span>
+                                )}
+                            </div>
+                            <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-2">
                                 {business.name}
                             </h1>
-                            <div className="flex items-center gap-4 text-neutral-400">
+                            <div className="flex flex-wrap items-center gap-4 text-neutral-400">
                                 <span className="flex items-center gap-1">
                                     <span className="text-yellow-400">⭐</span>
-                                    {business.rating.toFixed(1)}
+                                    <span className="font-bold text-white">{business.rating.toFixed(1)}</span>
+                                    <span className={`text-sm ${ratingInfo.color}`}>({ratingInfo.label})</span>
                                 </span>
-                                <span>({business.reviewCount} reviews)</span>
+                                <span>{business.reviewCount} đánh giá</span>
+                                <span className="text-neutral-500">📍 {city}</span>
                             </div>
                         </div>
                     </div>
@@ -112,14 +151,43 @@ export default async function BusinessDetailPage({ params }: PageProps) {
             </header>
 
             {/* Content */}
-            <main className="max-w-4xl mx-auto px-6 py-12">
-                <div className="grid md:grid-cols-2 gap-8">
-                    {/* Left Column - Info */}
+            <main className="max-w-4xl mx-auto px-6 py-8 md:py-12">
+                {/* Highlights Banner */}
+                <div className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 rounded-2xl p-5 mb-8 border border-yellow-800/30">
+                    <h2 className="text-lg font-bold text-yellow-400 mb-3 flex items-center gap-2">
+                        💡 Tại sao nên chọn {business.name}?
+                    </h2>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="text-center">
+                            <div className="text-2xl mb-1">{ratingInfo.emoji}</div>
+                            <div className="text-sm text-neutral-300 font-medium">{ratingInfo.label}</div>
+                            <div className="text-xs text-neutral-500">{business.rating}/5 sao</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-2xl mb-1">💬</div>
+                            <div className="text-sm text-neutral-300 font-medium">{business.reviewCount}+ đánh giá</div>
+                            <div className="text-xs text-neutral-500">Google Reviews</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-2xl mb-1">🏪</div>
+                            <div className="text-sm text-neutral-300 font-medium">{business.subcategory || business.category}</div>
+                            <div className="text-xs text-neutral-500">Chuyên ngành</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-2xl mb-1">📍</div>
+                            <div className="text-sm text-neutral-300 font-medium">{city}</div>
+                            <div className="text-xs text-neutral-500">Vị trí</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    {/* Left Column */}
                     <div className="space-y-6">
-                        {/* Address */}
+                        {/* Location Card */}
                         <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
                             <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                                📍 Location
+                                📍 Địa chỉ
                             </h2>
                             <p className="text-neutral-300 mb-4">{business.address}</p>
                             {business.googleMapsLink && (
@@ -127,105 +195,119 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                     href={business.googleMapsLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 text-white font-bold rounded-xl hover:from-green-500 hover:to-green-400 transition-all"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 text-white font-bold rounded-xl hover:from-green-500 hover:to-green-400 transition-all shadow-lg"
                                 >
-                                    🗺️ Open in Google Maps
+                                    🗺️ Chỉ đường
                                 </a>
                             )}
                         </div>
 
-                        {/* Contact */}
+                        {/* Contact Card */}
                         <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
                             <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                                📞 Contact
+                                📞 Liên hệ
                             </h2>
                             <div className="space-y-3">
                                 {business.phone && (
                                     <a
                                         href={`tel:${business.phone}`}
-                                        className="flex items-center gap-3 text-neutral-300 hover:text-white transition-colors"
+                                        className="flex items-center gap-3 p-3 bg-neutral-700/50 rounded-xl text-neutral-300 hover:text-white hover:bg-neutral-700 transition-all"
                                     >
-                                        <span className="text-xl">📱</span>
-                                        {business.phone}
+                                        <span className="text-xl w-8 text-center">📱</span>
+                                        <div>
+                                            <div className="font-medium">{business.phone}</div>
+                                            <div className="text-xs text-neutral-500">Nhấn để gọi ngay</div>
+                                        </div>
                                     </a>
                                 )}
                                 {business.website && (
                                     <a
-                                        href={
-                                            business.website.startsWith("http")
-                                                ? business.website
-                                                : `https://${business.website}`
-                                        }
+                                        href={business.website.startsWith("http") ? business.website : `https://${business.website}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-3 text-neutral-300 hover:text-white transition-colors"
+                                        className="flex items-center gap-3 p-3 bg-neutral-700/50 rounded-xl text-neutral-300 hover:text-white hover:bg-neutral-700 transition-all"
                                     >
-                                        <span className="text-xl">🌐</span>
-                                        {business.website}
+                                        <span className="text-xl w-8 text-center">🌐</span>
+                                        <div>
+                                            <div className="font-medium">{business.website}</div>
+                                            <div className="text-xs text-neutral-500">Truy cập website</div>
+                                        </div>
                                     </a>
                                 )}
                                 {business.email && (
                                     <a
                                         href={`mailto:${business.email}`}
-                                        className="flex items-center gap-3 text-neutral-300 hover:text-white transition-colors"
+                                        className="flex items-center gap-3 p-3 bg-neutral-700/50 rounded-xl text-neutral-300 hover:text-white hover:bg-neutral-700 transition-all"
                                     >
-                                        <span className="text-xl">✉️</span>
-                                        {business.email}
+                                        <span className="text-xl w-8 text-center">✉️</span>
+                                        <div>
+                                            <div className="font-medium">{business.email}</div>
+                                            <div className="text-xs text-neutral-500">Gửi email</div>
+                                        </div>
                                     </a>
                                 )}
                                 {!business.phone && !business.website && !business.email && (
-                                    <p className="text-neutral-500">No contact info available</p>
+                                    <p className="text-neutral-500 text-center py-4">
+                                        Chưa có thông tin liên hệ
+                                    </p>
                                 )}
                             </div>
                         </div>
                     </div>
 
-                    {/* Right Column - Description */}
+                    {/* Right Column */}
                     <div className="space-y-6">
+                        {/* About Card */}
                         <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
                             <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                                📝 About
+                                📝 Giới thiệu
                             </h2>
                             <p className="text-neutral-300 leading-relaxed">
-                                {business.description || "No description available."}
+                                {business.description || `${business.name} là doanh nghiệp ${business.subcategory || business.category} tại ${city}. Với ${business.reviewCount} đánh giá và rating ${business.rating}/5 sao trên Google, đây là một trong những địa điểm được cộng đồng Việt Nam tin tưởng tại DFW.`}
                             </p>
 
-                            {business.subcategory && (
-                                <div className="mt-4 pt-4 border-t border-neutral-700">
-                                    <span className="text-neutral-500 text-sm">Subcategory: </span>
-                                    <span className="text-neutral-300">{business.subcategory}</span>
-                                </div>
-                            )}
-
-                            {business.originalCategory && (
-                                <div className="mt-2">
-                                    <span className="text-neutral-500 text-sm">Original: </span>
-                                    <span className="text-neutral-300">{business.originalCategory}</span>
+                            {(business.subcategory || business.originalCategory) && (
+                                <div className="mt-4 pt-4 border-t border-neutral-700 flex flex-wrap gap-2">
+                                    {business.subcategory && (
+                                        <span className="px-3 py-1 bg-neutral-700 rounded-full text-sm text-neutral-300">
+                                            {business.subcategory}
+                                        </span>
+                                    )}
+                                    {business.originalCategory && business.originalCategory !== business.subcategory && (
+                                        <span className="px-3 py-1 bg-neutral-700 rounded-full text-sm text-neutral-300">
+                                            {business.originalCategory}
+                                        </span>
+                                    )}
                                 </div>
                             )}
                         </div>
 
-                        {/* Share */}
+                        {/* Share Card */}
                         <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
-                            <h2 className="text-lg font-bold text-white mb-4">🔗 Share</h2>
+                            <h2 className="text-lg font-bold text-white mb-4">🔗 Chia sẻ</h2>
+                            <p className="text-neutral-400 text-sm mb-4">
+                                Giới thiệu địa điểm này cho bạn bè và gia đình
+                            </p>
                             <div className="flex gap-3">
                                 <a
                                     href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                                        typeof window !== "undefined" ? window.location.href : ""
+                                        `https://tominhphong-dfw-viet-biz-q9rp.vercel.app/business/${business.slug}`
                                     )}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors"
+                                    className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-500 transition-colors text-center font-medium"
                                 >
                                     Facebook
                                 </a>
                                 <a
                                     href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                                        `Check out ${business.name} on DFW Vietnamese Biz!`
+                                        `${business.name} - ${business.subcategory || business.category} tại ${city} ⭐ ${business.rating}/5`
+                                    )}&url=${encodeURIComponent(
+                                        `https://tominhphong-dfw-viet-biz-q9rp.vercel.app/business/${business.slug}`
                                     )}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-4 py-2 bg-neutral-700 text-white rounded-lg hover:bg-neutral-600 transition-colors"
+                                    className="flex-1 px-4 py-3 bg-neutral-700 text-white rounded-xl hover:bg-neutral-600 transition-colors text-center font-medium"
                                 >
                                     X/Twitter
                                 </a>
@@ -240,7 +322,7 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                         href="/"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-neutral-800 border border-neutral-700 rounded-full font-bold hover:bg-neutral-700 transition-colors"
                     >
-                        ← Back to All Businesses
+                        ← Quay lại Danh bạ
                     </Link>
                 </div>
             </main>

@@ -1310,20 +1310,20 @@
   },
   {
     "id": 78,
-    "name": "Năm Hứa Vietnamese Cuisine - Catering",
+    "name": "Nam Hua Vietnamese Cuisine",
     "category": "Food",
-    "originalCategory": "Food Services",
-    "subcategory": "Catering",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
     "address": "3112 N Jupiter Rd #305, TX 75044",
     "phone": null,
     "website": null,
     "email": null,
-    "description": "Catering. Cali Saigon Mall. Vietnamese catering, dine-in, to-go",
-    "rating": 4.6,
-    "reviewCount": 83,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=N%C4%83m%20H%E1%BB%A9a%20Vietnamese%20Cuisine%20-%20Catering%203112%20N%20Jupiter%20Rd%20%23305%20TX%2075044&query_place_id=ChIJD9INgIoeTIYR1ltfsoMTT2I",
+    "description": "Vietnamese",
+    "rating": 4.8,
+    "reviewCount": 148,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Nam%20Hua%20Vietnamese%20Cuisine%203112%20N%20Jupiter%20Rd%20%23305%20TX%2075044&query_place_id=ChIJD9INgIoeTIYR1ltfsoMTT2I",
     "linkType": "PLACE_ID",
-    "slug": "nam-hua-vietnamese-cuisine-catering-dfw"
+    "slug": "nam-hua-vietnamese-cuisine-dfw"
   },
   {
     "id": 79,
@@ -1361,23 +1361,6 @@
   },
   {
     "id": 81,
-    "name": "Dr. Linh Ba Nguyen, MD",
-    "category": "Services",
-    "originalCategory": "Healthcare",
-    "subcategory": "Internal Medicine & Sleep Medicine Specialist",
-    "address": "8345 Walnut Hill Ln #105, TX 75231",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Internal Medicine & Sleep Medicine Specialist",
-    "rating": 4.8,
-    "reviewCount": 170,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Dr.%20Linh%20Ba%20Nguyen%2C%20MD%208345%20Walnut%20Hill%20Ln%20%23105%20TX%2075231&query_place_id=ChIJ8RFJCBYeTIYRfXbAPgpKkxo",
-    "linkType": "PLACE_ID",
-    "slug": "dr-linh-ba-nguyen-md-dfw"
-  },
-  {
-    "id": 82,
     "name": "Dr. Phong Lan Nguyen, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1394,7 +1377,7 @@
     "slug": "dr-phong-lan-nguyen-dds-dfw"
   },
   {
-    "id": 83,
+    "id": 82,
     "name": "Dr. Nghi Tran, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1411,7 +1394,7 @@
     "slug": "dr-nghi-tran-dds-dfw"
   },
   {
-    "id": 84,
+    "id": 83,
     "name": "Dr. Ryan Nguyen, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1428,7 +1411,7 @@
     "slug": "dr-ryan-nguyen-dds-dfw"
   },
   {
-    "id": 85,
+    "id": 84,
     "name": "Dr. Vi Truong-Mai, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1445,7 +1428,7 @@
     "slug": "dr-vi-truong-mai-dds-suite-c"
   },
   {
-    "id": 86,
+    "id": 85,
     "name": "Dr. Phuong Ngo, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1462,7 +1445,7 @@
     "slug": "dr-phuong-ngo-dds-suite-650"
   },
   {
-    "id": 87,
+    "id": 86,
     "name": "Dr. Tuan A. Nguyen, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1479,7 +1462,7 @@
     "slug": "dr-tuan-a-nguyen-dds-dfw"
   },
   {
-    "id": 88,
+    "id": 87,
     "name": "Campbell Crossing Dentistry",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1496,7 +1479,7 @@
     "slug": "campbell-crossing-dentistry-dfw"
   },
   {
-    "id": 89,
+    "id": 88,
     "name": "Dr. Linh Nguyen, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1513,7 +1496,7 @@
     "slug": "dr-linh-nguyen-dds-dfw"
   },
   {
-    "id": 90,
+    "id": 89,
     "name": "Dr. Dao Pham, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1530,7 +1513,7 @@
     "slug": "dr-dao-pham-dds-dfw"
   },
   {
-    "id": 91,
+    "id": 90,
     "name": "Dr. Van T. Nguyen, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1547,7 +1530,7 @@
     "slug": "dr-van-t-nguyen-dds-dfw"
   },
   {
-    "id": 92,
+    "id": 91,
     "name": "Dr. Huy Pham, DMD",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1564,7 +1547,7 @@
     "slug": "dr-huy-pham-dmd-dfw"
   },
   {
-    "id": 93,
+    "id": 92,
     "name": "Dr. Van Nguyen, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1581,7 +1564,7 @@
     "slug": "dr-van-nguyen-dds-dfw"
   },
   {
-    "id": 94,
+    "id": 93,
     "name": "Evercare Pharmacy",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1598,7 +1581,7 @@
     "slug": "evercare-pharmacy-suite-c"
   },
   {
-    "id": 95,
+    "id": 94,
     "name": "Mẫu Phước Đường",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1615,7 +1598,7 @@
     "slug": "mau-phuoc-uong-suite-126"
   },
   {
-    "id": 96,
+    "id": 95,
     "name": "Huong Duong Corp",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1632,7 +1615,7 @@
     "slug": "huong-duong-corp-suite-201"
   },
   {
-    "id": 97,
+    "id": 96,
     "name": "Dr. Thanh Pham, DC - Smiley Chiropractic",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1649,7 +1632,7 @@
     "slug": "dr-thanh-pham-dc-smiley-chiropractic-dfw"
   },
   {
-    "id": 98,
+    "id": 97,
     "name": "Vietnam Home Health Care",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1666,7 +1649,7 @@
     "slug": "vietnam-home-health-care-dfw"
   },
   {
-    "id": 99,
+    "id": 98,
     "name": "Complete Eyecare",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1683,7 +1666,7 @@
     "slug": "complete-eyecare-dfw"
   },
   {
-    "id": 100,
+    "id": 99,
     "name": "Richardson Family EyeCare",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1700,7 +1683,7 @@
     "slug": "richardson-family-eyecare-dfw"
   },
   {
-    "id": 101,
+    "id": 100,
     "name": "Meridian Elements Healthcare",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1717,7 +1700,7 @@
     "slug": "meridian-elements-healthcare-dfw"
   },
   {
-    "id": 102,
+    "id": 101,
     "name": "Lake Highlands Acupuncture",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1734,7 +1717,7 @@
     "slug": "lake-highlands-acupuncture-dfw"
   },
   {
-    "id": 103,
+    "id": 102,
     "name": "ACN Herbs (Leslie Duong)",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1751,7 +1734,7 @@
     "slug": "acn-herbs-leslie-duong-dfw"
   },
   {
-    "id": 104,
+    "id": 103,
     "name": "Dr. Nghi Phan, MD - Pediatrician",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1768,7 +1751,7 @@
     "slug": "dr-nghi-phan-md-pediatrician-dfw"
   },
   {
-    "id": 105,
+    "id": 104,
     "name": "Walnut Dental",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1785,7 +1768,7 @@
     "slug": "walnut-dental-dfw"
   },
   {
-    "id": 106,
+    "id": 105,
     "name": "Dr. Allen Nguyen - Elite Care Professionals",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1802,7 +1785,7 @@
     "slug": "dr-allen-nguyen-elite-care-professionals-dfw"
   },
   {
-    "id": 107,
+    "id": 106,
     "name": "Dr. Thanh Pham - Smiley Chiropractic",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1819,7 +1802,7 @@
     "slug": "dr-thanh-pham-smiley-chiropractic-dfw"
   },
   {
-    "id": 108,
+    "id": 107,
     "name": "Carechoice Pharmacy",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1836,7 +1819,7 @@
     "slug": "carechoice-pharmacy-dfw"
   },
   {
-    "id": 109,
+    "id": 108,
     "name": "Dr. Nhan Nguyen, MD",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1853,7 +1836,7 @@
     "slug": "dr-nhan-nguyen-md-dfw"
   },
   {
-    "id": 110,
+    "id": 109,
     "name": "Dr. David Nguyen, DDS",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1870,7 +1853,7 @@
     "slug": "dr-david-nguyen-dds-dfw"
   },
   {
-    "id": 111,
+    "id": 110,
     "name": "Dr. Binh Nguyen DO",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1887,7 +1870,7 @@
     "slug": "dr-binh-nguyen-do-dfw"
   },
   {
-    "id": 112,
+    "id": 111,
     "name": "Dr. Huy Nguyen MD",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1904,7 +1887,7 @@
     "slug": "dr-huy-nguyen-md-dfw"
   },
   {
-    "id": 113,
+    "id": 112,
     "name": "Dr. Van Hong Nguyen DO",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1921,7 +1904,7 @@
     "slug": "dr-van-hong-nguyen-do-dfw"
   },
   {
-    "id": 114,
+    "id": 113,
     "name": "Haltom City Dental (Dr. Nguyen)",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1938,7 +1921,7 @@
     "slug": "haltom-city-dental-dr-nguyen-dfw"
   },
   {
-    "id": 115,
+    "id": 114,
     "name": "Nguyen Pharmacy",
     "category": "Services",
     "originalCategory": "Healthcare",
@@ -1955,7 +1938,7 @@
     "slug": "nguyen-pharmacy-dfw"
   },
   {
-    "id": 116,
+    "id": 115,
     "name": "TRE Weekly Newspaper",
     "category": "Community",
     "originalCategory": "Media",
@@ -1972,7 +1955,7 @@
     "slug": "tre-weekly-newspaper-dfw"
   },
   {
-    "id": 117,
+    "id": 116,
     "name": "Nguoi Viet Dallas - Fort Worth",
     "category": "Community",
     "originalCategory": "Media",
@@ -1989,7 +1972,7 @@
     "slug": "nguoi-viet-dallas-fort-worth-dfw"
   },
   {
-    "id": 118,
+    "id": 117,
     "name": "Saigon Radio Dallas",
     "category": "Community",
     "originalCategory": "Media",
@@ -2006,7 +1989,7 @@
     "slug": "saigon-radio-dallas-suite-180"
   },
   {
-    "id": 119,
+    "id": 118,
     "name": "VietFace TV Texas",
     "category": "Community",
     "originalCategory": "Media",
@@ -2023,7 +2006,7 @@
     "slug": "vietface-tv-texas-dfw"
   },
   {
-    "id": 120,
+    "id": 119,
     "name": "Minh Hoang - Realtor",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2040,7 +2023,7 @@
     "slug": "minh-hoang-realtor-dfw"
   },
   {
-    "id": 121,
+    "id": 120,
     "name": "Lily Nguyen - Realtor",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2057,7 +2040,7 @@
     "slug": "lily-nguyen-realtor-suite-806"
   },
   {
-    "id": 122,
+    "id": 121,
     "name": "Liem Nguyen - Realtor",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2074,7 +2057,7 @@
     "slug": "liem-nguyen-realtor-dfw"
   },
   {
-    "id": 123,
+    "id": 122,
     "name": "Julie Nguyen - Realtor",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2091,7 +2074,7 @@
     "slug": "julie-nguyen-realtor-dfw"
   },
   {
-    "id": 124,
+    "id": 123,
     "name": "Thuy Nguyen - AMX Realty",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2108,7 +2091,7 @@
     "slug": "thuy-nguyen-amx-realty-dfw"
   },
   {
-    "id": 125,
+    "id": 124,
     "name": "Thuy Nguyen - Citiwide Properties",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2125,7 +2108,7 @@
     "slug": "thuy-nguyen-citiwide-properties-dfw"
   },
   {
-    "id": 126,
+    "id": 125,
     "name": "Loung Law Firm, PLLC",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2142,7 +2125,7 @@
     "slug": "loung-law-firm-pllc-suite-385"
   },
   {
-    "id": 127,
+    "id": 126,
     "name": "Thinh Nguyen - State Farm",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2159,7 +2142,7 @@
     "slug": "thinh-nguyen-state-farm-dfw"
   },
   {
-    "id": 128,
+    "id": 127,
     "name": "Thien Thai - State Farm",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2176,7 +2159,7 @@
     "slug": "thien-thai-state-farm-dfw"
   },
   {
-    "id": 129,
+    "id": 128,
     "name": "Tommy Chau - Allstate",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2193,7 +2176,7 @@
     "slug": "tommy-chau-allstate-ste-200"
   },
   {
-    "id": 130,
+    "id": 129,
     "name": "My-Viet Inc.",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2210,7 +2193,7 @@
     "slug": "my-viet-inc-ste-212"
   },
   {
-    "id": 131,
+    "id": 130,
     "name": "My-Viet Inc. - Irving Office",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2227,7 +2210,7 @@
     "slug": "my-viet-inc-irving-office-dfw"
   },
   {
-    "id": 132,
+    "id": 131,
     "name": "Tracy Nguyen - Mobile Notary",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2244,7 +2227,7 @@
     "slug": "tracy-nguyen-mobile-notary-dfw"
   },
   {
-    "id": 133,
+    "id": 132,
     "name": "Dai An - Health Insurance & Tax",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2261,7 +2244,7 @@
     "slug": "dai-an-health-insurance-tax-lau-2"
   },
   {
-    "id": 134,
+    "id": 133,
     "name": "Vincent Do - Safeco Insurance",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2278,7 +2261,7 @@
     "slug": "vincent-do-safeco-insurance-dfw"
   },
   {
-    "id": 135,
+    "id": 134,
     "name": "Steve Luong, CPA",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2295,7 +2278,7 @@
     "slug": "steve-luong-cpa-dfw"
   },
   {
-    "id": 136,
+    "id": 135,
     "name": "Tran Computer",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2312,7 +2295,7 @@
     "slug": "tran-computer-dfw"
   },
   {
-    "id": 137,
+    "id": 136,
     "name": "GoodLand IT Services",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2329,7 +2312,7 @@
     "slug": "goodland-it-services-dfw"
   },
   {
-    "id": 138,
+    "id": 137,
     "name": "Chos Tailor",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2346,7 +2329,7 @@
     "slug": "chos-tailor-dfw"
   },
   {
-    "id": 139,
+    "id": 138,
     "name": "Red Carpet Tailor",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2363,7 +2346,7 @@
     "slug": "red-carpet-tailor-dfw"
   },
   {
-    "id": 140,
+    "id": 139,
     "name": "Julie Nguyen - Ultima Real Estate",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2380,7 +2363,7 @@
     "slug": "julie-nguyen-ultima-real-estate-dfw"
   },
   {
-    "id": 141,
+    "id": 140,
     "name": "Trang Thanh Truong - Nationwide",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2397,24 +2380,7 @@
     "slug": "trang-thanh-truong-nationwide-dfw"
   },
   {
-    "id": 142,
-    "name": "Trang Le Insurance",
-    "category": "Services",
-    "originalCategory": "Professional Services",
-    "subcategory": "Insurance",
-    "address": "2397 S Collins St, TX 76014",
-    "phone": "(817) 779-4849",
-    "website": null,
-    "email": null,
-    "description": "Insurance. Progressive Agent",
-    "rating": 4.1,
-    "reviewCount": 155,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Trang%20Le%20Insurance%202397%20S%20Collins%20St%20TX%2076014&query_place_id=ChIJCzMUuFZ9ToYReAR5FTJwg3w",
-    "linkType": "PLACE_ID",
-    "slug": "trang-le-insurance-dfw"
-  },
-  {
-    "id": 143,
+    "id": 141,
     "name": "My Viet Inc",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2431,7 +2397,7 @@
     "slug": "my-viet-inc-dfw"
   },
   {
-    "id": 144,
+    "id": 142,
     "name": "Costlow Insurance",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2448,7 +2414,7 @@
     "slug": "costlow-insurance-dfw"
   },
   {
-    "id": 145,
+    "id": 143,
     "name": "Vu's Custom Clothier",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2465,7 +2431,7 @@
     "slug": "vu-s-custom-clothier-dfw"
   },
   {
-    "id": 146,
+    "id": 144,
     "name": "Sun's Tailor",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2482,7 +2448,7 @@
     "slug": "sun-s-tailor-dfw"
   },
   {
-    "id": 147,
+    "id": 145,
     "name": "Dry Clean Super Center",
     "category": "Services",
     "originalCategory": "Professional Services",
@@ -2499,7 +2465,7 @@
     "slug": "dry-clean-super-center-dfw"
   },
   {
-    "id": 148,
+    "id": 146,
     "name": "St. Peter Vietnamese Catholic Church",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2516,7 +2482,7 @@
     "slug": "st-peter-vietnamese-catholic-church-dfw"
   },
   {
-    "id": 149,
+    "id": 147,
     "name": "St. Joseph Vietnamese Catholic Church",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2533,7 +2499,7 @@
     "slug": "st-joseph-vietnamese-catholic-church-dfw"
   },
   {
-    "id": 150,
+    "id": 148,
     "name": "Chua Dao Quang",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2550,7 +2516,7 @@
     "slug": "chua-dao-quang-dfw"
   },
   {
-    "id": 151,
+    "id": 149,
     "name": "Unity Vietnamese Baptist Church",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2567,7 +2533,7 @@
     "slug": "unity-vietnamese-baptist-church-dfw"
   },
   {
-    "id": 152,
+    "id": 150,
     "name": "Vietnamese Faith Baptist Church",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2584,8 +2550,8 @@
     "slug": "vietnamese-faith-baptist-church-dfw"
   },
   {
-    "id": 153,
-    "name": "Tu Vien Lien Hoa",
+    "id": 151,
+    "name": "Lien Hoa Temple",
     "category": "Community",
     "originalCategory": "Religious",
     "subcategory": "Buddhist Temple",
@@ -2593,15 +2559,15 @@
     "phone": "(972) 438-2022",
     "website": null,
     "email": null,
-    "description": "Buddhist Temple. First Vietnamese Theravada temple in Texas",
-    "rating": 4.1,
-    "reviewCount": 54,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Tu%20Vien%20Lien%20Hoa%202014%20Rose%20St%20TX%2075061&query_place_id=ChIJVSvGniaDToYRfkA99LUUzYc",
+    "description": "Buddhist Temple. Buddhist Temple",
+    "rating": 4.4,
+    "reviewCount": 137,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Lien%20Hoa%20Temple%202014%20Rose%20St%20TX%2075061&query_place_id=ChIJVSvGniaDToYRfkA99LUUzYc",
     "linkType": "PLACE_ID",
-    "slug": "tu-vien-lien-hoa-dfw"
+    "slug": "lien-hoa-temple-dfw"
   },
   {
-    "id": 154,
+    "id": 152,
     "name": "Huong Dao Temple",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2618,7 +2584,7 @@
     "slug": "huong-dao-temple-dfw"
   },
   {
-    "id": 155,
+    "id": 153,
     "name": "Vietnamese Martyrs Catholic Church",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2635,7 +2601,7 @@
     "slug": "vietnamese-martyrs-catholic-church-dfw"
   },
   {
-    "id": 156,
+    "id": 154,
     "name": "Sacred Heart of Jesus Catholic Church",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2652,24 +2618,7 @@
     "slug": "sacred-heart-of-jesus-catholic-church-dfw"
   },
   {
-    "id": 157,
-    "name": "Lien Hoa Temple",
-    "category": "Community",
-    "originalCategory": "Religious",
-    "subcategory": "Buddhist Temple",
-    "address": "2014 Rose St, TX 75061",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Buddhist Temple. Buddhist Temple",
-    "rating": 4.4,
-    "reviewCount": 137,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Lien%20Hoa%20Temple%202014%20Rose%20St%20TX%2075061&query_place_id=ChIJVSvGniaDToYRfkA99LUUzYc",
-    "linkType": "PLACE_ID",
-    "slug": "lien-hoa-temple-dfw"
-  },
-  {
-    "id": 158,
+    "id": 155,
     "name": "Chua Dao Quang",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2686,7 +2635,7 @@
     "slug": "chua-dao-quang-dfw-1"
   },
   {
-    "id": 159,
+    "id": 156,
     "name": "St Peter Vietnamese Catholic Church",
     "category": "Community",
     "originalCategory": "Religious",
@@ -2703,24 +2652,24 @@
     "slug": "st-peter-vietnamese-catholic-church-dfw-1"
   },
   {
-    "id": 160,
-    "name": "Lee's Sandwiches",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
+    "id": 157,
+    "name": "Cali Saigon Mall",
+    "category": "Shopping",
+    "originalCategory": "Shopping Center",
+    "subcategory": "Mall",
     "address": "3212 N Jupiter Rd, TX 75044",
     "phone": "(972) 530-5388",
     "website": null,
     "email": null,
-    "description": "Vietnamese. Vietnamese sandwiches, chain quality",
-    "rating": 4.8,
-    "reviewCount": 214,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Lee%27s%20Sandwiches%203212%20N%20Jupiter%20Rd%20TX%2075044&query_place_id=ChIJw2knOYoeTIYRtG8UyCezqGo",
+    "description": "Mall. Vietnamese Mall",
+    "rating": 4.7,
+    "reviewCount": 224,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Cali%20Saigon%20Mall%203212%20N%20Jupiter%20Rd%20TX%2075044&query_place_id=ChIJmV7iRooeTIYRNrG3uj9Dj4c",
     "linkType": "PLACE_ID",
-    "slug": "lee-s-sandwiches-dfw"
+    "slug": "cali-saigon-mall-dfw-1"
   },
   {
-    "id": 161,
+    "id": 158,
     "name": "Dong Que Vietnamese Restaurant (Quan Ngon 89)",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2737,24 +2686,7 @@
     "slug": "dong-que-vietnamese-restaurant-quan-ngon-89-dfw"
   },
   {
-    "id": 162,
-    "name": "Nam Hua Vietnamese Cuisine",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "3112 N Jupiter Rd #305, TX 75044",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.8,
-    "reviewCount": 148,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Nam%20Hua%20Vietnamese%20Cuisine%203112%20N%20Jupiter%20Rd%20%23305%20TX%2075044&query_place_id=ChIJD9INgIoeTIYR1ltfsoMTT2I",
-    "linkType": "PLACE_ID",
-    "slug": "nam-hua-vietnamese-cuisine-dfw"
-  },
-  {
-    "id": 163,
+    "id": 159,
     "name": "GOC HUE",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2771,7 +2703,7 @@
     "slug": "goc-hue-dfw"
   },
   {
-    "id": 164,
+    "id": 160,
     "name": "Pho Chau's Vietnamese Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2788,7 +2720,7 @@
     "slug": "pho-chau-s-vietnamese-restaurant-dfw"
   },
   {
-    "id": 165,
+    "id": 161,
     "name": "Lua Kitchen",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2805,7 +2737,7 @@
     "slug": "lua-kitchen-dfw"
   },
   {
-    "id": 166,
+    "id": 162,
     "name": "Pho Ca Dao Noodle & Grill",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2822,7 +2754,7 @@
     "slug": "pho-ca-dao-noodle-grill-dfw"
   },
   {
-    "id": 167,
+    "id": 163,
     "name": "Che Banh Mi #1",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2839,7 +2771,7 @@
     "slug": "che-banh-mi-1-dfw"
   },
   {
-    "id": 168,
+    "id": 164,
     "name": "Banh Mi Cali",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2856,7 +2788,7 @@
     "slug": "banh-mi-cali-suite-h"
   },
   {
-    "id": 169,
+    "id": 165,
     "name": "Laxanh Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2873,7 +2805,7 @@
     "slug": "laxanh-restaurant-dfw"
   },
   {
-    "id": 170,
+    "id": 166,
     "name": "DaLat Vietnamese Restaurant & Bar",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2890,7 +2822,7 @@
     "slug": "dalat-vietnamese-restaurant-bar-dfw"
   },
   {
-    "id": 171,
+    "id": 167,
     "name": "Ngon Vietnamese Kitchen",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2907,7 +2839,7 @@
     "slug": "ngon-vietnamese-kitchen-dfw"
   },
   {
-    "id": 172,
+    "id": 168,
     "name": "I Luv Pho",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2924,7 +2856,7 @@
     "slug": "i-luv-pho-dfw"
   },
   {
-    "id": 173,
+    "id": 169,
     "name": "Pho Crimson",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2941,7 +2873,7 @@
     "slug": "pho-crimson-dfw"
   },
   {
-    "id": 174,
+    "id": 170,
     "name": "Pho Vietz",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2958,7 +2890,7 @@
     "slug": "pho-vietz-dfw"
   },
   {
-    "id": 175,
+    "id": 171,
     "name": "Pho Midway",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2975,7 +2907,7 @@
     "slug": "pho-midway-dfw"
   },
   {
-    "id": 176,
+    "id": 172,
     "name": "Pho DK",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -2992,7 +2924,7 @@
     "slug": "pho-dk-dfw"
   },
   {
-    "id": 177,
+    "id": 173,
     "name": "LaVui Vietnamese Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3009,7 +2941,7 @@
     "slug": "lavui-vietnamese-restaurant-dfw"
   },
   {
-    "id": 178,
+    "id": 174,
     "name": "Nammi Vietnamese Street Food",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3026,7 +2958,7 @@
     "slug": "nammi-vietnamese-street-food-dfw"
   },
   {
-    "id": 179,
+    "id": 175,
     "name": "Bep Nha Vietnamese Kitchen",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3043,7 +2975,7 @@
     "slug": "bep-nha-vietnamese-kitchen-dfw"
   },
   {
-    "id": 180,
+    "id": 176,
     "name": "Pho Hanabi",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3060,7 +2992,7 @@
     "slug": "pho-hanabi-dfw"
   },
   {
-    "id": 181,
+    "id": 177,
     "name": "Mot Hai Ba Vietnamese",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3077,7 +3009,7 @@
     "slug": "mot-hai-ba-vietnamese-dfw"
   },
   {
-    "id": 182,
+    "id": 178,
     "name": "Pho Kitchen",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3094,7 +3026,7 @@
     "slug": "pho-kitchen-dfw"
   },
   {
-    "id": 183,
+    "id": 179,
     "name": "Pho Saigon #8",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3111,7 +3043,7 @@
     "slug": "pho-saigon-8-dfw"
   },
   {
-    "id": 184,
+    "id": 180,
     "name": "Malai Kitchen",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3128,551 +3060,7 @@
     "slug": "malai-kitchen-dfw"
   },
   {
-    "id": 185,
-    "name": "Banh Mi Dalat",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "3733 N Josey Ln #115, TX 75007",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.7,
-    "reviewCount": 54,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Banh%20Mi%20Dalat%203733%20N%20Josey%20Ln%20%23115%20TX%2075007&query_place_id=ChIJtcywArAlTIYREQm27bVWsU4",
-    "linkType": "PLACE_ID",
-    "slug": "banh-mi-dalat-dfw"
-  },
-  {
-    "id": 186,
-    "name": "Pho Bistro",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "3052 Old Denton Rd, Suite 112, TX 75007",
-    "phone": "(972) 245-9600",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Family-owned since 2003",
-    "rating": 4.4,
-    "reviewCount": 222,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Bistro%203052%20Old%20Denton%20Rd%2C%20Suite%20112%20TX%2075007&query_place_id=ChIJxSz5bu0lTIYRL0SD4ouYTyE",
-    "linkType": "PLACE_ID",
-    "slug": "pho-bistro-suite-112"
-  },
-  {
-    "id": 187,
-    "name": "Pho Pasteur II",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "1927 E Belt Line Rd, TX 75006",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.8,
-    "reviewCount": 231,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Pasteur%20II%201927%20E%20Belt%20Line%20Rd%20TX%2075006&query_place_id=ChIJuzxz2FwmTIYReyipRuggWfw",
-    "linkType": "PLACE_ID",
-    "slug": "pho-pasteur-ii-dfw"
-  },
-  {
-    "id": 188,
-    "name": "District One Saigon Street Food",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "2540 Old Denton Rd #142, TX 75006",
-    "phone": "(972) 242-2609",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Vietnamese vermicelli dishes",
-    "rating": 4.3,
-    "reviewCount": 243,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=District%20One%20Saigon%20Street%20Food%202540%20Old%20Denton%20Rd%20%23142%20TX%2075006&query_place_id=ChIJM8-n2lQlTIYReoMlKj6Ho2s",
-    "linkType": "PLACE_ID",
-    "slug": "district-one-saigon-street-food-dfw"
-  },
-  {
-    "id": 189,
-    "name": "Pho Express",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "2012 E Belt Line Rd, TX 75006",
-    "phone": "(972) 417-1017",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Founded 2017",
-    "rating": 4.2,
-    "reviewCount": 186,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Express%202012%20E%20Belt%20Line%20Rd%20TX%2075006&query_place_id=ChIJRZR1RlwmTIYR0VTCU1k5KFc",
-    "linkType": "PLACE_ID",
-    "slug": "pho-express-dfw"
-  },
-  {
-    "id": 190,
-    "name": "Ba Lee Sandwich Shop",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "1927 E Belt Line Rd, TX 75006",
-    "phone": "(972) 416-5850",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.2,
-    "reviewCount": 115,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Ba%20Lee%20Sandwich%20Shop%201927%20E%20Belt%20Line%20Rd%20TX%2075006&query_place_id=ChIJuzxz2FwmTIYRxw2ySM7QrJ8",
-    "linkType": "PLACE_ID",
-    "slug": "ba-lee-sandwich-shop-dfw"
-  },
-  {
-    "id": 191,
-    "name": "Kin's Restaurant",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "1927 E Belt Line Rd #122, TX 75006",
-    "phone": "(469) 900-3007",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Vietnamese & Chinese fusion",
-    "rating": 4.3,
-    "reviewCount": 111,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Kin%27s%20Restaurant%201927%20E%20Belt%20Line%20Rd%20%23122%20TX%2075006&query_place_id=ChIJI3329wsnTIYRrNq8xwI0eNg",
-    "linkType": "PLACE_ID",
-    "slug": "kin-s-restaurant-dfw"
-  },
-  {
-    "id": 192,
-    "name": "Mập Kitchen",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "2660 Kelly Blvd Apt 114, TX 75007",
-    "phone": "(469) 588-1433",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Vietnamese & Thai dishes",
-    "rating": 4.1,
-    "reviewCount": 183,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=M%E1%BA%ADp%20Kitchen%202660%20Kelly%20Blvd%20Apt%20114%20TX%2075007&query_place_id=ChIJ6wV_XBwlTIYRIMWygzfi3q4",
-    "linkType": "PLACE_ID",
-    "slug": "map-kitchen-dfw"
-  },
-  {
-    "id": 193,
-    "name": "Trung Nguyen E-Coffee",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "2225 Old Denton Road, Unit 220, TX 75006",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Vietnamese coffee specialist",
-    "rating": 4.8,
-    "reviewCount": 100,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Trung%20Nguyen%20E-Coffee%202225%20Old%20Denton%20Road%2C%20Unit%20220%20TX%2075006&query_place_id=ChIJreFcDQAnTIYRF2PPYstbsqY",
-    "linkType": "PLACE_ID",
-    "slug": "trung-nguyen-e-coffee-unit-220-1"
-  },
-  {
-    "id": 194,
-    "name": "Pho Bac",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "153 N Plano Rd, TX 75081",
-    "phone": "(972) 231-9205",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Opens early at 8 AM",
-    "rating": 4.8,
-    "reviewCount": 56,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Bac%20153%20N%20Plano%20Rd%20TX%2075081&query_place_id=ChIJF9do3fgeTIYRi3dL_KcDcAA",
-    "linkType": "PLACE_ID",
-    "slug": "pho-bac-dfw"
-  },
-  {
-    "id": 195,
-    "name": "Saigon Block",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "2150 East Arapaho Road, Suite 200, TX 75081",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.6,
-    "reviewCount": 195,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Saigon%20Block%202150%20East%20Arapaho%20Road%2C%20Suite%20200%20TX%2075081&query_place_id=ChIJedTRPJMeTIYRRR0WTTaes4w",
-    "linkType": "PLACE_ID",
-    "slug": "saigon-block-suite-200"
-  },
-  {
-    "id": 196,
-    "name": "Pho OK! of Richardson",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "955 E Campbell Rd #100, TX 75081",
-    "phone": "(972) 203-7157",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.1,
-    "reviewCount": 146,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20OK%21%20of%20Richardson%20955%20E%20Campbell%20Rd%20%23100%20TX%2075081&query_place_id=ChIJlw_KticfTIYRd_hRDMniH_Q",
-    "linkType": "PLACE_ID",
-    "slug": "pho-ok-of-richardson-dfw"
-  },
-  {
-    "id": 197,
-    "name": "Pho Sen Noodle & Grill",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "400 N Greenville Ave, Suite 15, TX 75081",
-    "phone": "(214) 484-1833",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.0,
-    "reviewCount": 53,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Sen%20Noodle%20%26%20Grill%20400%20N%20Greenville%20Ave%2C%20Suite%2015%20TX%2075081&query_place_id=ChIJk7vIoEQfTIYRyDv7ox44lNg",
-    "linkType": "PLACE_ID",
-    "slug": "pho-sen-noodle-grill-suite-15"
-  },
-  {
-    "id": 198,
-    "name": "Pho Legacy Vietnamese Noodle & Grill",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "3109 N. Belt Line Rd Ste 142, TX 75062",
-    "phone": "(972) 871-9555",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. 100+ Vietnamese dishes",
-    "rating": 4.1,
-    "reviewCount": 81,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Legacy%20Vietnamese%20Noodle%20%26%20Grill%203109%20N.%20Belt%20Line%20Rd%20Ste%20142%20TX%2075062&query_place_id=ChIJTcjzkzCCToYRBRNWl8gpukQ",
-    "linkType": "PLACE_ID",
-    "slug": "pho-legacy-vietnamese-noodle-grill-dfw"
-  },
-  {
-    "id": 199,
-    "name": "Pho MC",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "7447 N MacArthur Blvd #170, TX",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.6,
-    "reviewCount": 210,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20MC%207447%20N%20MacArthur%20Blvd%20%23170%20TX&query_place_id=ChIJMWHmYjYpTIYRGhHoZD_D6Ek",
-    "linkType": "PLACE_ID",
-    "slug": "pho-mc-dfw"
-  },
-  {
-    "id": 200,
-    "name": "Pho Empire",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "3591 N Belt Line Rd, TX 75062",
-    "phone": "(972) 594-7259",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.2,
-    "reviewCount": 96,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Empire%203591%20N%20Belt%20Line%20Rd%20TX%2075062&query_place_id=ChIJ2dyDkzuCToYR8kECeK7zj7o",
-    "linkType": "PLACE_ID",
-    "slug": "pho-empire-dfw"
-  },
-  {
-    "id": 201,
-    "name": "Pho Mac at Preston",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "8240 Preston Road, Suite 180, TX 75024",
-    "phone": "(469) 362-8676",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.6,
-    "reviewCount": 154,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Mac%20at%20Preston%208240%20Preston%20Road%2C%20Suite%20180%20TX%2075024&query_place_id=ChIJj2bI2MQ9TIYRz1y_hYXQNP0",
-    "linkType": "PLACE_ID",
-    "slug": "pho-mac-at-preston-suite-180"
-  },
-  {
-    "id": 202,
-    "name": "Pho Colonial (What The Pho)",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "221 W. Parker Rd, Ste 550, TX 75023",
-    "phone": "(469) 543-1305",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.6,
-    "reviewCount": 210,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Colonial%20%28What%20The%20Pho%29%20221%20W.%20Parker%20Rd%2C%20Ste%20550%20TX%2075023&query_place_id=ChIJhzRAzMcZTIYRhCtw0XsnWfg",
-    "linkType": "PLACE_ID",
-    "slug": "pho-colonial-what-the-pho-ste-550"
-  },
-  {
-    "id": 203,
-    "name": "Pho Que Huong Noodles & Grill (Jupiter Rd)",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "1401 Jupiter Rd #100, TX 75074",
-    "phone": "(945) 215-0607 or (972) 424-5205",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.2,
-    "reviewCount": 213,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Que%20Huong%20Noodles%20%26%20Grill%20%28Jupiter%20Rd%29%201401%20Jupiter%20Rd%20%23100%20TX%2075074&query_place_id=ChIJDYRt1pwYTIYRIml_St9OYMI",
-    "linkType": "PLACE_ID",
-    "slug": "pho-que-huong-noodles-grill-jupiter-rd-dfw"
-  },
-  {
-    "id": 204,
-    "name": "Pho One",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "2305 S State Hwy 121, TX 75067",
-    "phone": "(972) 315-8888",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.5,
-    "reviewCount": 158,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20One%202305%20S%20State%20Hwy%20121%20TX%2075067&query_place_id=ChIJ5XY_Ko4uTIYRHBe0oYLZY-4",
-    "linkType": "PLACE_ID",
-    "slug": "pho-one-dfw"
-  },
-  {
-    "id": 205,
-    "name": "Pho Que Huong (Lewisville)",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "291 E Round Grove Rd, TX 75067",
-    "phone": "(214) 488-9122",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.6,
-    "reviewCount": 230,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Que%20Huong%20%28Lewisville%29%20291%20E%20Round%20Grove%20Rd%20TX%2075067&query_place_id=ChIJB-Gy4ZIuTIYRkxtr7RIQzic",
-    "linkType": "PLACE_ID",
-    "slug": "pho-que-huong-lewisville-dfw"
-  },
-  {
-    "id": 206,
-    "name": "Pho Bistro 2",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "310 E Round Grove Rd Ste 100, TX 75067",
-    "phone": "(469) 763-3299",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.0,
-    "reviewCount": 150,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Bistro%202%20310%20E%20Round%20Grove%20Rd%20Ste%20100%20TX%2075067&query_place_id=ChIJ-WCLgIgvTIYRkL6H5Coq6zY",
-    "linkType": "PLACE_ID",
-    "slug": "pho-bistro-2-dfw"
-  },
-  {
-    "id": 207,
-    "name": "Viet- Voyage Buffet",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "2615 W Pioneer Pkwy, TX 75051",
-    "phone": "(972) 975-5123",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.6,
-    "reviewCount": 232,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Viet-%20Voyage%20Buffet%202615%20W%20Pioneer%20Pkwy%20TX%2075051&query_place_id=ChIJw36qcACHToYRciNUxvKJ0Zk",
-    "linkType": "PLACE_ID",
-    "slug": "viet-voyage-buffet-dfw"
-  },
-  {
-    "id": 208,
-    "name": "Pho Duc",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "5224 S State Hwy 360 #240, TX 75052",
-    "phone": "(214) 444-5545",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.0,
-    "reviewCount": 76,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Duc%205224%20S%20State%20Hwy%20360%20%23240%20TX%2075052&query_place_id=ChIJmdtRLi-JToYRhcpEaOBOpIw",
-    "linkType": "PLACE_ID",
-    "slug": "pho-duc-dfw"
-  },
-  {
-    "id": 209,
-    "name": "Banh Mi Number 1",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "2625 W Pioneer Pkwy #206, TX 75051",
-    "phone": "(972) 975-5159",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.6,
-    "reviewCount": 183,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Banh%20Mi%20Number%201%202625%20W%20Pioneer%20Pkwy%20%23206%20TX%2075051&query_place_id=ChIJM3qkiy2GToYREg8gWAqL2Nw",
-    "linkType": "PLACE_ID",
-    "slug": "banh-mi-number-1-dfw"
-  },
-  {
-    "id": 210,
-    "name": "Pho 544",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "121 East FM 544, TX 75098",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Family business",
-    "rating": 4.3,
-    "reviewCount": 248,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20544%20121%20East%20FM%20544%20TX%2075098&query_place_id=ChIJlS4nvG0bTIYRQ4NXRlUcJys",
-    "linkType": "PLACE_ID",
-    "slug": "pho-544-dfw"
-  },
-  {
-    "id": 211,
-    "name": "Pho Street Cafe",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "3483 FM 544 #110, TX 75098",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.6,
-    "reviewCount": 199,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Street%20Cafe%203483%20FM%20544%20%23110%20TX%2075098&query_place_id=ChIJoel_qkYbTIYRRbXUbciFXF0",
-    "linkType": "PLACE_ID",
-    "slug": "pho-street-cafe-dfw"
-  },
-  {
-    "id": 212,
-    "name": "Panda Pho & Boba House",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "6702 Dalrock Rd Ste 108, TX 75089",
-    "phone": "(469) 366-9710",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Pho & Boba combination",
-    "rating": 4.5,
-    "reviewCount": 127,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Panda%20Pho%20%26%20Boba%20House%206702%20Dalrock%20Rd%20Ste%20108%20TX%2075089&query_place_id=ChIJv6UNgnICTIYRQS40ZgczF0U",
-    "linkType": "PLACE_ID",
-    "slug": "panda-pho-boba-house-dfw"
-  },
-  {
-    "id": 213,
-    "name": "Pho Garden",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "423 E I-30, TX 75087",
-    "phone": "(972) 771-2777",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Serves Sachse/Mesquite via delivery",
-    "rating": 4.4,
-    "reviewCount": 128,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Garden%20423%20E%20I-30%20TX%2075087&query_place_id=ChIJZ9QfNxOqToYRUBpB5A5IOc4",
-    "linkType": "PLACE_ID",
-    "slug": "pho-garden-dfw"
-  },
-  {
-    "id": 214,
-    "name": "Healthy Banh Mi",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "539 E Interstate 30, TX 75087",
-    "phone": "(469) 314-1294",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.2,
-    "reviewCount": 198,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Healthy%20Banh%20Mi%20539%20E%20Interstate%2030%20TX%2075087&query_place_id=ChIJ_zaATBOqToYRMBtaZhg2iI8",
-    "linkType": "PLACE_ID",
-    "slug": "healthy-banh-mi-dfw"
-  },
-  {
-    "id": 215,
-    "name": "Pho Yen Phi",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "150 S Denton Tap Rd #112, TX 75019",
-    "phone": "(469) 312-3581",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese",
-    "rating": 4.1,
-    "reviewCount": 173,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Yen%20Phi%20150%20S%20Denton%20Tap%20Rd%20%23112%20TX%2075019&query_place_id=ChIJGT_CkU4pTIYRlldoROZmf0Y",
-    "linkType": "PLACE_ID",
-    "slug": "pho-yen-phi-dfw"
-  },
-  {
-    "id": 216,
-    "name": "Pho Truong",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "516 W Arapaho Rd #112, TX 75080",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Casual Vietnamese dining",
-    "rating": 4.4,
-    "reviewCount": 245,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Truong%20516%20W%20Arapaho%20Rd%20%23112%20TX%2075080&query_place_id=ChIJfyEjCGkfTIYRYo5BCXEddSI",
-    "linkType": "PLACE_ID",
-    "slug": "pho-truong-dfw"
-  },
-  {
-    "id": 217,
+    "id": 181,
     "name": "Banh Mi Dalat",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3689,24 +3077,75 @@
     "slug": "banh-mi-dalat-dfw-1"
   },
   {
-    "id": 218,
+    "id": 182,
+    "name": "Pho Bistro",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "3052 Old Denton Rd, Suite 112, TX 75007",
+    "phone": "(972) 245-9600",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Family-owned since 2003",
+    "rating": 4.4,
+    "reviewCount": 222,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Bistro%203052%20Old%20Denton%20Rd%2C%20Suite%20112%20TX%2075007&query_place_id=ChIJxSz5bu0lTIYRL0SD4ouYTyE",
+    "linkType": "PLACE_ID",
+    "slug": "pho-bistro-suite-112"
+  },
+  {
+    "id": 183,
     "name": "Pho Pasteur II",
     "category": "Food",
     "originalCategory": "Restaurant",
     "subcategory": "Vietnamese",
     "address": "1927 E Belt Line Rd, TX 75006",
-    "phone": null,
+    "phone": "(972) 416-5850",
     "website": null,
     "email": null,
-    "description": "Vietnamese. Pho restaurant",
-    "rating": 4.2,
-    "reviewCount": 70,
+    "description": "Vietnamese",
+    "rating": 4.8,
+    "reviewCount": 231,
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Pasteur%20II%201927%20E%20Belt%20Line%20Rd%20TX%2075006&query_place_id=ChIJuzxz2FwmTIYReyipRuggWfw",
     "linkType": "PLACE_ID",
-    "slug": "pho-pasteur-ii-dfw-1"
+    "slug": "pho-pasteur-ii-dfw"
   },
   {
-    "id": 219,
+    "id": 184,
+    "name": "District One Saigon Street Food",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "2540 Old Denton Rd #142, TX 75006",
+    "phone": "(972) 242-2609",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Vietnamese vermicelli dishes",
+    "rating": 4.3,
+    "reviewCount": 243,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=District%20One%20Saigon%20Street%20Food%202540%20Old%20Denton%20Rd%20%23142%20TX%2075006&query_place_id=ChIJM8-n2lQlTIYReoMlKj6Ho2s",
+    "linkType": "PLACE_ID",
+    "slug": "district-one-saigon-street-food-dfw"
+  },
+  {
+    "id": 185,
+    "name": "Pho Express",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "2012 E Belt Line Rd, TX 75006",
+    "phone": "(972) 417-1017",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Founded 2017",
+    "rating": 4.2,
+    "reviewCount": 186,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Express%202012%20E%20Belt%20Line%20Rd%20TX%2075006&query_place_id=ChIJRZR1RlwmTIYR0VTCU1k5KFc",
+    "linkType": "PLACE_ID",
+    "slug": "pho-express-dfw"
+  },
+  {
+    "id": 186,
     "name": "Kins Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3723,7 +3162,7 @@
     "slug": "kins-restaurant-dfw"
   },
   {
-    "id": 220,
+    "id": 187,
     "name": "Map Kitchen",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3740,7 +3179,24 @@
     "slug": "map-kitchen-dfw-1"
   },
   {
-    "id": 221,
+    "id": 188,
+    "name": "Pho Bac",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "153 N Plano Rd, TX 75081",
+    "phone": "(972) 231-9205",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Opens early at 8 AM",
+    "rating": 4.8,
+    "reviewCount": 56,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Bac%20153%20N%20Plano%20Rd%20TX%2075081&query_place_id=ChIJF9do3fgeTIYRi3dL_KcDcAA",
+    "linkType": "PLACE_ID",
+    "slug": "pho-bac-dfw"
+  },
+  {
+    "id": 189,
     "name": "Saigon Block",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3757,7 +3213,58 @@
     "slug": "saigon-block-suite-200-1"
   },
   {
-    "id": 222,
+    "id": 190,
+    "name": "Pho OK! of Richardson",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "955 E Campbell Rd #100, TX 75081",
+    "phone": "(972) 203-7157",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.1,
+    "reviewCount": 146,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20OK%21%20of%20Richardson%20955%20E%20Campbell%20Rd%20%23100%20TX%2075081&query_place_id=ChIJlw_KticfTIYRd_hRDMniH_Q",
+    "linkType": "PLACE_ID",
+    "slug": "pho-ok-of-richardson-dfw"
+  },
+  {
+    "id": 191,
+    "name": "Pho Sen Noodle & Grill",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "400 N Greenville Ave, Suite 15, TX 75081",
+    "phone": "(214) 484-1833",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.0,
+    "reviewCount": 53,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Sen%20Noodle%20%26%20Grill%20400%20N%20Greenville%20Ave%2C%20Suite%2015%20TX%2075081&query_place_id=ChIJk7vIoEQfTIYRyDv7ox44lNg",
+    "linkType": "PLACE_ID",
+    "slug": "pho-sen-noodle-grill-suite-15"
+  },
+  {
+    "id": 192,
+    "name": "Pho Legacy Vietnamese Noodle & Grill",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "3109 N. Belt Line Rd Ste 142, TX 75062",
+    "phone": "(972) 871-9555",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. 100+ Vietnamese dishes",
+    "rating": 4.1,
+    "reviewCount": 81,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Legacy%20Vietnamese%20Noodle%20%26%20Grill%203109%20N.%20Belt%20Line%20Rd%20Ste%20142%20TX%2075062&query_place_id=ChIJTcjzkzCCToYRBRNWl8gpukQ",
+    "linkType": "PLACE_ID",
+    "slug": "pho-legacy-vietnamese-noodle-grill-dfw"
+  },
+  {
+    "id": 193,
     "name": "Pho MC",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3766,32 +3273,185 @@
     "phone": null,
     "website": null,
     "email": null,
-    "description": "Vietnamese. Vietnamese restaurant",
-    "rating": 4.0,
-    "reviewCount": 167,
+    "description": "Vietnamese",
+    "rating": 4.6,
+    "reviewCount": 210,
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20MC%207447%20N%20MacArthur%20Blvd%20%23170%20TX&query_place_id=ChIJMWHmYjYpTIYRGhHoZD_D6Ek",
     "linkType": "PLACE_ID",
-    "slug": "pho-mc-dfw-1"
+    "slug": "pho-mc-dfw"
   },
   {
-    "id": 223,
-    "name": "Pho Que Huong Noodles & Grill",
+    "id": 194,
+    "name": "Pho Empire",
     "category": "Food",
     "originalCategory": "Restaurant",
     "subcategory": "Vietnamese",
-    "address": "1401 Jupiter Rd #100, TX",
-    "phone": "(945) 215-0607",
+    "address": "3591 N Belt Line Rd, TX 75062",
+    "phone": "(972) 594-7259",
     "website": null,
     "email": null,
-    "description": "Vietnamese. Noodles & Grill",
-    "rating": 4.5,
-    "reviewCount": 115,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Que%20Huong%20Noodles%20%26%20Grill%201401%20Jupiter%20Rd%20%23100%20TX&query_place_id=ChIJDYRt1pwYTIYRIml_St9OYMI",
+    "description": "Vietnamese",
+    "rating": 4.2,
+    "reviewCount": 96,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Empire%203591%20N%20Belt%20Line%20Rd%20TX%2075062&query_place_id=ChIJ2dyDkzuCToYR8kECeK7zj7o",
     "linkType": "PLACE_ID",
-    "slug": "pho-que-huong-noodles-grill-dfw"
+    "slug": "pho-empire-dfw"
   },
   {
-    "id": 224,
+    "id": 195,
+    "name": "Pho Mac at Preston",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "8240 Preston Road, Suite 180, TX 75024",
+    "phone": "(469) 362-8676",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.6,
+    "reviewCount": 154,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Mac%20at%20Preston%208240%20Preston%20Road%2C%20Suite%20180%20TX%2075024&query_place_id=ChIJj2bI2MQ9TIYRz1y_hYXQNP0",
+    "linkType": "PLACE_ID",
+    "slug": "pho-mac-at-preston-suite-180"
+  },
+  {
+    "id": 196,
+    "name": "Pho Colonial (What The Pho)",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "221 W. Parker Rd, Ste 550, TX 75023",
+    "phone": "(469) 543-1305",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.6,
+    "reviewCount": 210,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Colonial%20%28What%20The%20Pho%29%20221%20W.%20Parker%20Rd%2C%20Ste%20550%20TX%2075023&query_place_id=ChIJhzRAzMcZTIYRhCtw0XsnWfg",
+    "linkType": "PLACE_ID",
+    "slug": "pho-colonial-what-the-pho-ste-550"
+  },
+  {
+    "id": 197,
+    "name": "Pho Que Huong Noodles & Grill (Jupiter Rd)",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "1401 Jupiter Rd #100, TX 75074",
+    "phone": "(945) 215-0607 or (972) 424-5205",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.2,
+    "reviewCount": 213,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Que%20Huong%20Noodles%20%26%20Grill%20%28Jupiter%20Rd%29%201401%20Jupiter%20Rd%20%23100%20TX%2075074&query_place_id=ChIJDYRt1pwYTIYRIml_St9OYMI",
+    "linkType": "PLACE_ID",
+    "slug": "pho-que-huong-noodles-grill-jupiter-rd-dfw"
+  },
+  {
+    "id": 198,
+    "name": "Pho One",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "2305 S State Hwy 121, TX 75067",
+    "phone": "(972) 315-8888",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.5,
+    "reviewCount": 158,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20One%202305%20S%20State%20Hwy%20121%20TX%2075067&query_place_id=ChIJ5XY_Ko4uTIYRHBe0oYLZY-4",
+    "linkType": "PLACE_ID",
+    "slug": "pho-one-dfw"
+  },
+  {
+    "id": 199,
+    "name": "Pho Que Huong (Lewisville)",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "291 E Round Grove Rd, TX 75067",
+    "phone": "(214) 488-9122",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.6,
+    "reviewCount": 230,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Que%20Huong%20%28Lewisville%29%20291%20E%20Round%20Grove%20Rd%20TX%2075067&query_place_id=ChIJB-Gy4ZIuTIYRkxtr7RIQzic",
+    "linkType": "PLACE_ID",
+    "slug": "pho-que-huong-lewisville-dfw"
+  },
+  {
+    "id": 200,
+    "name": "Pho Bistro 2",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "310 E Round Grove Rd Ste 100, TX 75067",
+    "phone": "(469) 763-3299",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.0,
+    "reviewCount": 150,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Bistro%202%20310%20E%20Round%20Grove%20Rd%20Ste%20100%20TX%2075067&query_place_id=ChIJ-WCLgIgvTIYRkL6H5Coq6zY",
+    "linkType": "PLACE_ID",
+    "slug": "pho-bistro-2-dfw"
+  },
+  {
+    "id": 201,
+    "name": "Viet- Voyage Buffet",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "2615 W Pioneer Pkwy, TX 75051",
+    "phone": "(972) 975-5123",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.6,
+    "reviewCount": 232,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Viet-%20Voyage%20Buffet%202615%20W%20Pioneer%20Pkwy%20TX%2075051&query_place_id=ChIJw36qcACHToYRciNUxvKJ0Zk",
+    "linkType": "PLACE_ID",
+    "slug": "viet-voyage-buffet-dfw"
+  },
+  {
+    "id": 202,
+    "name": "Pho Duc",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "5224 S State Hwy 360 #240, TX 75052",
+    "phone": "(214) 444-5545",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.0,
+    "reviewCount": 76,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Duc%205224%20S%20State%20Hwy%20360%20%23240%20TX%2075052&query_place_id=ChIJmdtRLi-JToYRhcpEaOBOpIw",
+    "linkType": "PLACE_ID",
+    "slug": "pho-duc-dfw"
+  },
+  {
+    "id": 203,
+    "name": "Banh Mi Number 1",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "2625 W Pioneer Pkwy #206, TX 75051",
+    "phone": "(972) 975-5159",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.6,
+    "reviewCount": 183,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Banh%20Mi%20Number%201%202625%20W%20Pioneer%20Pkwy%20%23206%20TX%2075051&query_place_id=ChIJM3qkiy2GToYREg8gWAqL2Nw",
+    "linkType": "PLACE_ID",
+    "slug": "banh-mi-number-1-dfw"
+  },
+  {
+    "id": 204,
     "name": "Pho 544",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3800,15 +3460,15 @@
     "phone": null,
     "website": null,
     "email": null,
-    "description": "Vietnamese. Family business. Vietnamese pho",
+    "description": "Vietnamese. Family business",
     "rating": 4.3,
-    "reviewCount": 62,
+    "reviewCount": 248,
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20544%20121%20East%20FM%20544%20TX%2075098&query_place_id=ChIJlS4nvG0bTIYRQ4NXRlUcJys",
     "linkType": "PLACE_ID",
-    "slug": "pho-544-dfw-1"
+    "slug": "pho-544-dfw"
   },
   {
-    "id": 225,
+    "id": 205,
     "name": "Pho Street Cafe",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3825,8 +3485,25 @@
     "slug": "pho-street-cafe-dfw-1"
   },
   {
-    "id": 226,
-    "name": "Pho Garden Rockwall",
+    "id": 206,
+    "name": "Panda Pho & Boba House",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "6702 Dalrock Rd Ste 108, TX 75089",
+    "phone": "(469) 366-9710",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Pho & Boba combination",
+    "rating": 4.5,
+    "reviewCount": 127,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Panda%20Pho%20%26%20Boba%20House%206702%20Dalrock%20Rd%20Ste%20108%20TX%2075089&query_place_id=ChIJv6UNgnICTIYRQS40ZgczF0U",
+    "linkType": "PLACE_ID",
+    "slug": "panda-pho-boba-house-dfw"
+  },
+  {
+    "id": 207,
+    "name": "Pho Garden",
     "category": "Food",
     "originalCategory": "Restaurant",
     "subcategory": "Vietnamese",
@@ -3834,15 +3511,83 @@
     "phone": "(972) 771-2777",
     "website": null,
     "email": null,
-    "description": "Vietnamese. Vietnamese restaurant",
-    "rating": 4.7,
-    "reviewCount": 54,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Garden%20Rockwall%20423%20E%20I-30%20TX%2075087&query_place_id=ChIJZ9QfNxOqToYRUBpB5A5IOc4",
+    "description": "Vietnamese. Serves Sachse/Mesquite via delivery",
+    "rating": 4.4,
+    "reviewCount": 128,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Garden%20423%20E%20I-30%20TX%2075087&query_place_id=ChIJZ9QfNxOqToYRUBpB5A5IOc4",
     "linkType": "PLACE_ID",
-    "slug": "pho-garden-rockwall-dfw"
+    "slug": "pho-garden-dfw"
   },
   {
-    "id": 227,
+    "id": 208,
+    "name": "Healthy Banh Mi",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "539 E Interstate 30, TX 75087",
+    "phone": "(469) 314-1294",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.2,
+    "reviewCount": 198,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Healthy%20Banh%20Mi%20539%20E%20Interstate%2030%20TX%2075087&query_place_id=ChIJ_zaATBOqToYRMBtaZhg2iI8",
+    "linkType": "PLACE_ID",
+    "slug": "healthy-banh-mi-dfw"
+  },
+  {
+    "id": 209,
+    "name": "Pho Yen Phi",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "150 S Denton Tap Rd #112, TX 75019",
+    "phone": "(469) 312-3581",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese",
+    "rating": 4.1,
+    "reviewCount": 173,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Yen%20Phi%20150%20S%20Denton%20Tap%20Rd%20%23112%20TX%2075019&query_place_id=ChIJGT_CkU4pTIYRlldoROZmf0Y",
+    "linkType": "PLACE_ID",
+    "slug": "pho-yen-phi-dfw"
+  },
+  {
+    "id": 210,
+    "name": "Pho Truong",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "516 W Arapaho Rd #112, TX 75080",
+    "phone": null,
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Casual Vietnamese dining",
+    "rating": 4.4,
+    "reviewCount": 245,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Truong%20516%20W%20Arapaho%20Rd%20%23112%20TX%2075080&query_place_id=ChIJfyEjCGkfTIYRYo5BCXEddSI",
+    "linkType": "PLACE_ID",
+    "slug": "pho-truong-dfw"
+  },
+  {
+    "id": 211,
+    "name": "Pho Que Huong Noodles & Grill",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Vietnamese",
+    "address": "1401 Jupiter Rd #100, TX",
+    "phone": "(945) 215-0607",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Noodles & Grill",
+    "rating": 4.5,
+    "reviewCount": 115,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Que%20Huong%20Noodles%20%26%20Grill%201401%20Jupiter%20Rd%20%23100%20TX&query_place_id=ChIJDYRt1pwYTIYRIml_St9OYMI",
+    "linkType": "PLACE_ID",
+    "slug": "pho-que-huong-noodles-grill-dfw"
+  },
+  {
+    "id": 212,
     "name": "Pho Pasteur",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3859,7 +3604,7 @@
     "slug": "pho-pasteur-dfw"
   },
   {
-    "id": 228,
+    "id": 213,
     "name": "Bistro B",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3876,7 +3621,7 @@
     "slug": "bistro-b-dfw"
   },
   {
-    "id": 229,
+    "id": 214,
     "name": "Pho Tay Do",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3893,7 +3638,7 @@
     "slug": "pho-tay-do-dfw"
   },
   {
-    "id": 230,
+    "id": 215,
     "name": "Pho Apple",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3910,7 +3655,7 @@
     "slug": "pho-apple-dfw"
   },
   {
-    "id": 231,
+    "id": 216,
     "name": "What The Pho",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3927,7 +3672,7 @@
     "slug": "what-the-pho-dfw"
   },
   {
-    "id": 232,
+    "id": 217,
     "name": "Pho Boba House",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3944,7 +3689,7 @@
     "slug": "pho-boba-house-dfw"
   },
   {
-    "id": 233,
+    "id": 218,
     "name": "Pho 78",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3961,7 +3706,7 @@
     "slug": "pho-78-dfw"
   },
   {
-    "id": 234,
+    "id": 219,
     "name": "Pho Big Bowl",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3978,7 +3723,7 @@
     "slug": "pho-big-bowl-dfw"
   },
   {
-    "id": 235,
+    "id": 220,
     "name": "Pho Xom",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -3995,7 +3740,7 @@
     "slug": "pho-xom-dfw"
   },
   {
-    "id": 236,
+    "id": 221,
     "name": "Cafe China & Pho",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4012,7 +3757,7 @@
     "slug": "cafe-china-pho-dfw"
   },
   {
-    "id": 237,
+    "id": 222,
     "name": "Kim Son Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4029,7 +3774,7 @@
     "slug": "kim-son-restaurant-dfw"
   },
   {
-    "id": 238,
+    "id": 223,
     "name": "Thanh Thanh Vietnamese",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4046,24 +3791,7 @@
     "slug": "thanh-thanh-vietnamese-dfw"
   },
   {
-    "id": 239,
-    "name": "Pho Empire",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "3591 N Belt Line Rd, TX 75062",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Pho Restaurant",
-    "rating": 4.0,
-    "reviewCount": 92,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Empire%203591%20N%20Belt%20Line%20Rd%20TX%2075062&query_place_id=ChIJ2dyDkzuCToYR8kECeK7zj7o",
-    "linkType": "PLACE_ID",
-    "slug": "pho-empire-dfw-1"
-  },
-  {
-    "id": 240,
+    "id": 224,
     "name": "Pho Palace",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4080,7 +3808,7 @@
     "slug": "pho-palace-dfw"
   },
   {
-    "id": 241,
+    "id": 225,
     "name": "Vietnam Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4097,8 +3825,8 @@
     "slug": "vietnam-restaurant-dfw"
   },
   {
-    "id": 242,
-    "name": "Má»¹ Lan Restaurant",
+    "id": 226,
+    "name": "Mỹ Lan Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
     "subcategory": "Vietnamese",
@@ -4111,11 +3839,11 @@
     "reviewCount": 86,
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=M%C3%A1%C2%BB%C2%B9%20Lan%20Restaurant%204015%20E%20Belknap%20St%20TX%2076117&query_place_id=ChIJ079Z2DV3ToYR3dQWykKCvBQ",
     "linkType": "PLACE_ID",
-    "slug": "ma1-lan-restaurant-dfw"
+    "slug": "my-lan-restaurant-dfw"
   },
   {
-    "id": 243,
-    "name": "VÄ©nh BÃ¬nh",
+    "id": 227,
+    "name": "Vĩnh Bình",
     "category": "Food",
     "originalCategory": "Restaurant",
     "subcategory": "Vietnamese",
@@ -4128,10 +3856,10 @@
     "reviewCount": 160,
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=V%C3%84%C2%A9nh%20B%C3%83%C2%ACnh%205310%20E%20Belknap%20St%20Ste%20D%20TX%2076117&query_place_id=ChIJUUSMxF53ToYRriSt_qcL1Zk",
     "linkType": "PLACE_ID",
-    "slug": "vanh-banh-dfw"
+    "slug": "vinh-binh-dfw"
   },
   {
-    "id": 244,
+    "id": 228,
     "name": "Bun Dong Ba",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4148,7 +3876,7 @@
     "slug": "bun-dong-ba-dfw"
   },
   {
-    "id": 245,
+    "id": 229,
     "name": "Phá»Ÿ ThiÃªn Ã",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4165,7 +3893,7 @@
     "slug": "phay-thiaan-a-dfw"
   },
   {
-    "id": 246,
+    "id": 230,
     "name": "Saigon Deli",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4182,7 +3910,7 @@
     "slug": "saigon-deli-dfw"
   },
   {
-    "id": 247,
+    "id": 231,
     "name": "Pho Hung Grand Prairie",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4199,7 +3927,7 @@
     "slug": "pho-hung-grand-prairie-dfw"
   },
   {
-    "id": 248,
+    "id": 232,
     "name": "First Noodle/First Tofu",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4216,7 +3944,7 @@
     "slug": "first-noodle-first-tofu-dfw"
   },
   {
-    "id": 249,
+    "id": 233,
     "name": "Pho Ngon 999",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4233,7 +3961,7 @@
     "slug": "pho-ngon-999-dfw"
   },
   {
-    "id": 250,
+    "id": 234,
     "name": "Pho 95 Cooper",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4250,7 +3978,7 @@
     "slug": "pho-95-cooper-dfw"
   },
   {
-    "id": 251,
+    "id": 235,
     "name": "Pho 95 Arkansas",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4267,7 +3995,7 @@
     "slug": "pho-95-arkansas-dfw"
   },
   {
-    "id": 252,
+    "id": 236,
     "name": "Ba Le Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4284,7 +4012,7 @@
     "slug": "ba-le-restaurant-dfw"
   },
   {
-    "id": 253,
+    "id": 237,
     "name": "Pho Pasteur Arlington",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4301,7 +4029,7 @@
     "slug": "pho-pasteur-arlington-dfw"
   },
   {
-    "id": 254,
+    "id": 238,
     "name": "Pho Banh Mi Viet",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4318,7 +4046,7 @@
     "slug": "pho-banh-mi-viet-dfw"
   },
   {
-    "id": 255,
+    "id": 239,
     "name": "Pho Noodle & Grill",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4335,7 +4063,7 @@
     "slug": "pho-noodle-grill-dfw"
   },
   {
-    "id": 256,
+    "id": 240,
     "name": "Pho House",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4352,7 +4080,7 @@
     "slug": "pho-house-dfw"
   },
   {
-    "id": 257,
+    "id": 241,
     "name": "Pho Hop",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4369,7 +4097,7 @@
     "slug": "pho-hop-dfw"
   },
   {
-    "id": 258,
+    "id": 242,
     "name": "I Luv Pho",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4386,7 +4114,7 @@
     "slug": "i-luv-pho-dfw-1"
   },
   {
-    "id": 259,
+    "id": 243,
     "name": "Pho Legacy",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4403,7 +4131,7 @@
     "slug": "pho-legacy-dfw"
   },
   {
-    "id": 260,
+    "id": 244,
     "name": "Pho One Lewisville",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4420,24 +4148,7 @@
     "slug": "pho-one-lewisville-dfw"
   },
   {
-    "id": 261,
-    "name": "Pho Que Huong Lewisville",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "291 E Round Grove Rd, TX 75067",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Pho Restaurant",
-    "rating": 4.3,
-    "reviewCount": 109,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Que%20Huong%20Lewisville%20291%20E%20Round%20Grove%20Rd%20TX%2075067&query_place_id=ChIJB-Gy4ZIuTIYRkxtr7RIQzic",
-    "linkType": "PLACE_ID",
-    "slug": "pho-que-huong-lewisville-dfw-1"
-  },
-  {
-    "id": 262,
+    "id": 245,
     "name": "Texas Pho House",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4454,7 +4165,7 @@
     "slug": "texas-pho-house-dfw"
   },
   {
-    "id": 263,
+    "id": 246,
     "name": "Pho Que Huong Frisco",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4471,7 +4182,7 @@
     "slug": "pho-que-huong-frisco-dfw"
   },
   {
-    "id": 264,
+    "id": 247,
     "name": "Pho Lane",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4488,7 +4199,7 @@
     "slug": "pho-lane-dfw"
   },
   {
-    "id": 265,
+    "id": 248,
     "name": "King Noodle Sushi",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4505,7 +4216,7 @@
     "slug": "king-noodle-sushi-dfw"
   },
   {
-    "id": 266,
+    "id": 249,
     "name": "Pho Bistro McKinney",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4522,24 +4233,7 @@
     "slug": "pho-bistro-mckinney-dfw"
   },
   {
-    "id": 267,
-    "name": "Pho Lane Express",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "7551 Eldorado Pkwy #500, TX 75070",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Express Vietnamese",
-    "rating": 4.2,
-    "reviewCount": 62,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Lane%20Express%207551%20Eldorado%20Pkwy%20%23500%20TX%2075070&query_place_id=ChIJZd3IWxcVTIYRcVK-znsiqT8",
-    "linkType": "PLACE_ID",
-    "slug": "pho-lane-express-dfw"
-  },
-  {
-    "id": 268,
+    "id": 250,
     "name": "Pho Que Huong McKinney",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4556,7 +4250,7 @@
     "slug": "pho-que-huong-mckinney-dfw"
   },
   {
-    "id": 269,
+    "id": 251,
     "name": "Pho Crystal",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4573,7 +4267,7 @@
     "slug": "pho-crystal-dfw"
   },
   {
-    "id": 270,
+    "id": 252,
     "name": "Miss Saigon Cafe Hurst",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4590,7 +4284,7 @@
     "slug": "miss-saigon-cafe-hurst-dfw"
   },
   {
-    "id": 271,
+    "id": 253,
     "name": "Pho One Hurst",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4607,7 +4301,7 @@
     "slug": "pho-one-hurst-dfw"
   },
   {
-    "id": 272,
+    "id": 254,
     "name": "Not Just Pho",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4624,7 +4318,7 @@
     "slug": "not-just-pho-dfw"
   },
   {
-    "id": 273,
+    "id": 255,
     "name": "V's House",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4641,7 +4335,7 @@
     "slug": "v-s-house-dfw"
   },
   {
-    "id": 274,
+    "id": 256,
     "name": "Banh Mi Dalat Carrollton",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4658,7 +4352,7 @@
     "slug": "banh-mi-dalat-carrollton-dfw"
   },
   {
-    "id": 275,
+    "id": 257,
     "name": "Viet FastFood",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4675,7 +4369,7 @@
     "slug": "viet-fastfood-dfw"
   },
   {
-    "id": 276,
+    "id": 258,
     "name": "Malai Kitchen Southlake",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4692,7 +4386,7 @@
     "slug": "malai-kitchen-southlake-dfw"
   },
   {
-    "id": 277,
+    "id": 259,
     "name": "My Lan Vietnamese Kitchen",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4709,7 +4403,7 @@
     "slug": "my-lan-vietnamese-kitchen-dfw"
   },
   {
-    "id": 278,
+    "id": 260,
     "name": "Pho Duy Colleyville",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4726,7 +4420,7 @@
     "slug": "pho-duy-colleyville-dfw"
   },
   {
-    "id": 279,
+    "id": 261,
     "name": "Pho Xpress Grapevine",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4743,7 +4437,7 @@
     "slug": "pho-xpress-grapevine-dfw"
   },
   {
-    "id": 280,
+    "id": 262,
     "name": "Pho Em",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4760,7 +4454,7 @@
     "slug": "pho-em-dfw"
   },
   {
-    "id": 281,
+    "id": 263,
     "name": "House of Pho Burleson",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4777,7 +4471,7 @@
     "slug": "house-of-pho-burleson-dfw"
   },
   {
-    "id": 282,
+    "id": 264,
     "name": "Pho Noodle & Asian Cuisine",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4794,7 +4488,7 @@
     "slug": "pho-noodle-asian-cuisine-dfw"
   },
   {
-    "id": 283,
+    "id": 265,
     "name": "Pho Duc Midlothian",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4811,7 +4505,7 @@
     "slug": "pho-duc-midlothian-dfw"
   },
   {
-    "id": 284,
+    "id": 266,
     "name": "Pho Nhu Y Red Oak",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4828,8 +4522,8 @@
     "slug": "pho-nhu-y-red-oak-dfw"
   },
   {
-    "id": 285,
-    "name": "Má»¹ Lan Restaurant",
+    "id": 267,
+    "name": "Mỹ Lan Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
     "subcategory": "Vietnamese",
@@ -4842,11 +4536,11 @@
     "reviewCount": 250,
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=M%C3%A1%C2%BB%C2%B9%20Lan%20Restaurant%204015%20E%20Belknap%20St%20TX&query_place_id=ChIJ079Z2DV3ToYR3dQWykKCvBQ",
     "linkType": "PLACE_ID",
-    "slug": "ma1-lan-restaurant-dfw-1"
+    "slug": "my-lan-restaurant-dfw"
   },
   {
-    "id": 286,
-    "name": "VÄ©nh BÃ¬nh Restaurant",
+    "id": 268,
+    "name": "Vĩnh Bình Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
     "subcategory": "Vietnamese",
@@ -4859,10 +4553,10 @@
     "reviewCount": 113,
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=V%C3%84%C2%A9nh%20B%C3%83%C2%ACnh%20Restaurant%205310%20E%20Belknap%20St%20%23D%20TX&query_place_id=ChIJUUSMxF53ToYRriSt_qcL1Zk",
     "linkType": "PLACE_ID",
-    "slug": "vanh-banh-restaurant-dfw"
+    "slug": "vinh-binh-restaurant-dfw"
   },
   {
-    "id": 287,
+    "id": 269,
     "name": "Pho Hung Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4879,7 +4573,7 @@
     "slug": "pho-hung-restaurant-dfw"
   },
   {
-    "id": 288,
+    "id": 270,
     "name": "Bun Dong Ba",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4896,7 +4590,7 @@
     "slug": "bun-dong-ba-dfw-1"
   },
   {
-    "id": 289,
+    "id": 271,
     "name": "Phá»Ÿ ThiÃªn Ã Deli",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4913,7 +4607,7 @@
     "slug": "phay-thiaan-a-deli-dfw"
   },
   {
-    "id": 290,
+    "id": 272,
     "name": "Pho Nam Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4930,7 +4624,7 @@
     "slug": "pho-nam-restaurant-dfw"
   },
   {
-    "id": 291,
+    "id": 273,
     "name": "Saigon Deli Haltom City",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4947,7 +4641,7 @@
     "slug": "saigon-deli-haltom-city-dfw"
   },
   {
-    "id": 292,
+    "id": 274,
     "name": "Tu Hai Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4964,7 +4658,7 @@
     "slug": "tu-hai-restaurant-dfw"
   },
   {
-    "id": 293,
+    "id": 275,
     "name": "Viet Tofu",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4981,7 +4675,7 @@
     "slug": "viet-tofu-dfw"
   },
   {
-    "id": 294,
+    "id": 276,
     "name": "Pho In The Box Keller",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -4998,7 +4692,7 @@
     "slug": "pho-in-the-box-keller-dfw"
   },
   {
-    "id": 295,
+    "id": 277,
     "name": "PHO REAL Keller",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5015,7 +4709,7 @@
     "slug": "pho-real-keller-dfw"
   },
   {
-    "id": 296,
+    "id": 278,
     "name": "Pho Real Saginaw",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5032,7 +4726,7 @@
     "slug": "pho-real-saginaw-dfw"
   },
   {
-    "id": 297,
+    "id": 279,
     "name": "Banh Mi Viet Saginaw",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5049,58 +4743,24 @@
     "slug": "banh-mi-viet-saginaw-dfw"
   },
   {
-    "id": 298,
-    "name": "Easy Freshly Saginaw",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "7630 N Beach St, TX",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Vietnamese Cuisine",
-    "rating": 4.2,
-    "reviewCount": 186,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Easy%20Freshly%20Saginaw%207630%20N%20Beach%20St%20TX&query_place_id=ChIJ4waLnW3YTYYRTEmg7kqUHPg",
-    "linkType": "PLACE_ID",
-    "slug": "easy-freshly-saginaw-dfw"
-  },
-  {
-    "id": 299,
-    "name": "Pho Hotpot & Crawfish 7",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
+    "id": 280,
+    "name": "Nguyen Loi Supermarket",
+    "category": "Shopping",
+    "originalCategory": "Supermarket",
+    "subcategory": "Asian Grocery",
     "address": "5302 E Belknap St, TX",
     "phone": null,
     "website": null,
     "email": null,
-    "description": "Vietnamese. Pho & Hotpot",
-    "rating": 4.4,
-    "reviewCount": 123,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Hotpot%20%26%20Crawfish%207%205302%20E%20Belknap%20St%20TX&query_place_id=ChIJETu3zV53ToYR3urRYq6NPmo",
+    "description": "Asian Grocery. Oriental Supermarket",
+    "rating": 4.6,
+    "reviewCount": 250,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Nguyen%20Loi%20Supermarket%205302%20E%20Belknap%20St%20TX&query_place_id=ChIJy4DDyV53ToYRk-mozk2_1D0",
     "linkType": "PLACE_ID",
-    "slug": "pho-hotpot-crawfish-7-dfw"
+    "slug": "nguyen-loi-supermarket-dfw"
   },
   {
-    "id": 300,
-    "name": "Pho Banh Mi Viet Saginaw",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
-    "address": "7630 N Beach St, TX",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Vietnamese. Pho & Banh Mi",
-    "rating": 4.4,
-    "reviewCount": 238,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Banh%20Mi%20Viet%20Saginaw%207630%20N%20Beach%20St%20TX&query_place_id=ChIJvzOX1SDZTYYRwMIUug4sNsU",
-    "linkType": "PLACE_ID",
-    "slug": "pho-banh-mi-viet-saginaw-dfw"
-  },
-  {
-    "id": 301,
+    "id": 281,
     "name": "My Lan Restaurant",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5117,7 +4777,7 @@
     "slug": "my-lan-restaurant-dfw"
   },
   {
-    "id": 302,
+    "id": 282,
     "name": "Sikhay Thai Lao & Vietnamese",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5134,7 +4794,7 @@
     "slug": "sikhay-thai-lao-vietnamese-dfw"
   },
   {
-    "id": 303,
+    "id": 283,
     "name": "Pho Nam",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5151,7 +4811,7 @@
     "slug": "pho-nam-dfw"
   },
   {
-    "id": 304,
+    "id": 284,
     "name": "Pho 1",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5168,7 +4828,7 @@
     "slug": "pho-1-dfw"
   },
   {
-    "id": 305,
+    "id": 285,
     "name": "Saigon 88",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5185,7 +4845,7 @@
     "slug": "saigon-88-dfw"
   },
   {
-    "id": 306,
+    "id": 286,
     "name": "Cris & John",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5202,7 +4862,7 @@
     "slug": "cris-john-dfw"
   },
   {
-    "id": 307,
+    "id": 287,
     "name": "Sapa House",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5219,7 +4879,7 @@
     "slug": "sapa-house-dfw"
   },
   {
-    "id": 308,
+    "id": 288,
     "name": "Pho Envy",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5236,24 +4896,24 @@
     "slug": "pho-envy-dfw"
   },
   {
-    "id": 309,
-    "name": "La Me",
-    "category": "Food",
-    "originalCategory": "Restaurant",
-    "subcategory": "Vietnamese",
+    "id": 289,
+    "name": "Hong Kong Market",
+    "category": "Shopping",
+    "originalCategory": "Supermarket",
+    "subcategory": "Asian Grocery",
     "address": "9780 Walnut St, TX 75243",
     "phone": "(972) 669-9511",
     "website": null,
     "email": null,
-    "description": "Vietnamese. Vietnamese/English",
-    "rating": 4.4,
-    "reviewCount": 66,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=La%20Me%209780%20Walnut%20St%20TX%2075243&query_place_id=ChIJfRCwfLgfTIYRoSmCQ2GxtTw",
+    "description": "Asian Grocery. Asian Grocery",
+    "rating": 4.8,
+    "reviewCount": 161,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%209780%20Walnut%20St%20TX%2075243&query_place_id=ChIJ96RaTrgfTIYRbIMHViSTIgY",
     "linkType": "PLACE_ID",
-    "slug": "la-me-dfw"
+    "slug": "hong-kong-market-dfw-1"
   },
   {
-    "id": 310,
+    "id": 290,
     "name": "Pho V Nam",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5270,7 +4930,7 @@
     "slug": "pho-v-nam-dfw"
   },
   {
-    "id": 311,
+    "id": 291,
     "name": "L V Noodle & Grill",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5287,7 +4947,7 @@
     "slug": "l-v-noodle-grill-dfw"
   },
   {
-    "id": 312,
+    "id": 292,
     "name": "Pho One Flower Mound",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5304,7 +4964,7 @@
     "slug": "pho-one-flower-mound-dfw"
   },
   {
-    "id": 313,
+    "id": 293,
     "name": "I Luv Pho Flower Mound",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5321,7 +4981,7 @@
     "slug": "i-luv-pho-flower-mound-dfw"
   },
   {
-    "id": 314,
+    "id": 294,
     "name": "Pho Little Saigon 2",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5338,7 +4998,7 @@
     "slug": "pho-little-saigon-2-dfw"
   },
   {
-    "id": 315,
+    "id": 295,
     "name": "Zo Vien",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5355,7 +5015,7 @@
     "slug": "zo-vien-dfw"
   },
   {
-    "id": 316,
+    "id": 296,
     "name": "Simply Pho House",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5372,7 +5032,7 @@
     "slug": "simply-pho-house-dfw"
   },
   {
-    "id": 317,
+    "id": 297,
     "name": "Pho Mac Frisco",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5389,7 +5049,7 @@
     "slug": "pho-mac-frisco-dfw"
   },
   {
-    "id": 318,
+    "id": 298,
     "name": "Pho Appétit",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5406,7 +5066,7 @@
     "slug": "pho-appetit-dfw"
   },
   {
-    "id": 319,
+    "id": 299,
     "name": "Pho Tre Bien",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5423,7 +5083,7 @@
     "slug": "pho-tre-bien-dfw"
   },
   {
-    "id": 320,
+    "id": 300,
     "name": "Sprout's Springroll & Pho",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5440,7 +5100,7 @@
     "slug": "sprout-s-springroll-pho-dfw"
   },
   {
-    "id": 321,
+    "id": 301,
     "name": "Pho Pasteur 4",
     "category": "Food",
     "originalCategory": "Restaurant",
@@ -5457,24 +5117,7 @@
     "slug": "pho-pasteur-4-dfw"
   },
   {
-    "id": 322,
-    "name": "Hoa Dallas",
-    "category": "Shopping",
-    "originalCategory": "Retail",
-    "subcategory": "Florist",
-    "address": "2201 Main St, TX 75201",
-    "phone": "(214) 939-8001",
-    "website": null,
-    "email": null,
-    "description": "Florist. AIFD award, 26+ years. Wedding florals, bridal bouquets, centerpieces",
-    "rating": 4.8,
-    "reviewCount": 103,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Hoa%20Dallas%202201%20Main%20St%20TX%2075201&query_place_id=ChIJR2Ah3t-YToYRZFsQnj2UK5Y",
-    "linkType": "PLACE_ID",
-    "slug": "hoa-dallas-dfw-1"
-  },
-  {
-    "id": 323,
+    "id": 302,
     "name": "Hoang Chau Jewelry Repair",
     "category": "Shopping",
     "originalCategory": "Retail",
@@ -5491,24 +5134,7 @@
     "slug": "hoang-chau-jewelry-repair-dfw"
   },
   {
-    "id": 324,
-    "name": "Morning Star",
-    "category": "Shopping",
-    "originalCategory": "Retail",
-    "subcategory": "Fashion",
-    "address": "2615 W Pioneer Pkwy, TX 75051",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Fashion. Vietnamese Fashion",
-    "rating": 4.8,
-    "reviewCount": 97,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Morning%20Star%202615%20W%20Pioneer%20Pkwy%20TX%2075051&query_place_id=ChIJ3ye4BBuHToYRMnW7CCzHA1Q",
-    "linkType": "PLACE_ID",
-    "slug": "morning-star-dfw"
-  },
-  {
-    "id": 325,
+    "id": 303,
     "name": "Sam's Nail Supply",
     "category": "Shopping",
     "originalCategory": "Retail",
@@ -5525,7 +5151,7 @@
     "slug": "sam-s-nail-supply-dfw"
   },
   {
-    "id": 326,
+    "id": 304,
     "name": "Hiep Thai Market Garland",
     "category": "Shopping",
     "originalCategory": "Retail",
@@ -5542,24 +5168,7 @@
     "slug": "hiep-thai-market-garland-dfw"
   },
   {
-    "id": 327,
-    "name": "Cali Saigon Mall",
-    "category": "Shopping",
-    "originalCategory": "Shopping Center",
-    "subcategory": "Vietnamese Mall",
-    "address": "3212 N Jupiter Rd, TX 75044",
-    "phone": "(972) 530-5388",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese Mall. Primary Vietnamese hub in Garland. Supermarket, restaurants, retail shops, herbal medicine",
-    "rating": 4.9,
-    "reviewCount": 100,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Cali%20Saigon%20Mall%203212%20N%20Jupiter%20Rd%20TX%2075044&query_place_id=ChIJmV7iRooeTIYRNrG3uj9Dj4c",
-    "linkType": "PLACE_ID",
-    "slug": "cali-saigon-mall-dfw"
-  },
-  {
-    "id": 328,
+    "id": 305,
     "name": "Asia Times Square",
     "category": "Shopping",
     "originalCategory": "Shopping Center",
@@ -5576,30 +5185,13 @@
     "slug": "asia-times-square-dfw"
   },
   {
-    "id": 329,
-    "name": "Saigon Mall",
-    "category": "Shopping",
-    "originalCategory": "Shopping Center",
-    "subcategory": "Mall",
-    "address": "3212 N Jupiter Rd, TX 75044",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Mall. Shopping Mall",
-    "rating": 4.3,
-    "reviewCount": 209,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Saigon%20Mall%203212%20N%20Jupiter%20Rd%20TX%2075044&query_place_id=ChIJmV7iRooeTIYRNrG3uj9Dj4c",
-    "linkType": "PLACE_ID",
-    "slug": "saigon-mall-dfw"
-  },
-  {
-    "id": 330,
+    "id": 306,
     "name": "Hiep Thai Plaza",
     "category": "Shopping",
     "originalCategory": "Shopping Center",
     "subcategory": "Plaza",
     "address": "2405 E Belt Line Rd, TX 75081",
-    "phone": null,
+    "phone": "(972) 235-8575",
     "website": null,
     "email": null,
     "description": "Plaza. Shopping Plaza",
@@ -5610,41 +5202,7 @@
     "slug": "hiep-thai-plaza-dfw"
   },
   {
-    "id": 331,
-    "name": "Cali Saigon Mall",
-    "category": "Shopping",
-    "originalCategory": "Shopping Center",
-    "subcategory": "Mall",
-    "address": "3212 N Jupiter Rd, TX 75044",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Mall. Vietnamese Mall",
-    "rating": 4.7,
-    "reviewCount": 224,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Cali%20Saigon%20Mall%203212%20N%20Jupiter%20Rd%20TX%2075044&query_place_id=ChIJmV7iRooeTIYRNrG3uj9Dj4c",
-    "linkType": "PLACE_ID",
-    "slug": "cali-saigon-mall-dfw-1"
-  },
-  {
-    "id": 332,
-    "name": "Asia Times Square",
-    "category": "Shopping",
-    "originalCategory": "Shopping Center",
-    "subcategory": "Mall",
-    "address": "2615 W Pioneer Pkwy, TX 75051",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Mall. Asian Mall",
-    "rating": 4.7,
-    "reviewCount": 181,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Asia%20Times%20Square%202615%20W%20Pioneer%20Pkwy%20TX%2075051&query_place_id=ChIJFXC8wS2GToYRpP8nJsVGUhg",
-    "linkType": "PLACE_ID",
-    "slug": "asia-times-square-dfw-1"
-  },
-  {
-    "id": 333,
+    "id": 307,
     "name": "Ben Thanh Plaza",
     "category": "Shopping",
     "originalCategory": "Shopping Center",
@@ -5661,7 +5219,7 @@
     "slug": "ben-thanh-plaza-dfw"
   },
   {
-    "id": 334,
+    "id": 308,
     "name": "VN United Football Club",
     "category": "Services",
     "originalCategory": "Sports",
@@ -5678,7 +5236,7 @@
     "slug": "vn-united-football-club-dfw"
   },
   {
-    "id": 335,
+    "id": 309,
     "name": "H Mart Carrollton",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5695,24 +5253,7 @@
     "slug": "h-mart-carrollton-dfw"
   },
   {
-    "id": 336,
-    "name": "Saigon SuperMarket / Sieu Thi Thuan Phat",
-    "category": "Shopping",
-    "originalCategory": "Supermarket",
-    "subcategory": "Vietnamese Grocery",
-    "address": "3212 N Jupiter Rd, TX 75044",
-    "phone": "(972) 530-9000",
-    "website": null,
-    "email": null,
-    "description": "Vietnamese Grocery. Inside Cali Saigon Mall. Vietnamese & Asian groceries",
-    "rating": 4.9,
-    "reviewCount": 167,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Saigon%20SuperMarket%20/%20Sieu%20Thi%20Thuan%20Phat%203212%20N%20Jupiter%20Rd%20TX%2075044&query_place_id=ChIJRaPc_WYfTIYRn3f4VKFGtks",
-    "linkType": "PLACE_ID",
-    "slug": "saigon-supermarket-sieu-thi-thuan-phat-dfw"
-  },
-  {
-    "id": 337,
+    "id": 310,
     "name": "99 Ranch Market - Carrollton",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5729,7 +5270,7 @@
     "slug": "99-ranch-market-carrollton-dfw"
   },
   {
-    "id": 338,
+    "id": 311,
     "name": "Hong Kong Market",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5746,7 +5287,7 @@
     "slug": "hong-kong-market-dfw"
   },
   {
-    "id": 339,
+    "id": 312,
     "name": "New Truong Nguyen Market",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5763,24 +5304,7 @@
     "slug": "new-truong-nguyen-market-dfw"
   },
   {
-    "id": 340,
-    "name": "Hiep Thai Market",
-    "category": "Shopping",
-    "originalCategory": "Supermarket",
-    "subcategory": "Asian Grocery",
-    "address": "2405 E Belt Line Rd, TX 75081",
-    "phone": "(972) 235-8575",
-    "website": null,
-    "email": null,
-    "description": "Asian Grocery. Vietnamese grocery, fresh seafood",
-    "rating": 4.3,
-    "reviewCount": 103,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Hiep%20Thai%20Market%202405%20E%20Belt%20Line%20Rd%20TX%2075081&query_place_id=ChIJwSVNORQeTIYRRsI8DMps6iU",
-    "linkType": "PLACE_ID",
-    "slug": "hiep-thai-market-dfw"
-  },
-  {
-    "id": 341,
+    "id": 313,
     "name": "Good Fortune Supermarket",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5797,7 +5321,7 @@
     "slug": "good-fortune-supermarket-dfw"
   },
   {
-    "id": 342,
+    "id": 314,
     "name": "Saigon Market",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5814,24 +5338,7 @@
     "slug": "saigon-market-dfw"
   },
   {
-    "id": 343,
-    "name": "Hong Kong Market",
-    "category": "Shopping",
-    "originalCategory": "Supermarket",
-    "subcategory": "Asian Grocery",
-    "address": "9780 Walnut St, TX 75243",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Asian Grocery. Asian Grocery",
-    "rating": 4.8,
-    "reviewCount": 161,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%209780%20Walnut%20St%20TX%2075243&query_place_id=ChIJ96RaTrgfTIYRbIMHViSTIgY",
-    "linkType": "PLACE_ID",
-    "slug": "hong-kong-market-dfw-1"
-  },
-  {
-    "id": 344,
+    "id": 315,
     "name": "Vietnam Plaza Grocery Store",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5848,24 +5355,7 @@
     "slug": "vietnam-plaza-grocery-store-dfw"
   },
   {
-    "id": 345,
-    "name": "Hong Kong Market Place",
-    "category": "Shopping",
-    "originalCategory": "Supermarket",
-    "subcategory": "Asian Grocery",
-    "address": "2615 W Pioneer Pkwy, TX 75051",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Asian Grocery. Asian Grocery",
-    "rating": 4.4,
-    "reviewCount": 211,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%20Place%202615%20W%20Pioneer%20Pkwy%20TX%2075051&query_place_id=ChIJgUVKiy2GToYRHn5ETsRfij0",
-    "linkType": "PLACE_ID",
-    "slug": "hong-kong-market-place-dfw"
-  },
-  {
-    "id": 346,
+    "id": 316,
     "name": "Nalinh Market",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5882,7 +5372,7 @@
     "slug": "nalinh-market-dfw"
   },
   {
-    "id": 347,
+    "id": 317,
     "name": "Vietnam Plaza Grocery",
     "category": "Shopping",
     "originalCategory": "Supermarket",
@@ -5897,22 +5387,5 @@
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Vietnam%20Plaza%20Grocery%204101%20E%20Belknap%20St%20TX&query_place_id=ChIJq2-hOzZ3ToYRmbIUwK1LCGE",
     "linkType": "PLACE_ID",
     "slug": "vietnam-plaza-grocery-dfw"
-  },
-  {
-    "id": 348,
-    "name": "Nguyen Loi Supermarket",
-    "category": "Shopping",
-    "originalCategory": "Supermarket",
-    "subcategory": "Asian Grocery",
-    "address": "5302 E Belknap St, TX",
-    "phone": null,
-    "website": null,
-    "email": null,
-    "description": "Asian Grocery. Oriental Supermarket",
-    "rating": 4.6,
-    "reviewCount": 250,
-    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Nguyen%20Loi%20Supermarket%205302%20E%20Belknap%20St%20TX&query_place_id=ChIJy4DDyV53ToYRk-mozk2_1D0",
-    "linkType": "PLACE_ID",
-    "slug": "nguyen-loi-supermarket-dfw"
   }
 ]
