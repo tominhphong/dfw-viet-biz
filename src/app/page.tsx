@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import Link from "next/link";
 import seedData from "../data/seed.json";
 import SubmitBusinessModal from "../components/SubmitBusinessModal";
+import SearchBar from "../components/SearchBar";
 
 interface Business {
   id: number;
   name: string;
+  slug: string;
   category: string;
   originalCategory: string | null;
   subcategory: string | null;
@@ -22,15 +25,46 @@ interface Business {
 }
 
 export default function Home() {
-  const [data] = useState<Business[]>(seedData);
+  const [data] = useState<Business[]>(seedData as Business[]);
   const [filter, setFilter] = useState("All");
   const [randomPick, setRandomPick] = useState<Business | null>(null);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("name");
 
-  const filteredData =
-    filter === "All"
-      ? data
-      : data.filter((item) => item.category === filter);
+  const filteredData = useMemo(() => {
+    let result = data;
+
+    // Filter by category
+    if (filter !== "All") {
+      result = result.filter((item) => item.category === filter);
+    }
+
+    // Filter by search query
+    if (searchQuery) {
+      result = result.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    // Sort
+    result = [...result].sort((a, b) => {
+      switch (sortBy) {
+        case "name":
+          return a.name.localeCompare(b.name);
+        case "name-desc":
+          return b.name.localeCompare(a.name);
+        case "rating":
+          return b.rating - a.rating;
+        case "reviews":
+          return b.reviewCount - a.reviewCount;
+        default:
+          return 0;
+      }
+    });
+
+    return result;
+  }, [data, filter, searchQuery, sortBy]);
 
   const handleRandomize = () => {
     const randomIndex = Math.floor(Math.random() * data.length);
@@ -81,6 +115,14 @@ export default function Home() {
           ))}
         </div>
 
+        {/* Search Bar */}
+        <SearchBar
+          onSearch={setSearchQuery}
+          onSort={setSortBy}
+          resultCount={filteredData.length}
+          totalCount={data.length}
+        />
+
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredData.map((biz) => (
@@ -121,16 +163,26 @@ export default function Home() {
                     <span>🌐</span> {biz.website}
                   </a>
                 )}
-                {biz.googleMapsLink && (
-                  <a
-                    href={biz.googleMapsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-sm font-medium rounded-lg transition-colors"
+
+                {/* Action Buttons */}
+                <div className="flex gap-2 mt-4">
+                  {biz.googleMapsLink && (
+                    <a
+                      href={biz.googleMapsLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-sm font-medium rounded-lg transition-colors"
+                    >
+                      📍 Maps
+                    </a>
+                  )}
+                  <Link
+                    href={`/business/${biz.slug}`}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 text-white text-sm font-medium rounded-lg transition-colors"
                   >
-                    <span>📍</span> Open in Google Maps
-                  </a>
-                )}
+                    👁️ View Details
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
