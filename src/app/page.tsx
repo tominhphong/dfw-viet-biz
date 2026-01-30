@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import seedData from "../data/seed.json";
 import SubmitBusinessModal from "../components/SubmitBusinessModal";
 import SearchBar from "../components/SearchBar";
 import { useLanguage } from "../context/LanguageContext";
+import { supabase } from "../lib/supabase";
 
 interface Business {
   id: number;
@@ -40,13 +41,57 @@ const MAIN_CATEGORIES = [
 
 export default function Home() {
   const { language, toggleLanguage, t, tc } = useLanguage();
-  const [data] = useState<Business[]>(seedData as Business[]);
+  const [data, setData] = useState<Business[]>(seedData as Business[]);
   const [filter, setFilter] = useState("All");
   const [subcategoryFilter, setSubcategoryFilter] = useState("All");
   const [randomPick, setRandomPick] = useState<Business | null>(null);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("name");
+
+  // Fetch approved businesses from Supabase and merge with seed data
+  useEffect(() => {
+    const fetchApprovedBusinesses = async () => {
+      try {
+        const { data: approved, error } = await supabase
+          .from("approved_businesses")
+          .select("*");
+
+        if (error) {
+          console.error("Error fetching approved businesses:", error);
+          return;
+        }
+
+        if (approved && approved.length > 0) {
+          // Convert Supabase format to match Business interface
+          const convertedApproved: Business[] = approved.map((item, index) => ({
+            id: 10000 + index, // Use high IDs to avoid conflict with seed data
+            name: item.name,
+            slug: item.slug,
+            category: item.category,
+            originalCategory: item.original_category || item.category,
+            subcategory: item.subcategory,
+            address: item.address,
+            phone: item.phone,
+            website: item.website,
+            email: item.email,
+            description: item.description || `${item.name} - Doanh nghiệp Việt Nam tại DFW`,
+            rating: 0,
+            reviewCount: 0,
+            googleMapsLink: item.google_maps_link,
+            linkType: item.link_type
+          }));
+
+          // Merge with seed data
+          setData([...seedData as Business[], ...convertedApproved]);
+        }
+      } catch (err) {
+        console.error("Failed to fetch approved businesses:", err);
+      }
+    };
+
+    fetchApprovedBusinesses();
+  }, []);
 
   // Get subcategories for current main category
   const availableSubcategories = useMemo(() => {
