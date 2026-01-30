@@ -3,10 +3,21 @@
 import { useState, useEffect } from "react";
 import { supabase, BusinessSubmission } from "../../lib/supabase";
 
+interface ActionLog {
+    id: number;
+    action_type: 'approved' | 'rejected';
+    business_name: string;
+    business_category: string | null;
+    business_address: string | null;
+    action_timestamp: string;
+}
+
 export default function AdminPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [password, setPassword] = useState("");
     const [submissions, setSubmissions] = useState<BusinessSubmission[]>([]);
+    const [logs, setLogs] = useState<ActionLog[]>([]);
+    const [showLogs, setShowLogs] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
@@ -28,9 +39,23 @@ export default function AdminPage() {
         setLoading(false);
     };
 
+    // Fetch action logs
+    const fetchLogs = async () => {
+        const { data, error } = await supabase
+            .from("admin_action_logs")
+            .select("*")
+            .order("action_timestamp", { ascending: false })
+            .limit(50);
+
+        if (!error && data) {
+            setLogs(data);
+        }
+    };
+
     useEffect(() => {
         if (isLoggedIn) {
             fetchSubmissions();
+            fetchLogs();
         }
     }, [isLoggedIn]);
 
@@ -257,12 +282,62 @@ export default function AdminPage() {
                 {/* Refresh button */}
                 <div className="mt-8 text-center">
                     <button
-                        onClick={fetchSubmissions}
+                        onClick={() => { fetchSubmissions(); fetchLogs(); }}
                         disabled={loading}
                         className="px-6 py-3 bg-neutral-700 hover:bg-neutral-600 rounded-xl transition-colors"
                     >
                         🔄 Làm mới
                     </button>
+                </div>
+
+                {/* Action Logs Section */}
+                <div className="mt-8 p-4 bg-neutral-800 rounded-xl border border-neutral-700">
+                    <button
+                        onClick={() => setShowLogs(!showLogs)}
+                        className="w-full flex justify-between items-center text-lg font-bold"
+                    >
+                        <span>📜 Lịch sử duyệt/từ chối ({logs.length})</span>
+                        <span className="text-neutral-500">{showLogs ? '▼' : '▶'}</span>
+                    </button>
+
+                    {showLogs && (
+                        <div className="mt-4 space-y-2 max-h-96 overflow-y-auto">
+                            {logs.length === 0 ? (
+                                <p className="text-neutral-500 text-center py-4">Chưa có lịch sử</p>
+                            ) : (
+                                logs.map((log) => (
+                                    <div
+                                        key={log.id}
+                                        className={`p-3 rounded-lg border ${log.action_type === 'approved'
+                                                ? 'bg-green-900/20 border-green-800'
+                                                : 'bg-red-900/20 border-red-800'
+                                            }`}
+                                    >
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <span className="font-bold text-white">
+                                                    {log.action_type === 'approved' ? '✅' : '❌'} {log.business_name}
+                                                </span>
+                                                {log.business_category && (
+                                                    <span className="ml-2 text-sm text-neutral-400">
+                                                        ({log.business_category})
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <span className="text-xs text-neutral-500">
+                                                {new Date(log.action_timestamp).toLocaleString('vi-VN')}
+                                            </span>
+                                        </div>
+                                        {log.business_address && (
+                                            <p className="text-sm text-neutral-400 mt-1">
+                                                📍 {log.business_address}
+                                            </p>
+                                        )}
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    )}
                 </div>
             </main>
         </div>

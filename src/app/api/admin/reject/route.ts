@@ -14,6 +14,13 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // Get submission first for logging
+        const { data: submission } = await supabase
+            .from('business_submissions')
+            .select('*')
+            .eq('id', id)
+            .single();
+
         // Delete the submission (reject = remove from pending)
         const { error } = await supabase
             .from('business_submissions')
@@ -25,6 +32,22 @@ export async function POST(request: NextRequest) {
                 { error: 'Failed to reject submission' },
                 { status: 500 }
             );
+        }
+
+        // Log the rejection action
+        if (submission) {
+            await supabase
+                .from('admin_action_logs')
+                .insert({
+                    action_type: 'rejected',
+                    business_name: submission.name,
+                    business_category: submission.category,
+                    business_address: submission.address,
+                    business_phone: submission.phone,
+                    business_email: submission.email,
+                    business_website: submission.website,
+                    submission_id: id
+                });
         }
 
         return NextResponse.json({

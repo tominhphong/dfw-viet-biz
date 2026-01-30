@@ -91,6 +91,20 @@ export async function POST(request: NextRequest) {
             .update({ status: 'approved', updated_at: new Date().toISOString() })
             .eq('id', id);
 
+        // Log the action
+        await supabase
+            .from('admin_action_logs')
+            .insert({
+                action_type: 'approved',
+                business_name: submission.name,
+                business_category: submission.category,
+                business_address: submission.address,
+                business_phone: submission.phone,
+                business_email: submission.email,
+                business_website: submission.website,
+                submission_id: id
+            });
+
         return NextResponse.json({
             success: true,
             message: `Business "${submission.name}" đã được duyệt!`
