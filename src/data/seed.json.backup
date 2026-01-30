@@ -1785,6 +1785,23 @@
     "slug": "dr-allen-nguyen-elite-care-professionals-dfw"
   },
   {
+    "id": 106,
+    "name": "Dr. Thanh Pham - Smiley Chiropractic",
+    "category": "Services",
+    "originalCategory": "Healthcare",
+    "subcategory": "Chỉnh Hình Cột Sống",
+    "address": "4431 W Walnut St #C, TX 75042",
+    "phone": null,
+    "website": null,
+    "email": null,
+    "description": "Chiropractor. Chiropractic care",
+    "rating": 4.0,
+    "reviewCount": 117,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Dr.%20Thanh%20Pham%20-%20Smiley%20Chiropractic%204431%20W%20Walnut%20St%20%23C%20TX%2075042&query_place_id=ChIJrx-nyTYeTIYR7XgBzjzCvVg",
+    "linkType": "PLACE_ID",
+    "slug": "dr-thanh-pham-smiley-chiropractic-dfw"
+  },
+  {
     "id": 107,
     "name": "Carechoice Pharmacy",
     "category": "Services",
@@ -2329,6 +2346,23 @@
     "slug": "red-carpet-tailor-dfw"
   },
   {
+    "id": 139,
+    "name": "Julie Nguyen - Ultima Real Estate",
+    "category": "Services",
+    "originalCategory": "Professional Services",
+    "subcategory": "Địa Ốc",
+    "address": "5220 Spring Valley Rd Ste 160, TX 75254",
+    "phone": "(214) 683-0939",
+    "website": null,
+    "email": null,
+    "description": "Real Estate. Realtor, Broker",
+    "rating": 4.8,
+    "reviewCount": 78,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Julie%20Nguyen%20-%20Ultima%20Real%20Estate%205220%20Spring%20Valley%20Rd%20Ste%20160%20TX%2075254&query_place_id=ChIJGRpBw2yfToYRyzhNM1b6s_0",
+    "linkType": "PLACE_ID",
+    "slug": "julie-nguyen-ultima-real-estate-dfw"
+  },
+  {
     "id": 140,
     "name": "Trang Thanh Truong - Nationwide",
     "category": "Services",
@@ -2582,6 +2616,40 @@
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Sacred%20Heart%20of%20Jesus%20Catholic%20Church%202121%20N%201st%20St%20TX%2075040&query_place_id=ChIJT1B4wcUCTIYRh4C0lj6VogI",
     "linkType": "PLACE_ID",
     "slug": "sacred-heart-of-jesus-catholic-church-dfw"
+  },
+  {
+    "id": 155,
+    "name": "Chua Dao Quang",
+    "category": "Community",
+    "originalCategory": "Religious",
+    "subcategory": "Chùa Phật Giáo",
+    "address": "3522 N Garland Ave, TX 75040",
+    "phone": null,
+    "website": null,
+    "email": null,
+    "description": "Buddhist Temple. Buddhist Temple",
+    "rating": 4.5,
+    "reviewCount": 148,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Chua%20Dao%20Quang%203522%20N%20Garland%20Ave%20TX%2075040&query_place_id=ChIJ80SSATMcTIYRPo1Wo6Ijt6k",
+    "linkType": "PLACE_ID",
+    "slug": "chua-dao-quang-dfw-1"
+  },
+  {
+    "id": 156,
+    "name": "St Peter Vietnamese Catholic Church",
+    "category": "Community",
+    "originalCategory": "Religious",
+    "subcategory": "Nhà Thờ Công Giáo",
+    "address": "10123 Garland Rd, TX 75218",
+    "phone": null,
+    "website": null,
+    "email": null,
+    "description": "Catholic Church. Vietnamese Catholic Church",
+    "rating": 4.3,
+    "reviewCount": 141,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=St%20Peter%20Vietnamese%20Catholic%20Church%2010123%20Garland%20Rd%20TX%2075218&query_place_id=ChIJ1w9X0hGhToYR7qqjwmZ38Wg",
+    "linkType": "PLACE_ID",
+    "slug": "st-peter-vietnamese-catholic-church-dfw-1"
   },
   {
     "id": 157,
@@ -4454,6 +4522,23 @@
     "slug": "pho-nhu-y-red-oak-dfw"
   },
   {
+    "id": 267,
+    "name": "Mỹ Lan Restaurant",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Ẩm Thực Việt",
+    "address": "4015 E Belknap St, TX",
+    "phone": null,
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Pho & Banh Mi",
+    "rating": 4.5,
+    "reviewCount": 250,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=M%C3%A1%C2%BB%C2%B9%20Lan%20Restaurant%204015%20E%20Belknap%20St%20TX&query_place_id=ChIJ079Z2DV3ToYR3dQWykKCvBQ",
+    "linkType": "PLACE_ID",
+    "slug": "my-lan-restaurant-dfw"
+  },
+  {
     "id": 268,
     "name": "Vĩnh Bình Restaurant",
     "category": "Food",
@@ -4486,6 +4571,23 @@
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Pho%20Hung%20Restaurant%204125%20E%20Belknap%20St%20%23107%20TX&query_place_id=ChIJhfphyEl3ToYRcU52dXuePbY",
     "linkType": "PLACE_ID",
     "slug": "pho-hung-restaurant-dfw"
+  },
+  {
+    "id": 270,
+    "name": "Bun Dong Ba",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Ẩm Thực Việt",
+    "address": "4023 E Belknap St #B, TX",
+    "phone": null,
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Noodle House",
+    "rating": 4.7,
+    "reviewCount": 182,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Bun%20Dong%20Ba%204023%20E%20Belknap%20St%20%23B%20TX&query_place_id=ChIJK7ebDjZ3ToYRu6h358coa0I",
+    "linkType": "PLACE_ID",
+    "slug": "bun-dong-ba-dfw-1"
   },
   {
     "id": 271,
@@ -4656,6 +4758,23 @@
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Nguyen%20Loi%20Supermarket%205302%20E%20Belknap%20St%20TX&query_place_id=ChIJy4DDyV53ToYRk-mozk2_1D0",
     "linkType": "PLACE_ID",
     "slug": "nguyen-loi-supermarket-dfw"
+  },
+  {
+    "id": 281,
+    "name": "My Lan Restaurant",
+    "category": "Food",
+    "originalCategory": "Restaurant",
+    "subcategory": "Ẩm Thực Việt",
+    "address": "5307 E Belknap St, TX 76117",
+    "phone": "(817) 834-2288",
+    "website": null,
+    "email": null,
+    "description": "Vietnamese. Traditional Vietnamese cuisine",
+    "rating": 4.3,
+    "reviewCount": 73,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=My%20Lan%20Restaurant%205307%20E%20Belknap%20St%20TX%2076117&query_place_id=ChIJ079Z2DV3ToYR3dQWykKCvBQ",
+    "linkType": "PLACE_ID",
+    "slug": "my-lan-restaurant-dfw"
   },
   {
     "id": 282,
@@ -5151,6 +5270,23 @@
     "slug": "99-ranch-market-carrollton-dfw"
   },
   {
+    "id": 311,
+    "name": "Hong Kong Market",
+    "category": "Shopping",
+    "originalCategory": "Supermarket",
+    "subcategory": "Chợ Châu Á",
+    "address": "9780 Walnut St., TX 75243",
+    "phone": "(972) 437-9888",
+    "website": null,
+    "email": null,
+    "description": "Asian Grocery. Asian groceries (Vietnamese products available)",
+    "rating": 4.8,
+    "reviewCount": 193,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%209780%20Walnut%20St.%20TX%2075243&query_place_id=ChIJ96RaTrgfTIYRbIMHViSTIgY",
+    "linkType": "PLACE_ID",
+    "slug": "hong-kong-market-dfw"
+  },
+  {
     "id": 312,
     "name": "New Truong Nguyen Market",
     "category": "Shopping",
@@ -5234,6 +5370,23 @@
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Nalinh%20Market%201716%20E%20State%20Hwy%20356%20TX%2075060&query_place_id=ChIJ-eOSUk2DToYRPZz8kPOrOzo",
     "linkType": "PLACE_ID",
     "slug": "nalinh-market-dfw"
+  },
+  {
+    "id": 317,
+    "name": "Vietnam Plaza Grocery",
+    "category": "Shopping",
+    "originalCategory": "Supermarket",
+    "subcategory": "Chợ Châu Á",
+    "address": "4101 E Belknap St, TX",
+    "phone": null,
+    "website": null,
+    "email": null,
+    "description": "Asian Grocery. Vietnamese Grocery",
+    "rating": 4.1,
+    "reviewCount": 96,
+    "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Vietnam%20Plaza%20Grocery%204101%20E%20Belknap%20St%20TX&query_place_id=ChIJq2-hOzZ3ToYRmbIUwK1LCGE",
+    "linkType": "PLACE_ID",
+    "slug": "vietnam-plaza-grocery-dfw"
   },
   {
     "id": 318,

@@ -1,0 +1,61 @@
+{
+  "removed_count": 9,
+  "original_count": 318,
+  "new_count": 309,
+  "removed": [
+    {
+      "id": 106,
+      "name": "Dr. Thanh Pham - Smiley Chiropractic",
+      "address": "4431 W Walnut St #C, TX 75042",
+      "reason": "Dr. Thanh Pham - Smiley Chiropractic duplicate - keep 96 (has more details)"
+    },
+    {
+      "id": 139,
+      "name": "Julie Nguyen - Ultima Real Estate",
+      "address": "5220 Spring Valley Rd Ste 160, TX 75254",
+      "reason": "Julie Nguyen - Realtor/Ultima duplicate - same person same address - keep 122"
+    },
+    {
+      "id": 155,
+      "name": "Chua Dao Quang",
+      "address": "3522 N Garland Ave, TX 75040",
+      "reason": "Chua Dao Quang duplicate - keep 148 (has phone)"
+    },
+    {
+      "id": 156,
+      "name": "St Peter Vietnamese Catholic Church",
+      "address": "10123 Garland Rd, TX 75218",
+      "reason": "St Peter Vietnamese Catholic Church duplicate - keep 146 (has full address)"
+    },
+    {
+      "id": 267,
+      "name": "Mỹ Lan Restaurant",
+      "address": "4015 E Belknap St, TX",
+      "reason": "Mỹ Lan Restaurant duplicate - keep 226 (has zip code)"
+    },
+    {
+      "id": 270,
+      "name": "Bun Dong Ba",
+      "address": "4023 E Belknap St #B, TX",
+      "reason": "Bun Dong Ba duplicate - keep 228 (has full zip code)"
+    },
+    {
+      "id": 281,
+      "name": "My Lan Restaurant",
+      "address": "5307 E Belknap St, TX 76117",
+      "reason": "My Lan Restaurant at different address but same slug causing conflict - keep 226"
+    },
+    {
+      "id": 311,
+      "name": "Hong Kong Market",
+      "address": "9780 Walnut St., TX 75243",
+      "reason": "Hong Kong Market duplicate - keep 289 (same info)"
+    },
+    {
+      "id": 317,
+      "name": "Vietnam Plaza Grocery",
+      "address": "4101 E Belknap St, TX",
+      "reason": "Vietnam Plaza Grocery duplicate - keep 315 (has full zip)"
+    }
+  ]
+}

@@ -1,0 +1,552 @@
+{
+  "total_businesses": 318,
+  "duplicates_found": 32,
+  "suggested_ids_to_remove": [
+    155,
+    242,
+    267,
+    270,
+    311,
+    156,
+    106,
+    281,
+    267,
+    122,
+    92,
+    92,
+    301,
+    200,
+    121,
+    239,
+    90,
+    301,
+    122,
+    212,
+    147,
+    290,
+    317,
+    92,
+    141,
+    21,
+    272,
+    156,
+    90,
+    92,
+    139,
+    163
+  ],
+  "details": [
+    {
+      "reason": "Similar address",
+      "similarity": 1.0,
+      "business_a": {
+        "id": 148,
+        "name": "Chua Dao Quang",
+        "address": "3522 North Garland Avenue, TX 75040",
+        "slug": "chua-dao-quang-dfw"
+      },
+      "business_b": {
+        "id": 155,
+        "name": "Chua Dao Quang",
+        "address": "3522 N Garland Ave, TX 75040",
+        "slug": "chua-dao-quang-dfw-1"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 1.0,
+      "business_a": {
+        "id": 168,
+        "name": "I Luv Pho",
+        "address": "7929 Forest Ln, TX 75230",
+        "slug": "i-luv-pho-dfw"
+      },
+      "business_b": {
+        "id": 242,
+        "name": "I Luv Pho",
+        "address": "8350 N MacArthur Blvd #100, TX 75063",
+        "slug": "i-luv-pho-dfw-1"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 1.0,
+      "business_a": {
+        "id": 226,
+        "name": "Mỹ Lan Restaurant",
+        "address": "4015 E Belknap St, TX 76117",
+        "slug": "my-lan-restaurant-dfw"
+      },
+      "business_b": {
+        "id": 267,
+        "name": "Mỹ Lan Restaurant",
+        "address": "4015 E Belknap St, TX",
+        "slug": "my-lan-restaurant-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 1.0,
+      "business_a": {
+        "id": 228,
+        "name": "Bun Dong Ba",
+        "address": "4023 E Belknap St #B, TX 76117",
+        "slug": "bun-dong-ba-dfw"
+      },
+      "business_b": {
+        "id": 270,
+        "name": "Bun Dong Ba",
+        "address": "4023 E Belknap St #B, TX",
+        "slug": "bun-dong-ba-dfw-1"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 1.0,
+      "business_a": {
+        "id": 289,
+        "name": "Hong Kong Market",
+        "address": "9780 Walnut St, TX 75243",
+        "slug": "hong-kong-market-dfw-1"
+      },
+      "business_b": {
+        "id": 311,
+        "name": "Hong Kong Market",
+        "address": "9780 Walnut St., TX 75243",
+        "slug": "hong-kong-market-dfw"
+      }
+    },
+    {
+      "reason": "Similar address",
+      "similarity": 0.9859154929577465,
+      "business_a": {
+        "id": 146,
+        "name": "St. Peter Vietnamese Catholic Church",
+        "address": "10123 Garland Road, TX 75218",
+        "slug": "st-peter-vietnamese-catholic-church-dfw"
+      },
+      "business_b": {
+        "id": 156,
+        "name": "St Peter Vietnamese Catholic Church",
+        "address": "10123 Garland Rd, TX 75218",
+        "slug": "st-peter-vietnamese-catholic-church-dfw-1"
+      }
+    },
+    {
+      "reason": "Similar address",
+      "similarity": 0.9473684210526315,
+      "business_a": {
+        "id": 96,
+        "name": "Dr. Thanh Pham, DC - Smiley Chiropractic",
+        "address": "4431 W Walnut St Ste C, TX 75042",
+        "slug": "dr-thanh-pham-dc-smiley-chiropractic-dfw"
+      },
+      "business_b": {
+        "id": 106,
+        "name": "Dr. Thanh Pham - Smiley Chiropractic",
+        "address": "4431 W Walnut St #C, TX 75042",
+        "slug": "dr-thanh-pham-smiley-chiropractic-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.9411764705882353,
+      "business_a": {
+        "id": 226,
+        "name": "Mỹ Lan Restaurant",
+        "address": "4015 E Belknap St, TX 76117",
+        "slug": "my-lan-restaurant-dfw"
+      },
+      "business_b": {
+        "id": 281,
+        "name": "My Lan Restaurant",
+        "address": "5307 E Belknap St, TX 76117",
+        "slug": "my-lan-restaurant-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.9411764705882353,
+      "business_a": {
+        "id": 267,
+        "name": "Mỹ Lan Restaurant",
+        "address": "4015 E Belknap St, TX",
+        "slug": "my-lan-restaurant-dfw"
+      },
+      "business_b": {
+        "id": 281,
+        "name": "My Lan Restaurant",
+        "address": "5307 E Belknap St, TX 76117",
+        "slug": "my-lan-restaurant-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.9302325581395349,
+      "business_a": {
+        "id": 121,
+        "name": "Liem Nguyen - Realtor",
+        "address": "3130 N. Shiloh Rd., TX 75044",
+        "slug": "liem-nguyen-realtor-dfw"
+      },
+      "business_b": {
+        "id": 122,
+        "name": "Julie Nguyen - Realtor",
+        "address": "5220 Spring Valley Rd STE 160, TX 75254",
+        "slug": "julie-nguyen-realtor-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.926829268292683,
+      "business_a": {
+        "id": 90,
+        "name": "Dr. Van T. Nguyen, DDS",
+        "address": "4004 Park Boulevard, TX 75074",
+        "slug": "dr-van-t-nguyen-dds-dfw"
+      },
+      "business_b": {
+        "id": 92,
+        "name": "Dr. Van Nguyen, DDS",
+        "address": "2430 N. Story Road, TX 75062",
+        "slug": "dr-van-nguyen-dds-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.9230769230769231,
+      "business_a": {
+        "id": 83,
+        "name": "Dr. Ryan Nguyen, DDS",
+        "address": "7602 N Jupiter Rd Ste 113, TX 75044",
+        "slug": "dr-ryan-nguyen-dds-dfw"
+      },
+      "business_b": {
+        "id": 92,
+        "name": "Dr. Van Nguyen, DDS",
+        "address": "2430 N. Story Road, TX 75062",
+        "slug": "dr-van-nguyen-dds-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.9166666666666666,
+      "business_a": {
+        "id": 212,
+        "name": "Pho Pasteur",
+        "address": "1826 W Pioneer Pkwy, TX 76013",
+        "slug": "pho-pasteur-dfw"
+      },
+      "business_b": {
+        "id": 301,
+        "name": "Pho Pasteur 4",
+        "address": "2225 S Bowen Rd, TX 76013",
+        "slug": "pho-pasteur-4-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.9090909090909091,
+      "business_a": {
+        "id": 182,
+        "name": "Pho Bistro",
+        "address": "3052 Old Denton Rd, Suite 112, TX 75007",
+        "slug": "pho-bistro-suite-112"
+      },
+      "business_b": {
+        "id": 200,
+        "name": "Pho Bistro 2",
+        "address": "310 E Round Grove Rd Ste 100, TX 75067",
+        "slug": "pho-bistro-2-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.9047619047619048,
+      "business_a": {
+        "id": 120,
+        "name": "Lily Nguyen - Realtor",
+        "address": "100 N. Central Expy, Suite 806, TX 75080",
+        "slug": "lily-nguyen-realtor-suite-806"
+      },
+      "business_b": {
+        "id": 121,
+        "name": "Liem Nguyen - Realtor",
+        "address": "3130 N. Shiloh Rd., TX 75044",
+        "slug": "liem-nguyen-realtor-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.9,
+      "business_a": {
+        "id": 191,
+        "name": "Pho Sen Noodle & Grill",
+        "address": "400 N Greenville Ave, Suite 15, TX 75081",
+        "slug": "pho-sen-noodle-grill-suite-15"
+      },
+      "business_b": {
+        "id": 239,
+        "name": "Pho Noodle & Grill",
+        "address": "4601 West Fwy, TX 76107",
+        "slug": "pho-noodle-grill-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8888888888888888,
+      "business_a": {
+        "id": 86,
+        "name": "Dr. Tuan A. Nguyen, DDS",
+        "address": "2001 S Glenbrook Dr, TX 75041",
+        "slug": "dr-tuan-a-nguyen-dds-dfw"
+      },
+      "business_b": {
+        "id": 90,
+        "name": "Dr. Van T. Nguyen, DDS",
+        "address": "4004 Park Boulevard, TX 75074",
+        "slug": "dr-van-t-nguyen-dds-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8888888888888888,
+      "business_a": {
+        "id": 183,
+        "name": "Pho Pasteur II",
+        "address": "1927 E Belt Line Rd, TX 75006",
+        "slug": "pho-pasteur-ii-dfw"
+      },
+      "business_b": {
+        "id": 301,
+        "name": "Pho Pasteur 4",
+        "address": "2225 S Bowen Rd, TX 76013",
+        "slug": "pho-pasteur-4-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8837209302325582,
+      "business_a": {
+        "id": 120,
+        "name": "Lily Nguyen - Realtor",
+        "address": "100 N. Central Expy, Suite 806, TX 75080",
+        "slug": "lily-nguyen-realtor-suite-806"
+      },
+      "business_b": {
+        "id": 122,
+        "name": "Julie Nguyen - Realtor",
+        "address": "5220 Spring Valley Rd STE 160, TX 75254",
+        "slug": "julie-nguyen-realtor-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.88,
+      "business_a": {
+        "id": 183,
+        "name": "Pho Pasteur II",
+        "address": "1927 E Belt Line Rd, TX 75006",
+        "slug": "pho-pasteur-ii-dfw"
+      },
+      "business_b": {
+        "id": 212,
+        "name": "Pho Pasteur",
+        "address": "1826 W Pioneer Pkwy, TX 76013",
+        "slug": "pho-pasteur-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8767123287671232,
+      "business_a": {
+        "id": 146,
+        "name": "St. Peter Vietnamese Catholic Church",
+        "address": "10123 Garland Road, TX 75218",
+        "slug": "st-peter-vietnamese-catholic-church-dfw"
+      },
+      "business_b": {
+        "id": 147,
+        "name": "St. Joseph Vietnamese Catholic Church",
+        "address": "1902 S. Beltline Rd., TX 75051",
+        "slug": "st-joseph-vietnamese-catholic-church-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.875,
+      "business_a": {
+        "id": 283,
+        "name": "Pho Nam",
+        "address": "4045 E Belknap St, TX 76111",
+        "slug": "pho-nam-dfw"
+      },
+      "business_b": {
+        "id": 290,
+        "name": "Pho V Nam",
+        "address": "1400 W Northwest Hwy, TX 76051",
+        "slug": "pho-v-nam-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.875,
+      "business_a": {
+        "id": 315,
+        "name": "Vietnam Plaza Grocery Store",
+        "address": "4101 E Belknap St, TX 76117",
+        "slug": "vietnam-plaza-grocery-store-dfw"
+      },
+      "business_b": {
+        "id": 317,
+        "name": "Vietnam Plaza Grocery",
+        "address": "4101 E Belknap St, TX",
+        "slug": "vietnam-plaza-grocery-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8717948717948718,
+      "business_a": {
+        "id": 88,
+        "name": "Dr. Linh Nguyen, DDS",
+        "address": "1809 Golden Trail Ct #140, TX 75010",
+        "slug": "dr-linh-nguyen-dds-dfw"
+      },
+      "business_b": {
+        "id": 92,
+        "name": "Dr. Van Nguyen, DDS",
+        "address": "2430 N. Story Road, TX 75062",
+        "slug": "dr-van-nguyen-dds-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8695652173913043,
+      "business_a": {
+        "id": 129,
+        "name": "My-Viet Inc.",
+        "address": "3112 N. Jupiter Rd, Ste 212, TX 75044",
+        "slug": "my-viet-inc-ste-212"
+      },
+      "business_b": {
+        "id": 141,
+        "name": "My Viet Inc",
+        "address": "4441 W Airport Fwy, TX 75062",
+        "slug": "my-viet-inc-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8666666666666667,
+      "business_a": {
+        "id": 20,
+        "name": "Top Nail Supply",
+        "address": "3112 N Jupiter Rd #102, TX 75044",
+        "slug": "top-nail-supply-dfw"
+      },
+      "business_b": {
+        "id": 21,
+        "name": "Pro Nail Supply",
+        "address": "805 N Jupiter Rd, TX 75042",
+        "slug": "pro-nail-supply-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8648648648648649,
+      "business_a": {
+        "id": 269,
+        "name": "Pho Hung Restaurant",
+        "address": "4125 E Belknap St #107, TX",
+        "slug": "pho-hung-restaurant-dfw"
+      },
+      "business_b": {
+        "id": 272,
+        "name": "Pho Nam Restaurant",
+        "address": "4045 E Belknap St #1, TX",
+        "slug": "pho-nam-restaurant-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8611111111111112,
+      "business_a": {
+        "id": 147,
+        "name": "St. Joseph Vietnamese Catholic Church",
+        "address": "1902 S. Beltline Rd., TX 75051",
+        "slug": "st-joseph-vietnamese-catholic-church-dfw"
+      },
+      "business_b": {
+        "id": 156,
+        "name": "St Peter Vietnamese Catholic Church",
+        "address": "10123 Garland Rd, TX 75218",
+        "slug": "st-peter-vietnamese-catholic-church-dfw-1"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8571428571428571,
+      "business_a": {
+        "id": 83,
+        "name": "Dr. Ryan Nguyen, DDS",
+        "address": "7602 N Jupiter Rd Ste 113, TX 75044",
+        "slug": "dr-ryan-nguyen-dds-dfw"
+      },
+      "business_b": {
+        "id": 90,
+        "name": "Dr. Van T. Nguyen, DDS",
+        "address": "4004 Park Boulevard, TX 75074",
+        "slug": "dr-van-t-nguyen-dds-dfw"
+      }
+    },
+    {
+      "reason": "Very similar name",
+      "similarity": 0.8571428571428571,
+      "business_a": {
+        "id": 86,
+        "name": "Dr. Tuan A. Nguyen, DDS",
+        "address": "2001 S Glenbrook Dr, TX 75041",
+        "slug": "dr-tuan-a-nguyen-dds-dfw"
+      },
+      "business_b": {
+        "id": 92,
+        "name": "Dr. Van Nguyen, DDS",
+        "address": "2430 N. Story Road, TX 75062",
+        "slug": "dr-van-nguyen-dds-dfw"
+      }
+    },
+    {
+      "reason": "Similar address",
+      "similarity": 0.7272727272727273,
+      "business_a": {
+        "id": 122,
+        "name": "Julie Nguyen - Realtor",
+        "address": "5220 Spring Valley Rd STE 160, TX 75254",
+        "slug": "julie-nguyen-realtor-dfw"
+      },
+      "business_b": {
+        "id": 139,
+        "name": "Julie Nguyen - Ultima Real Estate",
+        "address": "5220 Spring Valley Rd Ste 160, TX 75254",
+        "slug": "julie-nguyen-ultima-real-estate-dfw"
+      }
+    },
+    {
+      "reason": "Same phone",
+      "similarity": 0.3225806451612903,
+      "business_a": {
+        "id": 15,
+        "name": "Thach Thao Bakery",
+        "address": "3212 N Jupiter Rd 137, TX 75044",
+        "slug": "thach-thao-bakery-dfw"
+      },
+      "business_b": {
+        "id": 163,
+        "name": "Che Banh Mi #1",
+        "address": "3212 N Jupiter Rd #137 & 138, TX 75044",
+        "slug": "che-banh-mi-1-dfw"
+      }
+    }
+  ]
+}
