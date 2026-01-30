@@ -5387,5 +5387,20 @@
     "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=Vietnam%20Plaza%20Grocery%204101%20E%20Belknap%20St%20TX&query_place_id=ChIJq2-hOzZ3ToYRmbIUwK1LCGE",
     "linkType": "PLACE_ID",
     "slug": "vietnam-plaza-grocery-dfw"
+  },
+  {
+    "id": 318,
+    "name": "Phong Realtor TX",
+    "slug": "phong-realtor-tx-dfw",
+    "category": "Services",
+    "originalCategory": "Professional Services",
+    "subcategory": "Địa Ốc",
+    "address": "2300 Friendship Rd, Sherman, TX 75092",
+    "phone": "(737) 242-9999",
+    "website": null,
+    "email": "phong.to@exprealty.com",
+    "description": "Chuyên tư vấn và môi giới mua bán nhà tại Texas",
+    "googleMapsLink": null,
+    "linkType": null
   }
 ]
