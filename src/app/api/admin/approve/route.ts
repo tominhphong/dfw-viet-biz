@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '../../../../lib/supabase';
-import fs from 'fs';
-import path from 'path';
 
 // Helper to create slug
 function slugify(name: string): string {
@@ -17,11 +15,14 @@ function slugify(name: string): string {
 function getVietnameseSubcategory(category: string): string {
     const mappings: Record<string, string> = {
         'Restaurant': 'Ẩm Thực Việt',
+        'Food': 'Ẩm Thực Việt',
         'Healthcare': 'Y Khoa',
         'Retail': 'Bán Lẻ',
+        'Shopping': 'Bán Lẻ',
         'Automotive': 'Sửa Xe',
         'Beauty & Personal Care': 'Tiệm Nail',
         'Professional Services': 'Dịch Vụ',
+        'Services': 'Dịch Vụ',
         'Religious': 'Tôn Giáo',
         'Community': 'Cộng Đồng',
     };
@@ -55,37 +56,36 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Load current seed.json
-        const seedPath = path.join(process.cwd(), 'src/data/seed.json');
-        const seedData = JSON.parse(fs.readFileSync(seedPath, 'utf-8'));
-
-        // Get next ID
-        const nextId = Math.max(...seedData.map((b: { id: number }) => b.id)) + 1;
-
-        // Create new business entry
+        // Create new business entry for approved_businesses table
         const newBusiness = {
-            id: nextId,
             name: submission.name,
             slug: slugify(submission.name),
-            category: submission.category === 'Professional Services' ? 'Services' : submission.category,
-            originalCategory: submission.category,
+            category: submission.category,
+            original_category: submission.category,
             subcategory: getVietnameseSubcategory(submission.category),
             address: submission.address,
             phone: submission.phone,
             website: submission.website,
             email: submission.email,
             description: submission.description || `${submission.name} - Doanh nghiệp Việt Nam tại DFW`,
-            googleMapsLink: null,
-            linkType: null
+            google_maps_link: null,
+            link_type: null
         };
 
-        // Add to seed data
-        seedData.push(newBusiness);
+        // Insert into approved_businesses table
+        const { error: insertError } = await supabase
+            .from('approved_businesses')
+            .insert(newBusiness);
 
-        // Save seed.json
-        fs.writeFileSync(seedPath, JSON.stringify(seedData, null, 2));
+        if (insertError) {
+            console.error('Insert error:', insertError);
+            return NextResponse.json(
+                { error: 'Failed to add business: ' + insertError.message },
+                { status: 500 }
+            );
+        }
 
-        // Update submission status
+        // Update submission status to approved
         await supabase
             .from('business_submissions')
             .update({ status: 'approved', updated_at: new Date().toISOString() })
@@ -93,9 +93,7 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({
             success: true,
-            message: `Business "${submission.name}" approved and added!`,
-            businessId: nextId,
-            totalBusinesses: seedData.length
+            message: `Business "${submission.name}" đã được duyệt!`
         });
     } catch (error) {
         console.error('Approve error:', error);
