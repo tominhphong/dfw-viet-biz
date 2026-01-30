@@ -106,7 +106,7 @@ Submitted via DFW Vietnamese Business Directory
         const body = encodeURIComponent(emailBody);
 
         // Open mailto link
-        window.location.href = `mailto:hello@candiachi.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:phong.to@exprealty.com?subject=${subject}&body=${body}`;
 
         // Show success state
         setTimeout(() => {
