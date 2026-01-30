@@ -70,56 +70,47 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         if (!validateForm()) return;
 
         setIsSubmitting(true);
 
-        // Build email body
+        // Build full address
         const fullAddress = `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`;
 
-        const emailBody = `
-NEW BUSINESS SUBMISSION
-========================
+        try {
+            const response = await fetch("/api/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: formData.businessName,
+                    category: formData.category,
+                    address: fullAddress,
+                    phone: formData.phone || null,
+                    website: formData.website || null,
+                    email: formData.email || null,
+                    description: formData.description || null,
+                    submitterEmail: formData.ownerName || null,
+                }),
+            });
 
-Business Name: ${formData.businessName}
-Category: ${formData.category}
-Address: ${fullAddress}
+            if (response.ok) {
+                setSubmitStatus("success");
+                setTimeout(() => {
+                    setFormData(initialFormData);
+                    setSubmitStatus("idle");
+                    onClose();
+                }, 3000);
+            } else {
+                setSubmitStatus("error");
+            }
+        } catch {
+            setSubmitStatus("error");
+        }
 
-Contact Information:
-- Phone: ${formData.phone || "Not provided"}
-- Website: ${formData.website || "Not provided"}
-- Email: ${formData.email || "Not provided"}
-
-Description:
-${formData.description || "Not provided"}
-
-Submitted by: ${formData.ownerName || "Not provided"}
-
----
-Submitted via DFW Vietnamese Business Directory
-    `.trim();
-
-        const subject = encodeURIComponent(`New Business: ${formData.businessName}`);
-        const body = encodeURIComponent(emailBody);
-
-        // Open mailto link
-        window.location.href = `mailto:phong.to@exprealty.com?subject=${subject}&body=${body}`;
-
-        // Show success state
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setSubmitStatus("success");
-
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                setFormData(initialFormData);
-                setSubmitStatus("idle");
-                onClose();
-            }, 3000);
-        }, 500);
+        setIsSubmitting(false);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -167,11 +158,11 @@ Submitted via DFW Vietnamese Business Directory
                 {submitStatus === "success" && (
                     <div className="p-6 text-center">
                         <div className="text-6xl mb-4">✅</div>
-                        <h3 className="text-xl font-bold text-green-400 mb-2">Thank You!</h3>
+                        <h3 className="text-xl font-bold text-green-400 mb-2">Đã Gửi Thành Công!</h3>
                         <p className="text-neutral-300">
-                            Your email app should open with the submission details.
+                            Thông tin doanh nghiệp của bạn đã được gửi.
                             <br />
-                            Just hit send to complete your submission!
+                            Admin sẽ duyệt và thêm vào website sớm nhất!
                         </p>
                     </div>
                 )}
