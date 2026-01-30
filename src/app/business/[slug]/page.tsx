@@ -1,7 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import seedData from "../../../data/seed.json";
+import { createClient } from "@supabase/supabase-js";
 import type { Metadata } from "next";
+
+// Initialize Supabase client
+const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 interface Business {
     id: number;
@@ -23,11 +30,51 @@ interface PageProps {
     params: Promise<{ slug: string }>;
 }
 
-// Generate static paths for all businesses
+// Allow dynamic params for approved businesses from Supabase
+export const dynamicParams = true;
+
+// Generate static paths for seed businesses (pre-render)
 export async function generateStaticParams() {
     return (seedData as Business[]).map((business) => ({
         slug: business.slug,
     }));
+}
+
+// Helper to find business from seed or Supabase
+async function findBusiness(slug: string): Promise<Business | null> {
+    // First, try to find in seed data
+    const seedBusiness = (seedData as Business[]).find((b) => b.slug === slug);
+    if (seedBusiness) {
+        return seedBusiness;
+    }
+
+    // If not found in seed, try Supabase approved_businesses
+    const { data: approved, error } = await supabase
+        .from("approved_businesses")
+        .select("*")
+        .eq("slug", slug)
+        .single();
+
+    if (error || !approved) {
+        return null;
+    }
+
+    // Convert Supabase format to Business interface
+    return {
+        id: approved.id,
+        name: approved.name,
+        slug: approved.slug,
+        category: approved.category,
+        originalCategory: approved.original_category || approved.category,
+        subcategory: approved.subcategory,
+        address: approved.address,
+        phone: approved.phone,
+        website: approved.website,
+        email: approved.email,
+        description: approved.description || `${approved.name} - Doanh nghiệp Việt Nam tại DFW`,
+        googleMapsLink: approved.google_maps_link,
+        linkType: approved.link_type
+    };
 }
 
 // Extract city from address
@@ -43,7 +90,7 @@ function extractCity(address: string): string {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { slug } = await params;
-    const business = (seedData as Business[]).find((b) => b.slug === slug);
+    const business = await findBusiness(slug);
 
     if (!business) {
         return { title: "Business Not Found | DFW Vietnamese Biz" };
@@ -63,7 +110,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BusinessDetailPage({ params }: PageProps) {
     const { slug } = await params;
-    const business = (seedData as Business[]).find((b) => b.slug === slug);
+    const business = await findBusiness(slug);
 
     if (!business) {
         notFound();
@@ -272,7 +319,7 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                             <div className="flex gap-3">
                                 <a
                                     href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                                        `https://tominhphong-dfw-viet-biz-q9rp.vercel.app/business/${business.slug}`
+                                        `https://dfw-viet-biz.vercel.app/business/${business.slug}`
                                     )}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -284,7 +331,7 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                     href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                                         `${business.name} - ${business.subcategory || business.category} tại ${city}`
                                     )}&url=${encodeURIComponent(
-                                        `https://tominhphong-dfw-viet-biz-q9rp.vercel.app/business/${business.slug}`
+                                        `https://dfw-viet-biz.vercel.app/business/${business.slug}`
                                     )}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
