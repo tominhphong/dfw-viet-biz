@@ -155,8 +155,8 @@ export default function Home() {
               key={cat}
               onClick={() => handleCategoryChange(cat)}
               className={`px-4 md:px-5 py-2 rounded-full border text-sm md:text-base transition-all ${filter === cat
-                  ? "bg-white text-black border-white font-bold"
-                  : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500"
+                ? "bg-white text-black border-white font-bold"
+                : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500"
                 }`}
             >
               {tc(cat)}
@@ -209,9 +209,7 @@ export default function Home() {
                       </span>
                     )}
                   </div>
-                  <span className="text-sm bg-neutral-900 px-2 py-1 rounded text-neutral-300">
-                    ★ {biz.rating} ({biz.reviewCount})
-                  </span>
+
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-yellow-400 transition-colors">
                   {biz.name}

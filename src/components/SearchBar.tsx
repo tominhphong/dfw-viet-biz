@@ -81,8 +81,6 @@ export default function SearchBar({ onSearch, onSort, resultCount, totalCount }:
                     >
                         <option value="name">{t("sortNameAZ")}</option>
                         <option value="name-desc">{t("sortNameZA")}</option>
-                        <option value="rating">{t("sortRating")}</option>
-                        <option value="reviews">{t("sortReviews")}</option>
                     </select>
                 </div>
 

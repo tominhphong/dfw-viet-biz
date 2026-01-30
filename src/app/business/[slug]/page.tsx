@@ -15,8 +15,6 @@ interface Business {
     website: string | null;
     email: string | null;
     description: string;
-    rating: number;
-    reviewCount: number;
     googleMapsLink: string | null;
     linkType: string | null;
 }
@@ -32,6 +30,16 @@ export async function generateStaticParams() {
     }));
 }
 
+// Extract city from address
+function extractCity(address: string): string {
+    const parts = address.split(",");
+    if (parts.length >= 2) {
+        const cityPart = parts[parts.length - 2].trim();
+        return cityPart.replace(/\d+/g, "").trim() || "DFW";
+    }
+    return "Dallas-Fort Worth";
+}
+
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { slug } = await params;
@@ -44,40 +52,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const city = extractCity(business.address);
     return {
         title: `${business.name} | ${business.subcategory || business.category} tại ${city}`,
-        description: `${business.name} - ${business.subcategory || business.category} tại ${city}. ⭐ ${business.rating}/5 (${business.reviewCount} đánh giá). ${business.description || "Doanh nghiệp Việt Nam uy tín."}`,
+        description: `${business.name} - ${business.subcategory || business.category} tại ${city}. ${business.description || "Doanh nghiệp Việt Nam uy tín tại DFW."}`,
         openGraph: {
             title: `${business.name} | DFW Vietnamese Biz`,
-            description: `${business.subcategory || business.category} - ⭐ ${business.rating}/5`,
+            description: `${business.subcategory || business.category} tại ${city}`,
             type: "website",
         },
     };
-}
-
-// Extract city from address
-function extractCity(address: string): string {
-    const parts = address.split(",");
-    if (parts.length >= 2) {
-        // Get the part before state (TX)
-        const cityPart = parts[parts.length - 2].trim();
-        return cityPart.replace(/\d+/g, "").trim() || "DFW";
-    }
-    return "Dallas-Fort Worth";
-}
-
-// Get rating tier
-function getRatingTier(rating: number): { label: string; color: string; emoji: string } {
-    if (rating >= 4.5) return { label: "Xuất sắc", color: "text-green-400", emoji: "🏆" };
-    if (rating >= 4.0) return { label: "Rất tốt", color: "text-yellow-400", emoji: "⭐" };
-    if (rating >= 3.5) return { label: "Tốt", color: "text-blue-400", emoji: "👍" };
-    return { label: "Bình thường", color: "text-neutral-400", emoji: "📍" };
-}
-
-// Get review tier
-function getReviewTier(count: number): string {
-    if (count >= 200) return "Rất phổ biến";
-    if (count >= 100) return "Phổ biến";
-    if (count >= 50) return "Được nhiều người biết";
-    return "";
 }
 
 export default async function BusinessDetailPage({ params }: PageProps) {
@@ -89,8 +70,6 @@ export default async function BusinessDetailPage({ params }: PageProps) {
     }
 
     const city = extractCity(business.address);
-    const ratingInfo = getRatingTier(business.rating);
-    const popularityLabel = getReviewTier(business.reviewCount);
 
     const categoryColors: Record<string, string> = {
         Food: "from-orange-500 to-red-500",
@@ -127,23 +106,15 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                 >
                                     {business.subcategory || business.category}
                                 </span>
-                                {popularityLabel && (
-                                    <span className="px-2 py-1 text-xs bg-neutral-700 rounded-full text-neutral-300">
-                                        🔥 {popularityLabel}
-                                    </span>
-                                )}
                             </div>
                             <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-2">
                                 {business.name}
                             </h1>
                             <div className="flex flex-wrap items-center gap-4 text-neutral-400">
-                                <span className="flex items-center gap-1">
-                                    <span className="text-yellow-400">⭐</span>
-                                    <span className="font-bold text-white">{business.rating.toFixed(1)}</span>
-                                    <span className={`text-sm ${ratingInfo.color}`}>({ratingInfo.label})</span>
-                                </span>
-                                <span>{business.reviewCount} đánh giá</span>
-                                <span className="text-neutral-500">📍 {city}</span>
+                                <span className="text-neutral-400">📍 {city}</span>
+                                {business.phone && (
+                                    <span className="text-neutral-400">📞 {business.phone}</span>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -152,33 +123,25 @@ export default async function BusinessDetailPage({ params }: PageProps) {
 
             {/* Content */}
             <main className="max-w-4xl mx-auto px-6 py-8 md:py-12">
-                {/* Highlights Banner */}
-                <div className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 rounded-2xl p-5 mb-8 border border-yellow-800/30">
-                    <h2 className="text-lg font-bold text-yellow-400 mb-3 flex items-center gap-2">
-                        💡 Tại sao nên chọn {business.name}?
-                    </h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div className="text-center">
-                            <div className="text-2xl mb-1">{ratingInfo.emoji}</div>
-                            <div className="text-sm text-neutral-300 font-medium">{ratingInfo.label}</div>
-                            <div className="text-xs text-neutral-500">{business.rating}/5 sao</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-2xl mb-1">💬</div>
-                            <div className="text-sm text-neutral-300 font-medium">{business.reviewCount}+ đánh giá</div>
-                            <div className="text-xs text-neutral-500">Google Reviews</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-2xl mb-1">🏪</div>
-                            <div className="text-sm text-neutral-300 font-medium">{business.subcategory || business.category}</div>
-                            <div className="text-xs text-neutral-500">Chuyên ngành</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-2xl mb-1">📍</div>
-                            <div className="text-sm text-neutral-300 font-medium">{city}</div>
-                            <div className="text-xs text-neutral-500">Vị trí</div>
-                        </div>
+                {/* Quick Info Cards */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                    <div className="bg-neutral-800 rounded-xl p-4 text-center border border-neutral-700">
+                        <div className="text-2xl mb-1">🏪</div>
+                        <div className="text-sm text-neutral-300 font-medium">{business.subcategory || business.category}</div>
+                        <div className="text-xs text-neutral-500">Chuyên ngành</div>
                     </div>
+                    <div className="bg-neutral-800 rounded-xl p-4 text-center border border-neutral-700">
+                        <div className="text-2xl mb-1">📍</div>
+                        <div className="text-sm text-neutral-300 font-medium">{city}</div>
+                        <div className="text-xs text-neutral-500">Vị trí</div>
+                    </div>
+                    {business.phone && (
+                        <div className="bg-neutral-800 rounded-xl p-4 text-center border border-neutral-700">
+                            <div className="text-2xl mb-1">📞</div>
+                            <div className="text-sm text-neutral-300 font-medium truncate">{business.phone}</div>
+                            <div className="text-xs text-neutral-500">Điện thoại</div>
+                        </div>
+                    )}
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -263,7 +226,7 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                 📝 Giới thiệu
                             </h2>
                             <p className="text-neutral-300 leading-relaxed">
-                                {business.description || `${business.name} là doanh nghiệp ${business.subcategory || business.category} tại ${city}. Với ${business.reviewCount} đánh giá và rating ${business.rating}/5 sao trên Google, đây là một trong những địa điểm được cộng đồng Việt Nam tin tưởng tại DFW.`}
+                                {business.description || `${business.name} là doanh nghiệp ${business.subcategory || business.category} tại ${city}. Đây là một trong những địa điểm được cộng đồng Việt Nam tin tưởng tại DFW.`}
                             </p>
 
                             {(business.subcategory || business.originalCategory) && (
@@ -281,6 +244,24 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                 </div>
                             )}
                         </div>
+
+                        {/* Google Maps CTA */}
+                        {business.googleMapsLink && (
+                            <div className="bg-gradient-to-r from-blue-900/30 to-green-900/30 rounded-2xl p-6 border border-blue-800/30">
+                                <h2 className="text-lg font-bold text-white mb-2">📊 Xem trên Google</h2>
+                                <p className="text-neutral-400 text-sm mb-4">
+                                    Xem đánh giá, giờ mở cửa và thông tin chi tiết trên Google Maps
+                                </p>
+                                <a
+                                    href={business.googleMapsLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-neutral-900 font-bold rounded-xl hover:bg-neutral-100 transition-all"
+                                >
+                                    🗺️ Xem trên Google Maps
+                                </a>
+                            </div>
+                        )}
 
                         {/* Share Card */}
                         <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
@@ -301,7 +282,7 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                 </a>
                                 <a
                                     href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                                        `${business.name} - ${business.subcategory || business.category} tại ${city} ⭐ ${business.rating}/5`
+                                        `${business.name} - ${business.subcategory || business.category} tại ${city}`
                                     )}&url=${encodeURIComponent(
                                         `https://tominhphong-dfw-viet-biz-q9rp.vercel.app/business/${business.slug}`
                                     )}`}
