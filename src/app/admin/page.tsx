@@ -12,10 +12,22 @@ interface ActionLog {
     action_timestamp: string;
 }
 
+interface ApprovedBusiness {
+    id: number;
+    name: string;
+    slug: string;
+    category: string;
+    address: string;
+    phone: string | null;
+    created_at: string;
+}
+
 export default function AdminPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [password, setPassword] = useState("");
     const [submissions, setSubmissions] = useState<BusinessSubmission[]>([]);
+    const [approvedBusinesses, setApprovedBusinesses] = useState<ApprovedBusiness[]>([]);
+    const [showApproved, setShowApproved] = useState(false);
     const [logs, setLogs] = useState<ActionLog[]>([]);
     const [showLogs, setShowLogs] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -52,9 +64,52 @@ export default function AdminPage() {
         }
     };
 
+    // Fetch approved businesses
+    const fetchApprovedBusinesses = async () => {
+        const { data, error } = await supabase
+            .from("approved_businesses")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+        if (!error && data) {
+            setApprovedBusinesses(data);
+        }
+    };
+
+    // Handle delete approved business
+    const handleDelete = async (id: number, name: string) => {
+        if (!confirm(`Xóa "${name}" khỏi website? Hành động này không thể hoàn tác!`)) return;
+
+        setLoading(true);
+        setMessage("");
+        setError("");
+
+        try {
+            const response = await fetch("/api/admin/delete", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, password, businessName: name }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                setMessage(`🗑️ Đã xóa "${name}" thành công!`);
+                setApprovedBusinesses(approvedBusinesses.filter((b) => b.id !== id));
+                fetchLogs(); // Refresh logs
+            } else {
+                setError(result.error || "Có lỗi xảy ra");
+            }
+        } catch {
+            setError("Không thể kết nối server");
+        }
+        setLoading(false);
+    };
+
     useEffect(() => {
         if (isLoggedIn) {
             fetchSubmissions();
+            fetchApprovedBusinesses();
             fetchLogs();
         }
     }, [isLoggedIn]);
@@ -282,12 +337,54 @@ export default function AdminPage() {
                 {/* Refresh button */}
                 <div className="mt-8 text-center">
                     <button
-                        onClick={() => { fetchSubmissions(); fetchLogs(); }}
+                        onClick={() => { fetchSubmissions(); fetchApprovedBusinesses(); fetchLogs(); }}
                         disabled={loading}
                         className="px-6 py-3 bg-neutral-700 hover:bg-neutral-600 rounded-xl transition-colors"
                     >
                         🔄 Làm mới
                     </button>
+                </div>
+
+                {/* Approved Businesses Management Section */}
+                <div className="mt-8 p-4 bg-neutral-800 rounded-xl border border-neutral-700">
+                    <button
+                        onClick={() => setShowApproved(!showApproved)}
+                        className="w-full flex justify-between items-center text-lg font-bold"
+                    >
+                        <span>🏢 Quản lý doanh nghiệp đã duyệt ({approvedBusinesses.length})</span>
+                        <span className="text-neutral-500">{showApproved ? '▼' : '▶'}</span>
+                    </button>
+
+                    {showApproved && (
+                        <div className="mt-4 space-y-3 max-h-96 overflow-y-auto">
+                            {approvedBusinesses.length === 0 ? (
+                                <p className="text-neutral-500 text-center py-4">Chưa có doanh nghiệp nào được duyệt từ form</p>
+                            ) : (
+                                approvedBusinesses.map((biz) => (
+                                    <div
+                                        key={biz.id}
+                                        className="p-3 bg-neutral-700/50 rounded-lg border border-neutral-600 flex justify-between items-center"
+                                    >
+                                        <div className="flex-1">
+                                            <span className="font-bold text-white">{biz.name}</span>
+                                            <span className="ml-2 text-sm text-yellow-500">({biz.category})</span>
+                                            <p className="text-sm text-neutral-400 mt-1">📍 {biz.address}</p>
+                                            {biz.phone && (
+                                                <p className="text-sm text-neutral-400">📞 {biz.phone}</p>
+                                            )}
+                                        </div>
+                                        <button
+                                            onClick={() => handleDelete(biz.id, biz.name)}
+                                            disabled={loading}
+                                            className="ml-4 px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
+                                        >
+                                            🗑️ Xóa
+                                        </button>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    )}
                 </div>
 
                 {/* Action Logs Section */}
@@ -309,8 +406,8 @@ export default function AdminPage() {
                                     <div
                                         key={log.id}
                                         className={`p-3 rounded-lg border ${log.action_type === 'approved'
-                                                ? 'bg-green-900/20 border-green-800'
-                                                : 'bg-red-900/20 border-red-800'
+                                            ? 'bg-green-900/20 border-green-800'
+                                            : 'bg-red-900/20 border-red-800'
                                             }`}
                                     >
                                         <div className="flex justify-between items-start">
