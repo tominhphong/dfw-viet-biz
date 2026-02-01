@@ -49,49 +49,57 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("name");
 
-  // Fetch approved businesses from Supabase and merge with seed data
+  // Fetch all businesses from Supabase (primary source after migration)
+  // Falls back to seed.json only if Supabase is empty (before migration)
   useEffect(() => {
-    const fetchApprovedBusinesses = async () => {
+    const fetchBusinesses = async () => {
       try {
-        const { data: approved, error } = await supabase
+        const { data: dbData, error } = await supabase
           .from("approved_businesses")
-          .select("*");
+          .select("*")
+          .order("name", { ascending: true });
 
         if (error) {
-          console.error("Error fetching approved businesses:", error);
+          console.error("Error fetching businesses:", error);
+          // Fallback to seed data on error
+          setData(seedData as Business[]);
           return;
         }
 
-        if (approved && approved.length > 0) {
-          // Convert Supabase format to match Business interface
-          const convertedApproved: Business[] = approved.map((item, index) => ({
-            id: 10000 + index, // Use high IDs to avoid conflict with seed data
+        if (dbData && dbData.length > 0) {
+          // Use Supabase data as primary source (after migration)
+          const convertedData: Business[] = dbData.map((item) => ({
+            id: item.id,
             name: item.name,
             slug: item.slug,
             category: item.category,
             originalCategory: item.original_category || item.category,
             subcategory: item.subcategory,
-            address: item.address,
+            address: item.address || "",
             phone: item.phone,
             website: item.website,
             email: item.email,
             description: item.description || `${item.name} - Doanh nghiệp Việt Nam tại DFW`,
-            rating: 0,
-            reviewCount: 0,
+            rating: item.rating || 0,
+            reviewCount: item.review_count || 0,
             googleMapsLink: item.google_maps_link,
             linkType: item.link_type
           }));
-
-          // Merge with seed data
-          setData([...seedData as Business[], ...convertedApproved]);
+          setData(convertedData);
+        } else {
+          // Fallback to seed if Supabase is empty (before migration)
+          console.log("Supabase empty, using seed.json");
+          setData(seedData as Business[]);
         }
       } catch (err) {
-        console.error("Failed to fetch approved businesses:", err);
+        console.error("Failed to fetch businesses:", err);
+        setData(seedData as Business[]);
       }
     };
 
-    fetchApprovedBusinesses();
+    fetchBusinesses();
   }, []);
+
 
   // Get subcategories for current main category
   const availableSubcategories = useMemo(() => {
