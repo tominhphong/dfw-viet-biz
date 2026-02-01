@@ -170,27 +170,6 @@ export default async function BusinessDetailPage({ params }: PageProps) {
 
             {/* Content */}
             <main className="max-w-4xl mx-auto px-6 py-8 md:py-12">
-                {/* Quick Info Cards */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                    <div className="bg-neutral-800 rounded-xl p-4 text-center border border-neutral-700">
-                        <div className="text-2xl mb-1">🏪</div>
-                        <div className="text-sm text-neutral-300 font-medium">{business.subcategory || business.category}</div>
-                        <div className="text-xs text-neutral-500">Chuyên ngành</div>
-                    </div>
-                    <div className="bg-neutral-800 rounded-xl p-4 text-center border border-neutral-700">
-                        <div className="text-2xl mb-1">📍</div>
-                        <div className="text-sm text-neutral-300 font-medium">{city}</div>
-                        <div className="text-xs text-neutral-500">Vị trí</div>
-                    </div>
-                    {business.phone && (
-                        <div className="bg-neutral-800 rounded-xl p-4 text-center border border-neutral-700">
-                            <div className="text-2xl mb-1">📞</div>
-                            <div className="text-sm text-neutral-300 font-medium truncate">{business.phone}</div>
-                            <div className="text-xs text-neutral-500">Điện thoại</div>
-                        </div>
-                    )}
-                </div>
-
                 <div className="grid md:grid-cols-2 gap-6">
                     {/* Left Column */}
                     <div className="space-y-6">
@@ -290,56 +269,6 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                     )}
                                 </div>
                             )}
-                        </div>
-
-                        {/* Google Maps CTA */}
-                        {business.googleMapsLink && (
-                            <div className="bg-gradient-to-r from-blue-900/30 to-green-900/30 rounded-2xl p-6 border border-blue-800/30">
-                                <h2 className="text-lg font-bold text-white mb-2">📊 Xem trên Google</h2>
-                                <p className="text-neutral-400 text-sm mb-4">
-                                    Xem đánh giá, giờ mở cửa và thông tin chi tiết trên Google Maps
-                                </p>
-                                <a
-                                    href={business.googleMapsLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-neutral-900 font-bold rounded-xl hover:bg-neutral-100 transition-all"
-                                >
-                                    🗺️ Xem trên Google Maps
-                                </a>
-                            </div>
-                        )}
-
-                        {/* Share Card */}
-                        <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
-                            <h2 className="text-lg font-bold text-white mb-4">🔗 Chia sẻ</h2>
-                            <p className="text-neutral-400 text-sm mb-4">
-                                Giới thiệu địa điểm này cho bạn bè và gia đình
-                            </p>
-                            <div className="flex gap-3">
-                                <a
-                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                                        `https://dfw-viet-biz.vercel.app/business/${business.slug}`
-                                    )}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-500 transition-colors text-center font-medium"
-                                >
-                                    Facebook
-                                </a>
-                                <a
-                                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                                        `${business.name} - ${business.subcategory || business.category} tại ${city}`
-                                    )}&url=${encodeURIComponent(
-                                        `https://dfw-viet-biz.vercel.app/business/${business.slug}`
-                                    )}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 px-4 py-3 bg-neutral-700 text-white rounded-xl hover:bg-neutral-600 transition-colors text-center font-medium"
-                                >
-                                    X/Twitter
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
