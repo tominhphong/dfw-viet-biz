@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
 
-        const { name, category, address, phone, website, email, description, submitterEmail } = body;
+        const { name, category, address, phone, website, email, description, submitterEmail, googleMapsLink } = body;
 
         if (!name || !category || !address) {
             return NextResponse.json(
@@ -25,6 +25,7 @@ export async function POST(request: NextRequest) {
                 email: email || null,
                 description: description || null,
                 submitter_email: submitterEmail || null,
+                google_maps_link: googleMapsLink || null,
                 status: 'pending'
             })
             .select()

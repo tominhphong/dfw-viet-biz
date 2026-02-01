@@ -54,15 +54,20 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
             newErrors.address = "Address is required";
         }
 
-        if (formData.phone && !/^[\d\s\-()]+$/.test(formData.phone)) {
-            newErrors.phone = "Invalid phone format";
+        // Phone: just check if it has 10 digits when stripped
+        if (formData.phone) {
+            const digits = formData.phone.replace(/\D/g, "");
+            if (digits.length !== 10 && digits.length !== 0) {
+                newErrors.phone = "Vui lòng nhập đủ 10 số điện thoại";
+            }
         }
 
         if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             newErrors.email = "Invalid email format";
         }
 
-        if (formData.website && !/^[\w\-.]+(\.[\w\-]+)+/.test(formData.website)) {
+        // Website: accept https://, http://, www., or just domain
+        if (formData.website && !/^(https?:\/\/)?(www\.)?[\w\-.]+(\.[\w\-]+)+/.test(formData.website)) {
             newErrors.website = "Invalid website format";
         }
 
@@ -80,6 +85,15 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
         // Build full address
         const fullAddress = `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`;
 
+        // Generate Google Maps link from address
+        const googleMapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+
+        // Format website to ensure it has protocol
+        let formattedWebsite = formData.website || null;
+        if (formattedWebsite && !formattedWebsite.startsWith('http')) {
+            formattedWebsite = `https://${formattedWebsite}`;
+        }
+
         try {
             const response = await fetch("/api/submit", {
                 method: "POST",
@@ -89,10 +103,11 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                     category: formData.category,
                     address: fullAddress,
                     phone: formData.phone || null,
-                    website: formData.website || null,
+                    website: formattedWebsite,
                     email: formData.email || null,
                     description: formData.description || null,
                     submitterEmail: formData.ownerName || null,
+                    googleMapsLink: googleMapsLink,
                 }),
             });
 
@@ -113,9 +128,25 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
         setIsSubmitting(false);
     };
 
+    // Format phone number as user types: (xxx) xxx-xxxx
+    const formatPhoneNumber = (value: string): string => {
+        const digits = value.replace(/\D/g, "");
+        if (digits.length === 0) return "";
+        if (digits.length <= 3) return `(${digits}`;
+        if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+        return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+
+        // Auto-format phone number
+        if (name === "phone") {
+            setFormData((prev) => ({ ...prev, [name]: formatPhoneNumber(value) }));
+        } else {
+            setFormData((prev) => ({ ...prev, [name]: value }));
+        }
+
         // Clear error when user starts typing
         if (errors[name as keyof FormData]) {
             setErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -285,10 +316,11 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                                 name="website"
                                 value={formData.website}
                                 onChange={handleChange}
-                                placeholder="www.example.com"
+                                placeholder="example.com hoặc https://www.example.com"
                                 className={`w-full px-4 py-3 bg-neutral-700 border rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 ${errors.website ? "border-red-500" : "border-neutral-600"
                                     }`}
                             />
+                            <p className="text-neutral-500 text-xs mt-1">Có thể nhập: facebook.com, www.example.com, hoặc https://...</p>
                             {errors.website && <p className="text-red-400 text-sm mt-1">{errors.website}</p>}
                         </div>
 
