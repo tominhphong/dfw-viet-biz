@@ -22,6 +22,17 @@ interface ApprovedBusiness {
     created_at: string;
 }
 
+interface SeedBusiness {
+    id: number;
+    name: string;
+    slug: string;
+    category: string;
+    subcategory?: string;
+    address?: string;
+    city?: string;
+    phone?: string;
+}
+
 export default function AdminPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [password, setPassword] = useState("");
@@ -30,6 +41,9 @@ export default function AdminPage() {
     const [showApproved, setShowApproved] = useState(false);
     const [logs, setLogs] = useState<ActionLog[]>([]);
     const [showLogs, setShowLogs] = useState(false);
+    const [seedBusinesses, setSeedBusinesses] = useState<SeedBusiness[]>([]);
+    const [showSeed, setShowSeed] = useState(false);
+    const [seedSearch, setSeedSearch] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
@@ -76,6 +90,48 @@ export default function AdminPage() {
         }
     };
 
+    // Fetch seed businesses
+    const fetchSeedBusinesses = async () => {
+        try {
+            const response = await fetch("/api/admin/seed");
+            const result = await response.json();
+            if (result.success) {
+                setSeedBusinesses(result.businesses);
+            }
+        } catch {
+            console.error("Không thể tải seed businesses");
+        }
+    };
+
+    // Handle delete seed business
+    const handleDeleteSeed = async (id: number, name: string) => {
+        if (!confirm(`Xóa "${name}" khỏi danh sách gốc (seed.json)? Hành động này không thể hoàn tác!`)) return;
+
+        setLoading(true);
+        setMessage("");
+        setError("");
+
+        try {
+            const response = await fetch("/api/admin/seed", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, password }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                setMessage(`🗑️ Đã xóa "${name}" thành công! Còn ${result.remainingCount} doanh nghiệp.`);
+                setSeedBusinesses(seedBusinesses.filter((b) => b.id !== id));
+            } else {
+                setError(result.error || "Có lỗi xảy ra");
+            }
+        } catch {
+            setError("Không thể kết nối server");
+        }
+        setLoading(false);
+    };
+
     // Handle delete approved business
     const handleDelete = async (id: number, name: string) => {
         if (!confirm(`Xóa "${name}" khỏi website? Hành động này không thể hoàn tác!`)) return;
@@ -110,9 +166,17 @@ export default function AdminPage() {
         if (isLoggedIn) {
             fetchSubmissions();
             fetchApprovedBusinesses();
+            fetchSeedBusinesses();
             fetchLogs();
         }
     }, [isLoggedIn]);
+
+    // Filter seed businesses by search
+    const filteredSeedBusinesses = seedBusinesses.filter((biz) =>
+        biz.name.toLowerCase().includes(seedSearch.toLowerCase()) ||
+        (biz.address && biz.address.toLowerCase().includes(seedSearch.toLowerCase())) ||
+        biz.category.toLowerCase().includes(seedSearch.toLowerCase())
+    );
 
     // Handle login
     const handleLogin = (e: React.FormEvent) => {
@@ -337,7 +401,7 @@ export default function AdminPage() {
                 {/* Refresh button */}
                 <div className="mt-8 text-center">
                     <button
-                        onClick={() => { fetchSubmissions(); fetchApprovedBusinesses(); fetchLogs(); }}
+                        onClick={() => { fetchSubmissions(); fetchApprovedBusinesses(); fetchSeedBusinesses(); fetchLogs(); }}
                         disabled={loading}
                         className="px-6 py-3 bg-neutral-700 hover:bg-neutral-600 rounded-xl transition-colors"
                     >
@@ -383,6 +447,71 @@ export default function AdminPage() {
                                     </div>
                                 ))
                             )}
+                        </div>
+                    )}
+                </div>
+
+                {/* Seed Businesses Management Section */}
+                <div className="mt-8 p-4 bg-neutral-800 rounded-xl border border-neutral-700">
+                    <button
+                        onClick={() => setShowSeed(!showSeed)}
+                        className="w-full flex justify-between items-center text-lg font-bold"
+                    >
+                        <span>📦 Quản lý dữ liệu gốc - seed.json ({seedBusinesses.length})</span>
+                        <span className="text-neutral-500">{showSeed ? '▼' : '▶'}</span>
+                    </button>
+
+                    {showSeed && (
+                        <div className="mt-4">
+                            {/* Search box */}
+                            <input
+                                type="text"
+                                value={seedSearch}
+                                onChange={(e) => setSeedSearch(e.target.value)}
+                                placeholder="Tìm kiếm theo tên, địa chỉ hoặc danh mục..."
+                                className="w-full px-4 py-3 mb-4 bg-neutral-700 border border-neutral-600 rounded-xl text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                            />
+                            <p className="text-sm text-neutral-400 mb-4">
+                                Hiển thị {filteredSeedBusinesses.length} / {seedBusinesses.length} doanh nghiệp
+                            </p>
+                            <div className="space-y-3 max-h-96 overflow-y-auto">
+                                {filteredSeedBusinesses.length === 0 ? (
+                                    <p className="text-neutral-500 text-center py-4">Không tìm thấy doanh nghiệp nào</p>
+                                ) : (
+                                    filteredSeedBusinesses.slice(0, 50).map((biz) => (
+                                        <div
+                                            key={biz.id}
+                                            className="p-3 bg-neutral-700/50 rounded-lg border border-neutral-600 flex justify-between items-center"
+                                        >
+                                            <div className="flex-1">
+                                                <span className="font-bold text-white">{biz.name}</span>
+                                                <span className="ml-2 text-sm text-blue-400">({biz.category})</span>
+                                                {biz.subcategory && (
+                                                    <span className="ml-1 text-xs text-neutral-500">• {biz.subcategory}</span>
+                                                )}
+                                                {biz.address && (
+                                                    <p className="text-sm text-neutral-400 mt-1">📍 {biz.address}{biz.city ? `, ${biz.city}` : ''}</p>
+                                                )}
+                                                {biz.phone && (
+                                                    <p className="text-sm text-neutral-400">📞 {biz.phone}</p>
+                                                )}
+                                            </div>
+                                            <button
+                                                onClick={() => handleDeleteSeed(biz.id, biz.name)}
+                                                disabled={loading}
+                                                className="ml-4 px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
+                                            >
+                                                🗑️ Xóa
+                                            </button>
+                                        </div>
+                                    ))
+                                )}
+                                {filteredSeedBusinesses.length > 50 && (
+                                    <p className="text-center text-neutral-500 py-2">
+                                        ... và {filteredSeedBusinesses.length - 50} doanh nghiệp khác. Hãy tìm kiếm cụ thể hơn.
+                                    </p>
+                                )}
+                            </div>
                         </div>
                     )}
                 </div>
