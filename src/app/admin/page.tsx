@@ -26,6 +26,7 @@ interface ApprovedBusiness {
     website: string | null;
     email: string | null;
     description: string | null;
+    images: string[] | null;
     created_at: string;
 }
 
@@ -80,6 +81,10 @@ export default function AdminPage() {
     const [message, setMessage] = useState("");
     const [editingBusiness, setEditingBusiness] = useState<ApprovedBusiness | null>(null);
     const [editForm, setEditForm] = useState<Record<string, string>>({});
+    const [existingImages, setExistingImages] = useState<string[]>([]);
+    const [editImageFiles, setEditImageFiles] = useState<File[]>([]);
+    const [editImagePreviews, setEditImagePreviews] = useState<string[]>([]);
+    const [uploadingImages, setUploadingImages] = useState(false);
 
     // Fetch pending submissions
     const fetchSubmissions = async () => {
@@ -138,15 +143,70 @@ export default function AdminPage() {
             email: biz.email || "",
             description: biz.description || "",
         });
+        setExistingImages(biz.images || []);
+        setEditImageFiles([]);
+        setEditImagePreviews([]);
+    };
+
+    const handleEditImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = Array.from(e.target.files || []);
+        const totalImages = existingImages.length + editImageFiles.length + files.length;
+        if (totalImages > 5) {
+            setError("Tối đa 5 ảnh. Hãy xóa bớt ảnh cũ trước.");
+            return;
+        }
+        const newPreviews = files.map(f => URL.createObjectURL(f));
+        setEditImageFiles(prev => [...prev, ...files]);
+        setEditImagePreviews(prev => [...prev, ...newPreviews]);
+        e.target.value = "";
+    };
+
+    const handleRemoveExistingImage = (index: number) => {
+        setExistingImages(prev => prev.filter((_, i) => i !== index));
+    };
+
+    const handleRemoveNewImage = (index: number) => {
+        URL.revokeObjectURL(editImagePreviews[index]);
+        setEditImageFiles(prev => prev.filter((_, i) => i !== index));
+        setEditImagePreviews(prev => prev.filter((_, i) => i !== index));
     };
 
     const handleSaveEdit = async () => {
         if (!editingBusiness) return;
         setLoading(true);
+        setUploadingImages(true);
         setMessage("");
         setError("");
 
         try {
+            // Upload new images first
+            let newImageUrls: string[] = [];
+            if (editImageFiles.length > 0) {
+                const uploadPromises = editImageFiles.map(async (file) => {
+                    const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}-${file.name}`;
+                    const formDataUpload = new FormData();
+                    formDataUpload.append('file', file);
+                    formDataUpload.append('fileName', fileName);
+
+                    const uploadRes = await fetch('/api/upload-image', {
+                        method: 'POST',
+                        body: formDataUpload,
+                    });
+
+                    if (uploadRes.ok) {
+                        const uploadData = await uploadRes.json();
+                        return uploadData.url;
+                    }
+                    return null;
+                });
+
+                const results = await Promise.all(uploadPromises);
+                newImageUrls = results.filter((url): url is string => url !== null);
+            }
+
+            // Combine existing + new images
+            const allImages = [...existingImages, ...newImageUrls];
+
             const response = await fetch("/api/admin/edit", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -165,6 +225,7 @@ export default function AdminPage() {
                         website: editForm.website || null,
                         email: editForm.email || null,
                         description: editForm.description || null,
+                        images: allImages,
                     },
                 }),
             });
@@ -173,7 +234,12 @@ export default function AdminPage() {
 
             if (response.ok) {
                 setMessage(`✅ Đã cập nhật "${editForm.name}" thành công!`);
+                // Cleanup preview URLs
+                editImagePreviews.forEach(url => URL.revokeObjectURL(url));
                 setEditingBusiness(null);
+                setEditImageFiles([]);
+                setEditImagePreviews([]);
+                setExistingImages([]);
                 fetchApprovedBusinesses();
             } else {
                 setError(result.error || "Có lỗi xảy ra khi cập nhật");
@@ -181,6 +247,7 @@ export default function AdminPage() {
         } catch {
             setError("Không thể kết nối server");
         }
+        setUploadingImages(false);
         setLoading(false);
     };
 
@@ -865,14 +932,81 @@ export default function AdminPage() {
                                     />
                                 </div>
 
+                                {/* Image Management */}
+                                <div>
+                                    <label className="block text-sm font-medium text-neutral-300 mb-2">
+                                        📷 Hình ảnh ({existingImages.length + editImageFiles.length}/5)
+                                    </label>
+
+                                    {/* Existing Images */}
+                                    {existingImages.length > 0 && (
+                                        <div className="grid grid-cols-3 gap-2 mb-3">
+                                            {existingImages.map((url, index) => (
+                                                <div key={`existing-${index}`} className="relative group">
+                                                    <img
+                                                        src={url}
+                                                        alt={`Ảnh ${index + 1}`}
+                                                        className="w-full h-24 object-cover rounded-lg border border-neutral-600"
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => handleRemoveExistingImage(index)}
+                                                        className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-400"
+                                                    >
+                                                        ✕
+                                                    </button>
+                                                    <span className="absolute bottom-1 left-1 text-xs bg-black/60 text-white px-1 rounded">Đã lưu</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                    {/* New Image Previews */}
+                                    {editImagePreviews.length > 0 && (
+                                        <div className="grid grid-cols-3 gap-2 mb-3">
+                                            {editImagePreviews.map((url, index) => (
+                                                <div key={`new-${index}`} className="relative group">
+                                                    <img
+                                                        src={url}
+                                                        alt={`Ảnh mới ${index + 1}`}
+                                                        className="w-full h-24 object-cover rounded-lg border-2 border-yellow-500/50"
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => handleRemoveNewImage(index)}
+                                                        className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-400"
+                                                    >
+                                                        ✕
+                                                    </button>
+                                                    <span className="absolute bottom-1 left-1 text-xs bg-yellow-500/80 text-black px-1 rounded font-medium">Mới</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                    {/* Upload Button */}
+                                    {existingImages.length + editImageFiles.length < 5 && (
+                                        <label className="flex items-center justify-center gap-2 p-3 bg-neutral-700/50 border-2 border-dashed border-neutral-600 rounded-lg cursor-pointer hover:border-yellow-500 hover:bg-neutral-700 transition-all">
+                                            <span className="text-neutral-400 text-sm">📷 Thêm ảnh (tối đa 5)</span>
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                multiple
+                                                onChange={handleEditImageSelect}
+                                                className="hidden"
+                                            />
+                                        </label>
+                                    )}
+                                </div>
+
                                 {/* Action Buttons */}
                                 <div className="flex gap-3 pt-2">
                                     <button
                                         onClick={handleSaveEdit}
-                                        disabled={loading || !editForm.name?.trim()}
+                                        disabled={loading || uploadingImages || !editForm.name?.trim()}
                                         className="flex-1 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        {loading ? "⏳ Đang lưu..." : "💾 Lưu Thay Đổi"}
+                                        {uploadingImages ? "📷 Đang tải ảnh..." : loading ? "⏳ Đang lưu..." : "💾 Lưu Thay Đổi"}
                                     </button>
                                     <button
                                         onClick={() => setEditingBusiness(null)}

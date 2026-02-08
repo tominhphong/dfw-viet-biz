@@ -25,7 +25,7 @@ export async function PUT(request: NextRequest) {
         const allowedFields = [
             'name', 'category', 'subcategory', 'original_category',
             'address', 'city', 'state', 'phone', 'website',
-            'email', 'description', 'google_maps_link'
+            'email', 'description', 'google_maps_link', 'images'
         ];
 
         const sanitizedUpdates: Record<string, unknown> = {};

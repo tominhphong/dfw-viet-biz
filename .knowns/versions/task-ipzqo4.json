@@ -1,0 +1,43 @@
+{
+  "taskId": "ipzqo4",
+  "currentVersion": 1,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "ipzqo4",
+      "version": 1,
+      "timestamp": "2026-02-01T17:34:53.335Z",
+      "changes": [
+        {
+          "field": "implementationNotes",
+          "newValue": "## Implementation Summary\n\n**Files Modified:**\n- `app/submit/page.tsx` - Added formatPhone() helper, flexible website validation, Google Maps URL generation\n\n**Key Decisions:**\n- Phone formatting: `value.replace(/\\D/g, '').replace(/(\\d{3})(\\d{3})(\\d{4})/, '() -')`\n- Website validation accepts optional protocol\n- Maps link: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`\n\n**Pattern Documented:** @doc/patterns/form-validation-patterns\n**Verified:** 2026-01-28\n**Conversation:** 2f91c8e6-accb-46fe-85b6-79e802fda27d"
+        }
+      ],
+      "snapshot": {
+        "title": "Enhance Submission Form UX",
+        "description": "Improve business submission form with auto-formatting and validation. See conversation 2f91c8e6-accb-46fe-85b6-79e802fda27d for context.",
+        "status": "done",
+        "priority": "high",
+        "labels": [
+          "enhancement",
+          "ux"
+        ],
+        "acceptanceCriteria": [
+          {
+            "completed": false,
+            "text": "Phone numbers auto-format to (xxx) xxx-xxxx"
+          },
+          {
+            "completed": false,
+            "text": "Website accepts both https://www. and www. prefixes"
+          },
+          {
+            "completed": false,
+            "text": "Street addresses auto-link to Google Maps"
+          }
+        ],
+        "implementationNotes": "## Implementation Summary\n\n**Files Modified:**\n- `app/submit/page.tsx` - Added formatPhone() helper, flexible website validation, Google Maps URL generation\n\n**Key Decisions:**\n- Phone formatting: `value.replace(/\\D/g, '').replace(/(\\d{3})(\\d{3})(\\d{4})/, '() -')`\n- Website validation accepts optional protocol\n- Maps link: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`\n\n**Pattern Documented:** @doc/patterns/form-validation-patterns\n**Verified:** 2026-01-28\n**Conversation:** 2f91c8e6-accb-46fe-85b6-79e802fda27d"
+      }
+    }
+  ]
+}
