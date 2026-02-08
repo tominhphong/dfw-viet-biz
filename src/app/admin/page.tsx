@@ -64,6 +64,41 @@ interface SeedBusiness {
     phone?: string;
 }
 
+// Compress image client-side to avoid Vercel 4.5MB limit
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB
+const compressImage = (file: File): Promise<File> => {
+    return new Promise((resolve) => {
+        if (file.size <= MAX_IMAGE_SIZE) {
+            resolve(file);
+            return;
+        }
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.onload = () => {
+            const maxDim = 1200;
+            let w = img.width;
+            let h = img.height;
+            if (w > maxDim || h > maxDim) {
+                if (w > h) { h = (h / w) * maxDim; w = maxDim; }
+                else { w = (w / h) * maxDim; h = maxDim; }
+            }
+            canvas.width = w;
+            canvas.height = h;
+            ctx?.drawImage(img, 0, 0, w, h);
+            canvas.toBlob((blob) => {
+                if (blob) {
+                    resolve(new File([blob], file.name.replace(/\.\w+$/, '.jpg'), { type: 'image/jpeg' }));
+                } else {
+                    resolve(file);
+                }
+            }, 'image/jpeg', 0.8);
+        };
+        img.src = URL.createObjectURL(file);
+    });
+};
+
 export default function AdminPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [password, setPassword] = useState("");
@@ -179,13 +214,14 @@ export default function AdminPage() {
         setError("");
 
         try {
-            // Upload new images first
+            // Upload new images first (compress to avoid 413)
             let newImageUrls: string[] = [];
             if (editImageFiles.length > 0) {
                 const uploadPromises = editImageFiles.map(async (file) => {
-                    const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}-${file.name}`;
+                    const compressed = await compressImage(file);
+                    const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}-${compressed.name}`;
                     const formDataUpload = new FormData();
-                    formDataUpload.append('file', file);
+                    formDataUpload.append('file', compressed);
                     formDataUpload.append('fileName', fileName);
 
                     const uploadRes = await fetch('/api/upload-image', {

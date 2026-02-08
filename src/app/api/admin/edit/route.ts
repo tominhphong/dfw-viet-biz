@@ -79,8 +79,7 @@ export async function PUT(request: NextRequest) {
             .from('approved_businesses')
             .update(sanitizedUpdates)
             .eq('id', id)
-            .select()
-            .single();
+            .select();
 
         if (updateError) {
             console.error('Update error:', updateError);
@@ -90,9 +89,16 @@ export async function PUT(request: NextRequest) {
             );
         }
 
+        if (!data || data.length === 0) {
+            return NextResponse.json(
+                { error: 'Không tìm thấy doanh nghiệp với ID này' },
+                { status: 404 }
+            );
+        }
+
         return NextResponse.json({
             success: true,
-            data,
+            data: data[0],
             message: `Đã cập nhật thành công!`
         });
     } catch (error) {

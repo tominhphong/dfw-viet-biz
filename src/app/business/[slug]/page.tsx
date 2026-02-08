@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import seedData from "../../../data/seed.json";
 import { createClient } from "@supabase/supabase-js";
 import type { Metadata } from "next";
 
@@ -37,22 +36,16 @@ interface PageProps {
 // Allow dynamic params for approved businesses from Supabase
 export const dynamicParams = true;
 
-// Generate static paths for seed businesses (pre-render)
+// Generate static paths from Supabase
 export async function generateStaticParams() {
-    return (seedData as Business[]).map((business) => ({
-        slug: business.slug,
-    }));
+    const { data } = await supabase
+        .from("approved_businesses")
+        .select("slug");
+    return (data || []).map((b) => ({ slug: b.slug }));
 }
 
-// Helper to find business from seed or Supabase
+// Helper to find business from Supabase
 async function findBusiness(slug: string): Promise<Business | null> {
-    // First, try to find in seed data
-    const seedBusiness = (seedData as Business[]).find((b) => b.slug === slug);
-    if (seedBusiness) {
-        return { ...seedBusiness, images: seedBusiness.images || [], city: seedBusiness.city || null, state: seedBusiness.state || null };
-    }
-
-    // If not found in seed, try Supabase approved_businesses
     const { data: approved, error } = await supabase
         .from("approved_businesses")
         .select("*")

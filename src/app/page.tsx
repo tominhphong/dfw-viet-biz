@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
-import seedData from "../data/seed.json";
 import SubmitBusinessModal from "../components/SubmitBusinessModal";
 import SearchBar from "../components/SearchBar";
 import { useLanguage } from "../context/LanguageContext";
@@ -41,7 +40,7 @@ const MAIN_CATEGORIES = [
 
 export default function Home() {
   const { language, toggleLanguage, t, tc } = useLanguage();
-  const [data, setData] = useState<Business[]>(seedData as Business[]);
+  const [data, setData] = useState<Business[]>([]);
   const [filter, setFilter] = useState("All");
   const [subcategoryFilter, setSubcategoryFilter] = useState("All");
   const [randomPick, setRandomPick] = useState<Business | null>(null);
@@ -49,8 +48,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("name");
 
-  // Fetch all businesses from Supabase (primary source after migration)
-  // Falls back to seed.json only if Supabase is empty (before migration)
+  // Fetch all businesses from Supabase
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
@@ -61,13 +59,10 @@ export default function Home() {
 
         if (error) {
           console.error("Error fetching businesses:", error);
-          // Fallback to seed data on error
-          setData(seedData as Business[]);
           return;
         }
 
         if (dbData && dbData.length > 0) {
-          // Use Supabase data as primary source (after migration)
           const convertedData: Business[] = dbData.map((item) => ({
             id: item.id,
             name: item.name,
@@ -86,14 +81,9 @@ export default function Home() {
             linkType: item.link_type
           }));
           setData(convertedData);
-        } else {
-          // Fallback to seed if Supabase is empty (before migration)
-          console.log("Supabase empty, using seed.json");
-          setData(seedData as Business[]);
         }
       } catch (err) {
         console.error("Failed to fetch businesses:", err);
-        setData(seedData as Business[]);
       }
     };
 
