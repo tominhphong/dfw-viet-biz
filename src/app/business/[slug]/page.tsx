@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import seedData from "../../../data/seed.json";
 import { createClient } from "@supabase/supabase-js";
 import type { Metadata } from "next";
@@ -18,12 +19,15 @@ interface Business {
     originalCategory: string | null;
     subcategory: string | null;
     address: string;
+    city: string | null;
+    state: string | null;
     phone: string | null;
     website: string | null;
     email: string | null;
     description: string;
     googleMapsLink: string | null;
     linkType: string | null;
+    images: string[];
 }
 
 interface PageProps {
@@ -45,7 +49,7 @@ async function findBusiness(slug: string): Promise<Business | null> {
     // First, try to find in seed data
     const seedBusiness = (seedData as Business[]).find((b) => b.slug === slug);
     if (seedBusiness) {
-        return seedBusiness;
+        return { ...seedBusiness, images: seedBusiness.images || [], city: seedBusiness.city || null, state: seedBusiness.state || null };
     }
 
     // If not found in seed, try Supabase approved_businesses
@@ -68,18 +72,22 @@ async function findBusiness(slug: string): Promise<Business | null> {
         originalCategory: approved.original_category || approved.category,
         subcategory: approved.subcategory,
         address: approved.address,
+        city: approved.city || null,
+        state: approved.state || "TX",
         phone: approved.phone,
         website: approved.website,
         email: approved.email,
         description: approved.description || `${approved.name} - Doanh nghiệp Việt Nam tại DFW`,
         googleMapsLink: approved.google_maps_link,
-        linkType: approved.link_type
+        linkType: approved.link_type,
+        images: approved.images || [],
     };
 }
 
-// Extract city from address
-function extractCity(address: string): string {
-    const parts = address.split(",");
+// Extract city from business data or address
+function extractCity(business: Business): string {
+    if (business.city) return business.city;
+    const parts = business.address.split(",");
     if (parts.length >= 2) {
         const cityPart = parts[parts.length - 2].trim();
         return cityPart.replace(/\d+/g, "").trim() || "DFW";
@@ -96,7 +104,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         return { title: "Business Not Found | DFW Vietnamese Biz" };
     }
 
-    const city = extractCity(business.address);
+    const city = extractCity(business);
+    const firstImage = business.images?.[0];
+
     return {
         title: `${business.name} | ${business.subcategory || business.category} tại ${city}`,
         description: `${business.name} - ${business.subcategory || business.category} tại ${city}. ${business.description || "Doanh nghiệp Việt Nam uy tín tại DFW."}`,
@@ -104,6 +114,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             title: `${business.name} | DFW Vietnamese Biz`,
             description: `${business.subcategory || business.category} tại ${city}`,
             type: "website",
+            ...(firstImage ? { images: [{ url: firstImage }] } : {}),
         },
     };
 }
@@ -116,14 +127,24 @@ export default async function BusinessDetailPage({ params }: PageProps) {
         notFound();
     }
 
-    const city = extractCity(business.address);
+    const city = extractCity(business);
+    const hasImages = business.images && business.images.length > 0;
 
     const categoryColors: Record<string, string> = {
+        Restaurant: "from-orange-500 to-red-500",
+        Healthcare: "from-blue-500 to-cyan-500",
+        Retail: "from-pink-500 to-rose-500",
+        Automotive: "from-amber-500 to-orange-500",
+        "Beauty & Personal Care": "from-fuchsia-500 to-pink-500",
+        "Professional Services": "from-sky-500 to-blue-500",
+        Religious: "from-indigo-500 to-violet-500",
+        Community: "from-green-500 to-teal-500",
         Food: "from-orange-500 to-red-500",
         Services: "from-blue-500 to-cyan-500",
         Shopping: "from-pink-500 to-purple-500",
-        Community: "from-green-500 to-teal-500",
     };
+
+    const gradientClass = categoryColors[business.originalCategory || business.category] || "from-gray-500 to-gray-600";
 
     return (
         <div className="min-h-screen bg-neutral-900 text-neutral-100">
@@ -138,29 +159,45 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                     </Link>
 
                     <div className="flex items-start gap-4">
-                        <div
-                            className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${categoryColors[business.category] || "from-gray-500 to-gray-600"
-                                } flex items-center justify-center text-3xl md:text-4xl font-bold text-white shadow-lg`}
-                        >
-                            {business.name.charAt(0)}
-                        </div>
+                        {/* Avatar or first image */}
+                        {hasImages ? (
+                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                                <Image
+                                    src={business.images[0]}
+                                    alt={business.name}
+                                    width={80}
+                                    height={80}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        ) : (
+                            <div
+                                className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${gradientClass} flex items-center justify-center text-3xl md:text-4xl font-bold text-white shadow-lg flex-shrink-0`}
+                            >
+                                {business.name.charAt(0)}
+                            </div>
+                        )}
 
                         <div className="flex-1">
                             <div className="flex flex-wrap items-center gap-2 mb-2">
                                 <span
-                                    className={`inline-block px-3 py-1 text-xs font-bold rounded-full bg-gradient-to-r ${categoryColors[business.category] || "from-gray-500 to-gray-600"
-                                        } text-white`}
+                                    className={`inline-block px-3 py-1 text-xs font-bold rounded-full bg-gradient-to-r ${gradientClass} text-white`}
                                 >
                                     {business.subcategory || business.category}
                                 </span>
+                                {business.originalCategory && business.originalCategory !== (business.subcategory || business.category) && (
+                                    <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-neutral-700 text-neutral-300">
+                                        {business.originalCategory}
+                                    </span>
+                                )}
                             </div>
                             <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-2">
                                 {business.name}
                             </h1>
                             <div className="flex flex-wrap items-center gap-4 text-neutral-400">
-                                <span className="text-neutral-400">📍 {city}</span>
+                                <span>📍 {city}{business.state ? `, ${business.state}` : ""}</span>
                                 {business.phone && (
-                                    <span className="text-neutral-400">📞 {business.phone}</span>
+                                    <span>📞 {business.phone}</span>
                                 )}
                             </div>
                         </div>
@@ -170,6 +207,46 @@ export default async function BusinessDetailPage({ params }: PageProps) {
 
             {/* Content */}
             <main className="max-w-4xl mx-auto px-6 py-8 md:py-12">
+                {/* Image Gallery */}
+                {hasImages && (
+                    <div className="mb-8">
+                        <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            📷 Hình ảnh
+                        </h2>
+                        {business.images.length === 1 ? (
+                            <div className="rounded-2xl overflow-hidden border border-neutral-700">
+                                <Image
+                                    src={business.images[0]}
+                                    alt={`${business.name} - ảnh 1`}
+                                    width={800}
+                                    height={450}
+                                    className="w-full h-auto max-h-96 object-cover"
+                                />
+                            </div>
+                        ) : (
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                {business.images.map((url, index) => (
+                                    <a
+                                        key={index}
+                                        href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group rounded-xl overflow-hidden border border-neutral-700 hover:border-yellow-500 transition-colors"
+                                    >
+                                        <Image
+                                            src={url}
+                                            alt={`${business.name} - ảnh ${index + 1}`}
+                                            width={400}
+                                            height={300}
+                                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
+
                 <div className="grid md:grid-cols-2 gap-6">
                     {/* Left Column */}
                     <div className="space-y-6">
