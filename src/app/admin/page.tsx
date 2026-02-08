@@ -17,10 +17,40 @@ interface ApprovedBusiness {
     name: string;
     slug: string;
     category: string;
+    subcategory: string | null;
+    original_category: string | null;
     address: string;
+    city: string | null;
+    state: string | null;
     phone: string | null;
+    website: string | null;
+    email: string | null;
+    description: string | null;
     created_at: string;
 }
+
+// Main categories matching homepage
+const MAIN_CATEGORIES = [
+    "Restaurant",
+    "Healthcare",
+    "Retail",
+    "Automotive",
+    "Beauty & Personal Care",
+    "Professional Services",
+    "Religious",
+    "Community",
+];
+
+const SUBCATEGORIES: Record<string, string[]> = {
+    "Restaurant": ["Phở", "Bánh Mì", "Cà Phê", "Chợ Việt", "Chợ Châu Á", "Chợ Hải Sản", "Nhà Hàng", "Quán Ăn", "Tiệm Bánh"],
+    "Healthcare": ["Bác Sĩ", "Nha Khoa", "Chỉnh Hình Cột Sống", "Châm Cứu", "Thuốc Bắc", "Y Tế Tại Nhà"],
+    "Retail": ["Chợ Việt", "Chợ Châu Á", "Cửa Hàng", "Tạp Hóa"],
+    "Automotive": ["Sửa Xe", "Rửa Xe", "Phụ Tùng"],
+    "Beauty & Personal Care": ["Tiệm Nail", "Tiệm Tóc", "Spa", "Thẩm Mỹ"],
+    "Professional Services": ["Kế Toán", "Bảo Hiểm", "Bảo Hiểm & Thuế", "Luật Sư", "Địa Ốc", "Dịch Vụ Di Trú"],
+    "Religious": ["Chùa Phật Giáo", "Nhà Thờ", "Tôn Giáo"],
+    "Community": ["Cộng Đồng", "Hội Đoàn", "Câu Lạc Bộ Bóng Đá", "Dịch Vụ"],
+};
 
 interface SeedBusiness {
     id: number;
@@ -48,6 +78,8 @@ export default function AdminPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
+    const [editingBusiness, setEditingBusiness] = useState<ApprovedBusiness | null>(null);
+    const [editForm, setEditForm] = useState<Record<string, string>>({});
 
     // Fetch pending submissions
     const fetchSubmissions = async () => {
@@ -89,6 +121,67 @@ export default function AdminPage() {
         if (!error && data) {
             setApprovedBusinesses(data);
         }
+    };
+
+    // Handle edit business
+    const handleOpenEdit = (biz: ApprovedBusiness) => {
+        setEditingBusiness(biz);
+        setEditForm({
+            name: biz.name || "",
+            category: biz.original_category || biz.category || "Restaurant",
+            subcategory: biz.subcategory || "",
+            address: biz.address || "",
+            city: biz.city || "",
+            state: biz.state || "TX",
+            phone: biz.phone || "",
+            website: biz.website || "",
+            email: biz.email || "",
+            description: biz.description || "",
+        });
+    };
+
+    const handleSaveEdit = async () => {
+        if (!editingBusiness) return;
+        setLoading(true);
+        setMessage("");
+        setError("");
+
+        try {
+            const response = await fetch("/api/admin/edit", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    id: editingBusiness.id,
+                    password,
+                    updates: {
+                        name: editForm.name,
+                        category: editForm.category,
+                        subcategory: editForm.subcategory || null,
+                        original_category: editForm.category,
+                        address: editForm.address,
+                        city: editForm.city || null,
+                        state: editForm.state || "TX",
+                        phone: editForm.phone || null,
+                        website: editForm.website || null,
+                        email: editForm.email || null,
+                        description: editForm.description || null,
+                    },
+                }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                setMessage(`✅ Đã cập nhật "${editForm.name}" thành công!`);
+                setEditingBusiness(null);
+                fetchApprovedBusinesses();
+            } else {
+                setError(result.error || "Có lỗi xảy ra khi cập nhật");
+            }
+        } catch {
+            setError("Không thể kết nối server");
+        }
+        setLoading(false);
     };
 
     // Fetch seed businesses
@@ -456,18 +549,30 @@ export default function AdminPage() {
                                                 <div className="flex-1">
                                                     <span className="font-bold text-white">{biz.name}</span>
                                                     <span className="ml-2 text-sm text-yellow-500">({biz.category})</span>
+                                                    {biz.subcategory && (
+                                                        <span className="ml-1 text-xs text-neutral-500">• {biz.subcategory}</span>
+                                                    )}
                                                     <p className="text-sm text-neutral-400 mt-1">📍 {biz.address}</p>
                                                     {biz.phone && (
                                                         <p className="text-sm text-neutral-400">📞 {biz.phone}</p>
                                                     )}
                                                 </div>
-                                                <button
-                                                    onClick={() => handleDelete(biz.id, biz.name)}
-                                                    disabled={loading}
-                                                    className="ml-4 px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
-                                                >
-                                                    🗑️ Xóa
-                                                </button>
+                                                <div className="flex gap-2 ml-4">
+                                                    <button
+                                                        onClick={() => handleOpenEdit(biz)}
+                                                        disabled={loading}
+                                                        className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
+                                                    >
+                                                        ✏️ Sửa
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleDelete(biz.id, biz.name)}
+                                                        disabled={loading}
+                                                        className="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
+                                                    >
+                                                        🗑️ Xóa
+                                                    </button>
+                                                </div>
                                             </div>
                                         ))
                                 )}
@@ -603,6 +708,183 @@ export default function AdminPage() {
                         </div>
                     )}
                 </div>
+
+                {/* Edit Business Modal */}
+                {editingBusiness && (
+                    <div
+                        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                        onClick={(e) => { if (e.target === e.currentTarget) setEditingBusiness(null); }}
+                    >
+                        <div className="bg-neutral-800 rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto border border-neutral-700 shadow-2xl">
+                            {/* Header */}
+                            <div className="sticky top-0 bg-neutral-800 p-6 border-b border-neutral-700 flex justify-between items-center z-10">
+                                <div>
+                                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                                        ✏️ Chỉnh Sửa Doanh Nghiệp
+                                    </h2>
+                                    <p className="text-neutral-400 text-sm mt-1">
+                                        Cập nhật thông tin cho &quot;{editingBusiness.name}&quot;
+                                    </p>
+                                </div>
+                                <button
+                                    onClick={() => setEditingBusiness(null)}
+                                    className="text-neutral-400 hover:text-white transition-colors text-2xl leading-none"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+
+                            <div className="p-6 space-y-4">
+                                {/* Business Name */}
+                                <div>
+                                    <label className="block text-sm font-medium text-neutral-300 mb-1">
+                                        Tên Doanh Nghiệp <span className="text-red-400">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={editForm.name || ""}
+                                        onChange={(e) => setEditForm(prev => ({ ...prev, name: e.target.value }))}
+                                        className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    />
+                                </div>
+
+                                {/* Category */}
+                                <div>
+                                    <label className="block text-sm font-medium text-neutral-300 mb-1">
+                                        Danh Mục Chính
+                                    </label>
+                                    <select
+                                        value={editForm.category || "Restaurant"}
+                                        onChange={(e) => setEditForm(prev => ({ ...prev, category: e.target.value, subcategory: "" }))}
+                                        className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    >
+                                        {MAIN_CATEGORIES.map((cat) => (
+                                            <option key={cat} value={cat}>{cat}</option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* Subcategory */}
+                                {SUBCATEGORIES[editForm.category] && SUBCATEGORIES[editForm.category].length > 0 && (
+                                    <div>
+                                        <label className="block text-sm font-medium text-neutral-300 mb-1">
+                                            Danh Mục Phụ
+                                        </label>
+                                        <select
+                                            value={editForm.subcategory || ""}
+                                            onChange={(e) => setEditForm(prev => ({ ...prev, subcategory: e.target.value }))}
+                                            className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                        >
+                                            <option value="">-- Chọn danh mục phụ --</option>
+                                            {SUBCATEGORIES[editForm.category].map((sub) => (
+                                                <option key={sub} value={sub}>{sub}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                )}
+
+                                {/* Address */}
+                                <div>
+                                    <label className="block text-sm font-medium text-neutral-300 mb-1">
+                                        Địa Chỉ
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={editForm.address || ""}
+                                        onChange={(e) => setEditForm(prev => ({ ...prev, address: e.target.value }))}
+                                        className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    />
+                                </div>
+
+                                {/* City, State */}
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label className="block text-sm font-medium text-neutral-300 mb-1">City</label>
+                                        <input
+                                            type="text"
+                                            value={editForm.city || ""}
+                                            onChange={(e) => setEditForm(prev => ({ ...prev, city: e.target.value }))}
+                                            className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-neutral-300 mb-1">State</label>
+                                        <input
+                                            type="text"
+                                            value={editForm.state || ""}
+                                            onChange={(e) => setEditForm(prev => ({ ...prev, state: e.target.value }))}
+                                            className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Phone */}
+                                <div>
+                                    <label className="block text-sm font-medium text-neutral-300 mb-1">Phone</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.phone || ""}
+                                        onChange={(e) => setEditForm(prev => ({ ...prev, phone: e.target.value }))}
+                                        placeholder="(972) 555-1234"
+                                        className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    />
+                                </div>
+
+                                {/* Website */}
+                                <div>
+                                    <label className="block text-sm font-medium text-neutral-300 mb-1">Website</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.website || ""}
+                                        onChange={(e) => setEditForm(prev => ({ ...prev, website: e.target.value }))}
+                                        placeholder="example.com"
+                                        className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    />
+                                </div>
+
+                                {/* Email */}
+                                <div>
+                                    <label className="block text-sm font-medium text-neutral-300 mb-1">Email</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.email || ""}
+                                        onChange={(e) => setEditForm(prev => ({ ...prev, email: e.target.value }))}
+                                        placeholder="contact@example.com"
+                                        className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    />
+                                </div>
+
+                                {/* Description */}
+                                <div>
+                                    <label className="block text-sm font-medium text-neutral-300 mb-1">Mô tả</label>
+                                    <textarea
+                                        value={editForm.description || ""}
+                                        onChange={(e) => setEditForm(prev => ({ ...prev, description: e.target.value }))}
+                                        rows={3}
+                                        className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
+                                    />
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="flex gap-3 pt-2">
+                                    <button
+                                        onClick={handleSaveEdit}
+                                        disabled={loading || !editForm.name?.trim()}
+                                        className="flex-1 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        {loading ? "⏳ Đang lưu..." : "💾 Lưu Thay Đổi"}
+                                    </button>
+                                    <button
+                                        onClick={() => setEditingBusiness(null)}
+                                        className="px-6 py-3 bg-neutral-700 hover:bg-neutral-600 text-white font-bold rounded-xl transition-colors"
+                                    >
+                                        Hủy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </main>
         </div>
     );

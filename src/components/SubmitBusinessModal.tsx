@@ -10,6 +10,7 @@ interface SubmitBusinessModalProps {
 interface FormData {
     businessName: string;
     category: string;
+    subcategory: string;
     address: string;
     city: string;
     state: string;
@@ -21,9 +22,34 @@ interface FormData {
     ownerName: string;
 }
 
+// Main categories matching homepage MAIN_CATEGORIES
+const MAIN_CATEGORIES = [
+    "Restaurant",
+    "Healthcare",
+    "Retail",
+    "Automotive",
+    "Beauty & Personal Care",
+    "Professional Services",
+    "Religious",
+    "Community",
+];
+
+// Subcategories grouped by main category
+const SUBCATEGORIES: Record<string, string[]> = {
+    "Restaurant": ["Phở", "Bánh Mì", "Cà Phê", "Chợ Việt", "Chợ Châu Á", "Chợ Hải Sản", "Nhà Hàng", "Quán Ăn", "Tiệm Bánh"],
+    "Healthcare": ["Bác Sĩ", "Nha Khoa", "Chỉnh Hình Cột Sống", "Châm Cứu", "Thuốc Bắc", "Y Tế Tại Nhà"],
+    "Retail": ["Chợ Việt", "Chợ Châu Á", "Cửa Hàng", "Tạp Hóa"],
+    "Automotive": ["Sửa Xe", "Rửa Xe", "Phụ Tùng"],
+    "Beauty & Personal Care": ["Tiệm Nail", "Tiệm Tóc", "Spa", "Thẩm Mỹ"],
+    "Professional Services": ["Kế Toán", "Bảo Hiểm", "Bảo Hiểm & Thuế", "Luật Sư", "Địa Ốc", "Dịch Vụ Di Trú"],
+    "Religious": ["Chùa Phật Giáo", "Nhà Thờ", "Tôn Giáo"],
+    "Community": ["Cộng Đồng", "Hội Đoàn", "Câu Lạc Bộ Bóng Đá", "Dịch Vụ"],
+};
+
 const initialFormData: FormData = {
     businessName: "",
-    category: "Food",
+    category: "Restaurant",
+    subcategory: "",
     address: "",
     city: "Garland",
     state: "TX",
@@ -40,8 +66,8 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
     const [errors, setErrors] = useState<Partial<FormData>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-
-    const categories = ["Food", "Services", "Shopping", "Community"];
+    const [imageFiles, setImageFiles] = useState<File[]>([]);
+    const [imagePreviews, setImagePreviews] = useState<string[]>([]);
 
     const validateForm = (): boolean => {
         const newErrors: Partial<FormData> = {};
@@ -95,26 +121,59 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
         }
 
         try {
+            // Upload images to Supabase Storage first (if any)
+            let imageUrls: string[] = [];
+            if (imageFiles.length > 0) {
+                const uploadPromises = imageFiles.map(async (file) => {
+                    const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}-${file.name}`;
+                    const formDataUpload = new FormData();
+                    formDataUpload.append('file', file);
+                    formDataUpload.append('fileName', fileName);
+
+                    const uploadRes = await fetch('/api/upload-image', {
+                        method: 'POST',
+                        body: formDataUpload,
+                    });
+
+                    if (uploadRes.ok) {
+                        const uploadData = await uploadRes.json();
+                        return uploadData.url;
+                    }
+                    return null;
+                });
+
+                const results = await Promise.all(uploadPromises);
+                imageUrls = results.filter((url): url is string => url !== null);
+            }
+
             const response = await fetch("/api/submit", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     name: formData.businessName,
                     category: formData.category,
+                    subcategory: formData.subcategory || null,
                     address: fullAddress,
+                    city: formData.city,
+                    state: formData.state,
                     phone: formData.phone || null,
                     website: formattedWebsite,
                     email: formData.email || null,
                     description: formData.description || null,
                     submitterEmail: formData.ownerName || null,
                     googleMapsLink: googleMapsLink,
+                    images: imageUrls,
                 }),
             });
 
             if (response.ok) {
                 setSubmitStatus("success");
+                // Cleanup preview URLs
+                imagePreviews.forEach(url => URL.revokeObjectURL(url));
                 setTimeout(() => {
                     setFormData(initialFormData);
+                    setImageFiles([]);
+                    setImagePreviews([]);
                     setSubmitStatus("idle");
                     onClose();
                 }, 3000);
@@ -223,21 +282,45 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                         {/* Category */}
                         <div>
                             <label className="block text-sm font-medium text-neutral-300 mb-1">
-                                Category <span className="text-red-400">*</span>
+                                Danh Mục Chính <span className="text-red-400">*</span>
                             </label>
                             <select
                                 name="category"
                                 value={formData.category}
-                                onChange={handleChange}
+                                onChange={(e) => {
+                                    setFormData(prev => ({ ...prev, category: e.target.value, subcategory: "" }));
+                                }}
                                 className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                             >
-                                {categories.map((cat) => (
+                                {MAIN_CATEGORIES.map((cat) => (
                                     <option key={cat} value={cat}>
                                         {cat}
                                     </option>
                                 ))}
                             </select>
                         </div>
+
+                        {/* Subcategory */}
+                        {SUBCATEGORIES[formData.category] && SUBCATEGORIES[formData.category].length > 0 && (
+                            <div>
+                                <label className="block text-sm font-medium text-neutral-300 mb-1">
+                                    Danh Mục Phụ
+                                </label>
+                                <select
+                                    name="subcategory"
+                                    value={formData.subcategory}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                >
+                                    <option value="">-- Chọn danh mục phụ --</option>
+                                    {SUBCATEGORIES[formData.category].map((sub) => (
+                                        <option key={sub} value={sub}>
+                                            {sub}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        )}
 
                         {/* Address */}
                         <div>
@@ -367,6 +450,73 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                                 placeholder="Your name (optional)"
                                 className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                             />
+                        </div>
+
+                        {/* Image Upload */}
+                        <div>
+                            <label className="block text-sm font-medium text-neutral-300 mb-1">
+                                Hình Ảnh (tối đa 5 ảnh)
+                            </label>
+                            <div className="border-2 border-dashed border-neutral-600 rounded-lg p-4 text-center hover:border-yellow-500 transition-colors">
+                                <input
+                                    type="file"
+                                    accept="image/jpeg,image/png,image/webp"
+                                    multiple
+                                    onChange={(e) => {
+                                        const files = Array.from(e.target.files || []);
+                                        const validFiles = files.slice(0, 5 - imageFiles.length);
+
+                                        // Create preview URLs
+                                        const newPreviews = validFiles.map(file => URL.createObjectURL(file));
+
+                                        setImageFiles(prev => [...prev, ...validFiles].slice(0, 5));
+                                        setImagePreviews(prev => [...prev, ...newPreviews].slice(0, 5));
+                                    }}
+                                    className="hidden"
+                                    id="image-upload"
+                                    disabled={imageFiles.length >= 5}
+                                />
+                                <label
+                                    htmlFor="image-upload"
+                                    className={`cursor-pointer ${imageFiles.length >= 5 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                >
+                                    <div className="text-3xl mb-2">📷</div>
+                                    <p className="text-neutral-400 text-sm">
+                                        {imageFiles.length >= 5
+                                            ? 'Đã đủ 5 ảnh'
+                                            : 'Click để chọn ảnh (JPG, PNG, WEBP)'}
+                                    </p>
+                                    <p className="text-neutral-500 text-xs mt-1">
+                                        Đã chọn: {imageFiles.length}/5 ảnh
+                                    </p>
+                                </label>
+                            </div>
+
+                            {/* Image Previews */}
+                            {imagePreviews.length > 0 && (
+                                <div className="flex flex-wrap gap-2 mt-3">
+                                    {imagePreviews.map((preview, index) => (
+                                        <div key={index} className="relative group">
+                                            <img
+                                                src={preview}
+                                                alt={`Preview ${index + 1}`}
+                                                className="w-16 h-16 object-cover rounded-lg border border-neutral-600"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    URL.revokeObjectURL(preview);
+                                                    setImageFiles(prev => prev.filter((_, i) => i !== index));
+                                                    setImagePreviews(prev => prev.filter((_, i) => i !== index));
+                                                }}
+                                                className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                                            >
+                                                ✕
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         {/* Submit Button */}
