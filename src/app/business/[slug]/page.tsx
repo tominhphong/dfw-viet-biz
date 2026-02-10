@@ -33,19 +33,9 @@ interface PageProps {
     params: Promise<{ slug: string }>;
 }
 
-// Allow dynamic params for approved businesses from Supabase
-export const dynamicParams = true;
-
-// ISR: Revalidate every 60 seconds to pick up admin edits (new images, etc.)
-export const revalidate = 60;
-
-// Generate static paths from Supabase
-export async function generateStaticParams() {
-    const { data } = await supabase
-        .from("approved_businesses")
-        .select("slug");
-    return (data || []).map((b) => ({ slug: b.slug }));
-}
+// Force dynamic rendering — always fetch fresh data from Supabase
+// This ensures admin edits (images, info) appear immediately
+export const dynamic = 'force-dynamic';
 
 // Helper to find business from Supabase
 async function findBusiness(slug: string): Promise<Business | null> {
