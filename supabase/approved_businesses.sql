@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS approved_businesses (
     category TEXT NOT NULL,
     original_category TEXT,
     subcategory TEXT,
-    address TEXT NOT NULL,
+    address TEXT,
     phone TEXT,
     website TEXT,
     email TEXT,

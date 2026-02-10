@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS business_submissions (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     name TEXT NOT NULL,
     category TEXT NOT NULL,
-    address TEXT NOT NULL,
+    address TEXT,
     phone TEXT,
     website TEXT,
     email TEXT,
