@@ -357,12 +357,33 @@ export default function AdminPage() {
         return result;
     }, [approvedBusinesses, categoryFilter, approvedSearch]);
 
-    // Handle login — client-side gate only; real auth is server-side in API routes
-    const handleLogin = (e: React.FormEvent) => {
+    // Handle login — validates password server-side
+    const [loginLoading, setLoginLoading] = useState(false);
+    const [loginError, setLoginError] = useState("");
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (password.trim()) {
-            setIsLoggedIn(true);
+        if (!password.trim()) return;
+
+        setLoginLoading(true);
+        setLoginError("");
+
+        try {
+            const res = await fetch("/api/admin/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ password }),
+            });
+
+            if (res.ok) {
+                setIsLoggedIn(true);
+            } else {
+                const data = await res.json();
+                setLoginError(data.error || "Sai mật khẩu");
+            }
+        } catch {
+            setLoginError("Không thể kết nối server");
         }
+        setLoginLoading(false);
     };
 
     // Handle approve
@@ -434,6 +455,11 @@ export default function AdminPage() {
                     <h1 className="text-2xl font-bold text-white mb-6 text-center">
                         🔐 Admin Login
                     </h1>
+                    {loginError && (
+                        <div className="mb-4 p-3 bg-red-900/50 border border-red-700 rounded-xl text-red-300 text-sm text-center">
+                            {loginError}
+                        </div>
+                    )}
                     <form onSubmit={handleLogin}>
                         <input
                             type="password"
@@ -442,12 +468,14 @@ export default function AdminPage() {
                             placeholder="Nhập password..."
                             className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-xl text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 mb-4"
                             autoFocus
+                            disabled={loginLoading}
                         />
                         <button
                             type="submit"
-                            className="w-full py-3 bg-yellow-500 text-black font-bold rounded-xl hover:bg-yellow-400 transition-colors"
+                            disabled={loginLoading}
+                            className="w-full py-3 bg-yellow-500 text-black font-bold rounded-xl hover:bg-yellow-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Đăng nhập
+                            {loginLoading ? "Đang xác thực..." : "Đăng nhập"}
                         </button>
                     </form>
                 </div>
