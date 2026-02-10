@@ -300,16 +300,6 @@ export default function Home() {
 
                 {/* Action Buttons */}
                 <div className="flex gap-2 mt-4">
-                  {biz.googleMapsLink && (
-                    <a
-                      href={biz.googleMapsLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-sm font-medium rounded-lg transition-colors"
-                    >
-                      📍 {t("openMaps")}
-                    </a>
-                  )}
                   <Link
                     href={`/business/${biz.slug}`}
                     className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 text-white text-sm font-medium rounded-lg transition-colors"
@@ -347,16 +337,6 @@ export default function Home() {
                 <p className="text-sm text-neutral-500">📍 {randomPick.address}</p>
               )}
               <div className="flex justify-center gap-2 mt-4">
-                {randomPick.googleMapsLink && (
-                  <a
-                    href={randomPick.googleMapsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg font-medium text-sm transition-colors"
-                  >
-                    📍 {t("openMaps")}
-                  </a>
-                )}
                 <Link
                   href={`/business/${randomPick.slug}`}
                   className="px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg font-medium text-sm transition-colors"
