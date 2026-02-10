@@ -244,11 +244,11 @@ export default function Home() {
             >
               {/* Image thumbnail */}
               {biz.images && biz.images.length > 0 && (
-                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-700">
+                <div className="relative aspect-[16/9] overflow-hidden bg-neutral-700">
                   <img
                     src={biz.images[0]}
                     alt={biz.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                   {biz.images.length > 1 && (
                     <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-full">

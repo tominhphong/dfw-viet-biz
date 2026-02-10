@@ -157,18 +157,18 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                     <div className="flex items-start gap-4">
                         {/* Avatar or first image */}
                         {hasImages ? (
-                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                            <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
                                 <Image
                                     src={business.images[0]}
                                     alt={business.name}
-                                    width={80}
-                                    height={80}
+                                    width={96}
+                                    height={96}
                                     className="w-full h-full object-cover"
                                 />
                             </div>
                         ) : (
                             <div
-                                className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${gradientClass} flex items-center justify-center text-3xl md:text-4xl font-bold text-white shadow-lg flex-shrink-0`}
+                                className={`w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br ${gradientClass} flex items-center justify-center text-3xl md:text-4xl font-bold text-white shadow-lg flex-shrink-0`}
                             >
                                 {business.name.charAt(0)}
                             </div>
@@ -210,13 +210,13 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                             📷 Hình ảnh
                         </h2>
                         {business.images.length === 1 ? (
-                            <div className="rounded-2xl overflow-hidden border border-neutral-700">
+                            <div className="rounded-2xl overflow-hidden border border-neutral-700 bg-neutral-800 flex items-center justify-center">
                                 <Image
                                     src={business.images[0]}
                                     alt={`${business.name} - ảnh 1`}
                                     width={800}
                                     height={450}
-                                    className="w-full h-auto max-h-96 object-cover"
+                                    className="w-full h-auto max-h-[500px] object-contain"
                                 />
                             </div>
                         ) : (
@@ -234,7 +234,7 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                             alt={`${business.name} - ảnh ${index + 1}`}
                                             width={400}
                                             height={300}
-                                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                            className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-300"
                                         />
                                     </a>
                                 ))}
