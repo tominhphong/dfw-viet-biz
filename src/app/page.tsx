@@ -23,6 +23,7 @@ interface Business {
   reviewCount: number;
   googleMapsLink: string | null;
   linkType: string | null;
+  images: string[];
 }
 
 // Main categories derived from originalCategory
@@ -78,7 +79,8 @@ export default function Home() {
             rating: item.rating || 0,
             reviewCount: item.review_count || 0,
             googleMapsLink: item.google_maps_link,
-            linkType: item.link_type
+            linkType: item.link_type,
+            images: item.images || [],
           }));
           setData(convertedData);
         }
@@ -240,6 +242,21 @@ export default function Home() {
               key={biz.id}
               className="group relative bg-neutral-800 rounded-2xl overflow-hidden hover:bg-neutral-750 transition-colors border border-neutral-800 hover:border-neutral-600"
             >
+              {/* Image thumbnail */}
+              {biz.images && biz.images.length > 0 && (
+                <div className="relative h-40 overflow-hidden">
+                  <img
+                    src={biz.images[0]}
+                    alt={biz.name}
+                    className="w-full h-full object-cover"
+                  />
+                  {biz.images.length > 1 && (
+                    <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-full">
+                      +{biz.images.length - 1} ảnh
+                    </span>
+                  )}
+                </div>
+              )}
               <div className="p-5 md:p-6">
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex flex-col gap-1">
