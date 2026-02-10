@@ -258,7 +258,7 @@ export default function AdminPage() {
             }
 
             const response = await fetch("/api/admin/edit", {
-                method: "POST",
+                method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     id: editingBusiness.id,
@@ -501,14 +501,14 @@ export default function AdminPage() {
                             key={tab.key}
                             onClick={() => setActiveTab(tab.key)}
                             className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${activeTab === tab.key
-                                    ? "bg-white text-black font-bold"
-                                    : "bg-neutral-800 text-neutral-400 border border-neutral-700 hover:border-neutral-500"
+                                ? "bg-white text-black font-bold"
+                                : "bg-neutral-800 text-neutral-400 border border-neutral-700 hover:border-neutral-500"
                                 }`}
                         >
                             {tab.label}
                             <span className={`ml-2 px-2 py-0.5 rounded-full text-xs ${activeTab === tab.key
-                                    ? "bg-neutral-200 text-black"
-                                    : "bg-neutral-700 text-neutral-300"
+                                ? "bg-neutral-200 text-black"
+                                : "bg-neutral-700 text-neutral-300"
                                 }`}>
                                 {tab.count}
                             </span>
@@ -537,8 +537,8 @@ export default function AdminPage() {
                                     key={cat}
                                     onClick={() => setCategoryFilter(cat)}
                                     className={`px-4 md:px-5 py-2 rounded-full border text-sm md:text-base transition-all ${categoryFilter === cat
-                                            ? "bg-white text-black border-white font-bold"
-                                            : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500"
+                                        ? "bg-white text-black border-white font-bold"
+                                        : "bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500"
                                         }`}
                                 >
                                     {CATEGORY_LABELS[cat] || cat}
@@ -786,8 +786,8 @@ export default function AdminPage() {
                                 <div
                                     key={log.id}
                                     className={`p-4 rounded-xl border ${log.action_type === 'approved'
-                                            ? 'bg-green-900/20 border-green-800'
-                                            : 'bg-red-900/20 border-red-800'
+                                        ? 'bg-green-900/20 border-green-800'
+                                        : 'bg-red-900/20 border-red-800'
                                         }`}
                                 >
                                     <div className="flex justify-between items-start">
