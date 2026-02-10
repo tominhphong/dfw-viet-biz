@@ -68,6 +68,7 @@ export async function POST(request: NextRequest) {
             website: submission.website,
             email: submission.email,
             description: submission.description || `${submission.name} - Doanh nghiệp Việt Nam tại DFW`,
+            images: submission.images || [],
             google_maps_link: null,
             link_type: null
         };
