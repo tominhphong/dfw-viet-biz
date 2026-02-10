@@ -357,10 +357,10 @@ export default function AdminPage() {
         return result;
     }, [approvedBusinesses, categoryFilter, approvedSearch]);
 
-    // Handle login
+    // Handle login — client-side gate only; real auth is server-side in API routes
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD || password) {
+        if (password.trim()) {
             setIsLoggedIn(true);
         }
     };
