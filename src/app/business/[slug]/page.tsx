@@ -17,7 +17,7 @@ interface Business {
     category: string;
     originalCategory: string | null;
     subcategory: string | null;
-    address: string;
+    address: string | null;
     city: string | null;
     state: string | null;
     phone: string | null;
@@ -73,7 +73,7 @@ async function findBusiness(slug: string): Promise<Business | null> {
 // Extract city from business data or address
 function extractCity(business: Business): string {
     if (business.city) return business.city;
-    const parts = business.address.split(",");
+    const parts = (business.address || "").split(",");
     if (parts.length >= 2) {
         const cityPart = parts[parts.length - 2].trim();
         return cityPart.replace(/\d+/g, "").trim() || "DFW";
@@ -237,22 +237,31 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                     {/* Left Column */}
                     <div className="space-y-6">
                         {/* Location Card */}
-                        <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
-                            <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                                📍 Địa chỉ
-                            </h2>
-                            <p className="text-neutral-300 mb-4">{business.address}</p>
-                            {business.googleMapsLink && (
-                                <a
-                                    href={business.googleMapsLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 text-white font-bold rounded-xl hover:from-green-500 hover:to-green-400 transition-all shadow-lg"
-                                >
-                                    🗺️ Chỉ đường
-                                </a>
-                            )}
-                        </div>
+                        {business.address ? (
+                            <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
+                                <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                    📍 Địa chỉ
+                                </h2>
+                                <p className="text-neutral-300 mb-4">{business.address}</p>
+                                {business.googleMapsLink && (
+                                    <a
+                                        href={business.googleMapsLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 text-white font-bold rounded-xl hover:from-green-500 hover:to-green-400 transition-all shadow-lg"
+                                    >
+                                        🗺️ Chỉ đường
+                                    </a>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">
+                                <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                    📍 Khu vực
+                                </h2>
+                                <p className="text-neutral-400">Khu vực Dallas-Fort Worth, TX</p>
+                            </div>
+                        )}
 
                         {/* Contact Card */}
                         <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">

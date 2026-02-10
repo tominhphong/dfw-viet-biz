@@ -76,9 +76,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
             newErrors.businessName = "Business name is required";
         }
 
-        if (!formData.address.trim()) {
-            newErrors.address = "Address is required";
-        }
+
 
         // Phone: just check if it has 10 digits when stripped
         if (formData.phone) {
@@ -108,11 +106,14 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
 
         setIsSubmitting(true);
 
-        // Build full address
-        const fullAddress = `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`;
-
-        // Generate Google Maps link from address
-        const googleMapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+        // Build full address and Google Maps link only if address is provided
+        const hasAddress = formData.address.trim().length > 0;
+        const fullAddress = hasAddress
+            ? `${formData.address}, ${formData.city}, ${formData.state} ${formData.zip}`
+            : null;
+        const googleMapsLink = hasAddress && fullAddress
+            ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`
+            : null;
 
         // Format website to ensure it has protocol
         let formattedWebsite = formData.website || null;
@@ -325,14 +326,14 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                         {/* Address */}
                         <div>
                             <label className="block text-sm font-medium text-neutral-300 mb-1">
-                                Street Address <span className="text-red-400">*</span>
+                                Street Address
                             </label>
                             <input
                                 type="text"
                                 name="address"
                                 value={formData.address}
                                 onChange={handleChange}
-                                placeholder="e.g. 2550 W Walnut St"
+                                placeholder="Không bắt buộc — để trống nếu chưa có địa chỉ"
                                 className={`w-full px-4 py-3 bg-neutral-700 border rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 ${errors.address ? "border-red-500" : "border-neutral-600"
                                     }`}
                             />

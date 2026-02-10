@@ -21,9 +21,9 @@ export async function POST(request: NextRequest) {
             images
         } = body;
 
-        if (!name || !category || !address) {
+        if (!name || !category) {
             return NextResponse.json(
-                { error: 'Name, category, and address are required' },
+                { error: 'Name and category are required' },
                 { status: 400 }
             );
         }
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
                 name,
                 category,
                 subcategory: subcategory || null,
-                address,
+                address: address || null,
                 city: city || null,
                 state: state || 'TX',
                 phone: phone || null,

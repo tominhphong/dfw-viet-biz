@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
             category: submission.category,
             original_category: submission.category,
             subcategory: getVietnameseSubcategory(submission.category),
-            address: submission.address,
+            address: submission.address || null,
             phone: submission.phone,
             website: submission.website,
             email: submission.email,

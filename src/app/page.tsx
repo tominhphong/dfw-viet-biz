@@ -14,7 +14,7 @@ interface Business {
   category: string;
   originalCategory: string | null;
   subcategory: string | null;
-  address: string;
+  address: string | null;
   phone: string | null;
   website: string | null;
   email: string | null;
@@ -277,9 +277,11 @@ export default function Home() {
                 <p className="text-neutral-400 text-sm mb-4 line-clamp-2">
                   {biz.description}
                 </p>
-                <div className="text-sm text-neutral-500 flex items-center gap-2">
-                  <span>📍</span> {biz.address}
-                </div>
+                {biz.address && (
+                  <div className="text-sm text-neutral-500 flex items-center gap-2">
+                    <span>📍</span> {biz.address}
+                  </div>
+                )}
                 {biz.phone && (
                   <div className="text-sm text-neutral-400 flex items-center gap-2 mt-2">
                     <span>📞</span> {biz.phone}
@@ -341,7 +343,9 @@ export default function Home() {
               <p className="text-neutral-400 text-sm mb-3 line-clamp-2">
                 {randomPick.description}
               </p>
-              <p className="text-sm text-neutral-500">📍 {randomPick.address}</p>
+              {randomPick.address && (
+                <p className="text-sm text-neutral-500">📍 {randomPick.address}</p>
+              )}
               <div className="flex justify-center gap-2 mt-4">
                 {randomPick.googleMapsLink && (
                   <a
