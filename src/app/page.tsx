@@ -244,7 +244,7 @@ export default function Home() {
             >
               {/* Image thumbnail */}
               {biz.images && biz.images.length > 0 && (
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-700">
                   <img
                     src={biz.images[0]}
                     alt={biz.name}

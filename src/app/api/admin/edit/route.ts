@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { supabaseAdmin as supabase } from '../../../../lib/supabase-server';
 
 export async function PUT(request: NextRequest) {
@@ -94,6 +95,16 @@ export async function PUT(request: NextRequest) {
                 { error: 'Không tìm thấy doanh nghiệp với ID này' },
                 { status: 404 }
             );
+        }
+
+        // Revalidate cached pages so changes appear immediately
+        try {
+            revalidatePath('/');
+            if (data[0].slug) {
+                revalidatePath(`/business/${data[0].slug}`);
+            }
+        } catch (e) {
+            console.warn('Revalidation warning:', e);
         }
 
         return NextResponse.json({

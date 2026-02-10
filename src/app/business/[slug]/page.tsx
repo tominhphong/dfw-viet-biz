@@ -36,6 +36,9 @@ interface PageProps {
 // Allow dynamic params for approved businesses from Supabase
 export const dynamicParams = true;
 
+// ISR: Revalidate every 60 seconds to pick up admin edits (new images, etc.)
+export const revalidate = 60;
+
 // Generate static paths from Supabase
 export async function generateStaticParams() {
     const { data } = await supabase
