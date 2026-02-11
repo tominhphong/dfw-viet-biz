@@ -73,7 +73,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
         const newErrors: Partial<FormData> = {};
 
         if (!formData.businessName.trim()) {
-            newErrors.businessName = "Business name is required";
+            newErrors.businessName = "Vui lòng nhập tên doanh nghiệp";
         }
 
 
@@ -87,12 +87,12 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
         }
 
         if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = "Invalid email format";
+            newErrors.email = "Email không đúng định dạng";
         }
 
         // Website: accept https://, http://, www., or just domain
         if (formData.website && !/^(https?:\/\/)?(www\.)?[\w\-.]+(\.[\w\-]+)+/.test(formData.website)) {
-            newErrors.website = "Invalid website format";
+            newErrors.website = "Website không đúng định dạng";
         }
 
         setErrors(newErrors);
@@ -231,10 +231,10 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                 <div className="sticky top-0 bg-neutral-800 p-6 border-b border-neutral-700 flex justify-between items-center">
                     <div>
                         <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                            📝 Add Your Business
+                            📝 Thêm Doanh Nghiệp
                         </h2>
                         <p className="text-neutral-400 text-sm mt-1">
-                            Help us grow the Vietnamese biz community in DFW!
+                            Cùng phát triển cộng đồng doanh nghiệp Việt tại DFW!
                         </p>
                     </div>
                     <button
@@ -264,14 +264,14 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                         {/* Business Name */}
                         <div>
                             <label className="block text-sm font-medium text-neutral-300 mb-1">
-                                Business Name <span className="text-red-400">*</span>
+                                Tên Doanh Nghiệp <span className="text-red-400">*</span>
                             </label>
                             <input
                                 type="text"
                                 name="businessName"
                                 value={formData.businessName}
                                 onChange={handleChange}
-                                placeholder="e.g. Phở Saigon Restaurant"
+                                placeholder="Vd: Phở Sài Gòn, Tiệm Nail ABC..."
                                 className={`w-full px-4 py-3 bg-neutral-700 border rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 ${errors.businessName ? "border-red-500" : "border-neutral-600"
                                     }`}
                             />
@@ -326,7 +326,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                         {/* Address */}
                         <div>
                             <label className="block text-sm font-medium text-neutral-300 mb-1">
-                                Street Address
+                                Địa chỉ
                             </label>
                             <input
                                 type="text"
@@ -345,7 +345,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                         {/* City, State, Zip */}
                         <div className="grid grid-cols-3 gap-3">
                             <div>
-                                <label className="block text-sm font-medium text-neutral-300 mb-1">City</label>
+                                <label className="block text-sm font-medium text-neutral-300 mb-1">Thành phố</label>
                                 <input
                                     type="text"
                                     name="city"
@@ -355,7 +355,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-neutral-300 mb-1">State</label>
+                                <label className="block text-sm font-medium text-neutral-300 mb-1">Tiểu bang</label>
                                 <input
                                     type="text"
                                     name="state"
@@ -365,7 +365,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-neutral-300 mb-1">Zip</label>
+                                <label className="block text-sm font-medium text-neutral-300 mb-1">Mã Zip</label>
                                 <input
                                     type="text"
                                     name="zip"
@@ -379,7 +379,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
 
                         {/* Phone */}
                         <div>
-                            <label className="block text-sm font-medium text-neutral-300 mb-1">Phone</label>
+                            <label className="block text-sm font-medium text-neutral-300 mb-1">Số điện thoại</label>
                             <input
                                 type="text"
                                 name="phone"
@@ -394,7 +394,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
 
                         {/* Website */}
                         <div>
-                            <label className="block text-sm font-medium text-neutral-300 mb-1">Website</label>
+                            <label className="block text-sm font-medium text-neutral-300 mb-1">Trang web</label>
                             <input
                                 type="text"
                                 name="website"
@@ -411,7 +411,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                         {/* Email */}
                         <div>
                             <label className="block text-sm font-medium text-neutral-300 mb-1">
-                                Business Email
+                                Email doanh nghiệp
                             </label>
                             <input
                                 type="text"
@@ -428,27 +428,27 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                         {/* Description */}
                         <div>
                             <label className="block text-sm font-medium text-neutral-300 mb-1">
-                                Description
+                                Mô tả
                             </label>
                             <textarea
                                 name="description"
                                 value={formData.description}
                                 onChange={handleChange}
                                 rows={3}
-                                placeholder="Tell us about your business..."
+                                placeholder="Hãy chia sẻ về doanh nghiệp của bạn..."
                                 className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
                             />
                         </div>
 
                         {/* Owner Name */}
                         <div>
-                            <label className="block text-sm font-medium text-neutral-300 mb-1">Your Name</label>
+                            <label className="block text-sm font-medium text-neutral-300 mb-1">Tên của bạn</label>
                             <input
                                 type="text"
                                 name="ownerName"
                                 value={formData.ownerName}
                                 onChange={handleChange}
-                                placeholder="Your name (optional)"
+                                placeholder="Tên của bạn (không bắt buộc)"
                                 className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                             />
                         </div>
@@ -528,17 +528,17 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                         >
                             {isSubmitting ? (
                                 <>
-                                    <span className="animate-spin">⏳</span> Preparing...
+                                    <span className="animate-spin">⏳</span> Đang gửi...
                                 </>
                             ) : (
                                 <>
-                                    Submit Business <span>→</span>
+                                    Gửi Thông Tin <span>→</span>
                                 </>
                             )}
                         </button>
 
                         <p className="text-neutral-500 text-xs text-center">
-                            Your email app will open with pre-filled submission details. Just hit Send!
+                            Thông tin sẽ được gửi trực tiếp đến hệ thống. Admin sẽ duyệt sớm nhất!
                         </p>
                     </form>
                 )}

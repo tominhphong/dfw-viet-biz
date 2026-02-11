@@ -10,6 +10,19 @@ const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
+// Vietnamese category translations
+const CATEGORY_LABELS_VI: Record<string, string> = {
+    "Restaurant": "Nhà hàng",
+    "Healthcare": "Y tế",
+    "Retail": "Bán lẻ",
+    "Automotive": "Ô tô",
+    "Beauty & Personal Care": "Làm đẹp",
+    "Professional Services": "Dịch Vụ",
+    "Religious": "Tôn giáo",
+    "Community": "Cộng đồng",
+};
+const tcVi = (cat: string) => CATEGORY_LABELS_VI[cat] || cat;
+
 interface Business {
     id: number;
     name: string;
@@ -173,7 +186,7 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                 </span>
                                 {business.originalCategory && business.originalCategory !== (business.subcategory || business.category) && (
                                     <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-neutral-700 text-neutral-300">
-                                        {business.originalCategory}
+                                        {tcVi(business.originalCategory)}
                                     </span>
                                 )}
                             </div>
@@ -326,7 +339,7 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                     )}
                                     {business.originalCategory && business.originalCategory !== business.subcategory && (
                                         <span className="px-3 py-1 bg-neutral-700 rounded-full text-sm text-neutral-300">
-                                            {business.originalCategory}
+                                            {tcVi(business.originalCategory)}
                                         </span>
                                     )}
                                 </div>
