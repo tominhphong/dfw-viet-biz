@@ -46,6 +46,18 @@ const SUBCATEGORIES: Record<string, string[]> = {
     "Community": ["Cộng Đồng", "Hội Đoàn", "Câu Lạc Bộ Bóng Đá", "Dịch Vụ"],
 };
 
+// Vietnamese labels for dropdown display
+const CATEGORY_LABELS_VI: Record<string, string> = {
+    "Restaurant": "Nhà hàng",
+    "Healthcare": "Y tế",
+    "Retail": "Bán lẻ",
+    "Automotive": "Ô tô",
+    "Beauty & Personal Care": "Làm đẹp",
+    "Professional Services": "Dịch Vụ",
+    "Religious": "Tôn giáo",
+    "Community": "Cộng đồng",
+};
+
 const initialFormData: FormData = {
     businessName: "",
     category: "Restaurant",
@@ -295,7 +307,7 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                             >
                                 {MAIN_CATEGORIES.map((cat) => (
                                     <option key={cat} value={cat}>
-                                        {cat}
+                                        {CATEGORY_LABELS_VI[cat] || cat}
                                     </option>
                                 ))}
                             </select>
