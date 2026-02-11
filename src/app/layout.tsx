@@ -6,20 +6,20 @@ import { LanguageProvider } from "../context/LanguageContext";
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const metadata: Metadata = {
-  title: "DFW Vietnamese Biz - Danh Bạ Doanh Nghiệp Việt Nam",
+  title: "CầnĐịaChỉ — Danh Bạ Doanh Nghiệp Việt tại DFW",
   description: "Hướng dẫn toàn diện về ẩm thực, mua sắm và dịch vụ Việt Nam tại Dallas-Fort Worth. 348+ doanh nghiệp Việt.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "VietBiz DFW",
+    title: "CầnĐịaChỉ",
   },
   formatDetection: {
     telephone: true,
   },
   openGraph: {
-    title: "DFW Vietnamese Biz",
-    description: "Danh bạ doanh nghiệp Việt Nam tại Dallas-Fort Worth",
+    title: "CầnĐịaChỉ",
+    description: "Danh bạ doanh nghiệp Việt tại Dallas-Fort Worth",
     type: "website",
     locale: "vi_VN",
   },
@@ -44,7 +44,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="VietBiz DFW" />
+        <meta name="apple-mobile-web-app-title" content="CầnĐịaChỉ" />
       </head>
       <body className={inter.className}>
         <LanguageProvider>

@@ -6,7 +6,7 @@ export type Language = "vi" | "en";
 export const translations = {
     vi: {
         // Header
-        title: "DFW Vietnamese Biz",
+        title: "CầnĐịaChỉ",
         subtitle: "Hướng dẫn toàn diện về ẩm thực, mua sắm và dịch vụ Việt Nam tại Dallas-Fort Worth.",
         randomButton: "🎲 Để Vũ Trụ Quyết Định",
         addBizButton: "➕ Thêm Doanh Nghiệp",
@@ -69,7 +69,7 @@ export const translations = {
     },
     en: {
         // Header
-        title: "DFW Vietnamese Biz",
+        title: "CầnĐịaChỉ",
         subtitle: "The ultimate guide to Vietnamese cuisine, shopping, and services in Dallas-Fort Worth.",
         randomButton: "🎲 Let the Universe Decide",
         addBizButton: "➕ Add Your Biz",

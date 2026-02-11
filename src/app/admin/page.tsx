@@ -498,7 +498,7 @@ export default function AdminPage() {
                 <h1 className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500 mb-2">
                     🔐 Admin Panel
                 </h1>
-                <p className="text-neutral-400 mb-4">DFW Vietnamese Biz — Quản lý doanh nghiệp</p>
+                <p className="text-neutral-400 mb-4">CầnĐịaChỉ — Quản lý doanh nghiệp</p>
                 <button
                     onClick={() => setIsLoggedIn(false)}
                     className="px-5 py-2 text-sm bg-neutral-800 border border-neutral-700 rounded-full hover:bg-neutral-700 transition-colors"

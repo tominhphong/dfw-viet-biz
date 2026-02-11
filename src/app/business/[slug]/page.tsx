@@ -100,7 +100,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const business = await findBusiness(slug);
 
     if (!business) {
-        return { title: "Business Not Found | DFW Vietnamese Biz" };
+        return { title: "Không tìm thấy | CầnĐịaChỉ" };
     }
 
     const city = extractCity(business);
@@ -110,7 +110,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title: `${business.name} | ${business.subcategory || business.category} tại ${city}`,
         description: `${business.name} - ${business.subcategory || business.category} tại ${city}. ${business.description || "Doanh nghiệp Việt Nam uy tín tại DFW."}`,
         openGraph: {
-            title: `${business.name} | DFW Vietnamese Biz`,
+            title: `${business.name} | CầnĐịaChỉ`,
             description: `${business.subcategory || business.category} tại ${city}`,
             type: "website",
             ...(firstImage ? { images: [{ url: firstImage }] } : {}),
