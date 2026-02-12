@@ -116,6 +116,13 @@ const compressImage = (file: File): Promise<File> => {
 
 type TabType = 'businesses' | 'submissions' | 'logs';
 
+interface ConfirmAction {
+    type: 'delete' | 'approve' | 'reject';
+    id: number | string;
+    name: string;
+    onConfirm: () => void;
+}
+
 export default function AdminPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [password, setPassword] = useState("");
@@ -134,6 +141,10 @@ export default function AdminPage() {
     const [editImageFiles, setEditImageFiles] = useState<File[]>([]);
     const [editImagePreviews, setEditImagePreviews] = useState<string[]>([]);
     const [uploadingImages, setUploadingImages] = useState(false);
+
+    // Confirm modal state (replaces window.confirm to prevent bypass)
+    const [confirmAction, setConfirmAction] = useState<ConfirmAction | null>(null);
+    const [confirmInput, setConfirmInput] = useState("");
 
     // Fetch pending submissions
     const fetchSubmissions = async () => {
@@ -295,34 +306,42 @@ export default function AdminPage() {
         setLoading(false);
     };
 
-    // Handle delete approved business
-    const handleDelete = async (id: number, name: string) => {
-        if (!confirm(`Xóa "${name}" khỏi website? Hành động này không thể hoàn tác!`)) return;
+    // Handle delete approved business — opens type-to-confirm modal
+    const handleDelete = (id: number, name: string) => {
+        setConfirmInput("");
+        setConfirmAction({
+            type: 'delete',
+            id,
+            name,
+            onConfirm: async () => {
+                setConfirmAction(null);
+                setConfirmInput("");
+                setLoading(true);
+                setMessage("");
+                setError("");
 
-        setLoading(true);
-        setMessage("");
-        setError("");
+                try {
+                    const response = await fetch("/api/admin/delete", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ id, password, businessName: name }),
+                    });
 
-        try {
-            const response = await fetch("/api/admin/delete", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id, password, businessName: name }),
-            });
+                    const result = await response.json();
 
-            const result = await response.json();
-
-            if (response.ok) {
-                setMessage(`🗑️ Đã xóa "${name}" thành công!`);
-                setApprovedBusinesses(approvedBusinesses.filter((b) => b.id !== id));
-                fetchLogs();
-            } else {
-                setError(result.error || "Có lỗi xảy ra");
-            }
-        } catch {
-            setError("Không thể kết nối server");
-        }
-        setLoading(false);
+                    if (response.ok) {
+                        setMessage(`🗑️ Đã xóa "${name}" thành công!`);
+                        setApprovedBusinesses(approvedBusinesses.filter((b) => b.id !== id));
+                        fetchLogs();
+                    } else {
+                        setError(result.error || "Có lỗi xảy ra");
+                    }
+                } catch {
+                    setError("Không thể kết nối server");
+                }
+                setLoading(false);
+            },
+        });
     };
 
     useEffect(() => {
@@ -386,65 +405,81 @@ export default function AdminPage() {
         setLoginLoading(false);
     };
 
-    // Handle approve
-    const handleApprove = async (id: string, name: string) => {
-        if (!confirm(`Duyệt "${name}"?`)) return;
+    // Handle approve — opens simple confirm modal
+    const handleApprove = (id: string, name: string) => {
+        setConfirmInput("");
+        setConfirmAction({
+            type: 'approve',
+            id,
+            name,
+            onConfirm: async () => {
+                setConfirmAction(null);
+                setConfirmInput("");
+                setLoading(true);
+                setMessage("");
+                setError("");
 
-        setLoading(true);
-        setMessage("");
-        setError("");
+                try {
+                    const response = await fetch("/api/admin/approve", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ id, password }),
+                    });
 
-        try {
-            const response = await fetch("/api/admin/approve", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id, password }),
-            });
+                    const result = await response.json();
 
-            const result = await response.json();
-
-            if (response.ok) {
-                setMessage(`✅ Đã duyệt "${name}" thành công!`);
-                fetchSubmissions();
-                fetchApprovedBusinesses();
-                fetchLogs();
-            } else {
-                setError(result.error || "Có lỗi xảy ra");
-            }
-        } catch {
-            setError("Không thể kết nối server");
-        }
-        setLoading(false);
+                    if (response.ok) {
+                        setMessage(`✅ Đã duyệt "${name}" thành công!`);
+                        fetchSubmissions();
+                        fetchApprovedBusinesses();
+                        fetchLogs();
+                    } else {
+                        setError(result.error || "Có lỗi xảy ra");
+                    }
+                } catch {
+                    setError("Không thể kết nối server");
+                }
+                setLoading(false);
+            },
+        });
     };
 
-    // Handle reject
-    const handleReject = async (id: string, name: string) => {
-        if (!confirm(`Từ chối "${name}"?`)) return;
+    // Handle reject — opens simple confirm modal
+    const handleReject = (id: string, name: string) => {
+        setConfirmInput("");
+        setConfirmAction({
+            type: 'reject',
+            id,
+            name,
+            onConfirm: async () => {
+                setConfirmAction(null);
+                setConfirmInput("");
+                setLoading(true);
+                setMessage("");
+                setError("");
 
-        setLoading(true);
-        setMessage("");
-        setError("");
+                try {
+                    const response = await fetch("/api/admin/reject", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ id, password }),
+                    });
 
-        try {
-            const response = await fetch("/api/admin/reject", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id, password }),
-            });
+                    const result = await response.json();
 
-            const result = await response.json();
-
-            if (response.ok) {
-                setMessage(`❌ Đã từ chối "${name}".`);
-                fetchSubmissions();
-                fetchLogs();
-            } else {
-                setError(result.error || "Có lỗi xảy ra");
-            }
-        } catch {
-            setError("Không thể kết nối server");
-        }
-        setLoading(false);
+                    if (response.ok) {
+                        setMessage(`❌ Đã từ chối "${name}".`);
+                        fetchSubmissions();
+                        fetchLogs();
+                    } else {
+                        setError(result.error || "Có lỗi xảy ra");
+                    }
+                } catch {
+                    setError("Không thể kết nối server");
+                }
+                setLoading(false);
+            },
+        });
     };
 
     // Login screen
@@ -634,6 +669,8 @@ export default function AdminPage() {
                                                     disabled={loading}
                                                     className="p-2 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white text-xs rounded-lg transition-all disabled:opacity-50"
                                                     title="Chỉnh sửa"
+                                                    data-action="edit"
+                                                    data-business-name={biz.name}
                                                 >
                                                     ✏️
                                                 </button>
@@ -642,6 +679,8 @@ export default function AdminPage() {
                                                     disabled={loading}
                                                     className="p-2 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white text-xs rounded-lg transition-all disabled:opacity-50"
                                                     title="Xóa"
+                                                    data-action="delete"
+                                                    data-business-name={biz.name}
                                                 >
                                                     🗑️
                                                 </button>
@@ -781,6 +820,8 @@ export default function AdminPage() {
                                                 onClick={() => handleApprove(sub.id, sub.name)}
                                                 disabled={loading}
                                                 className="flex-1 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-colors disabled:opacity-50"
+                                                data-action="approve"
+                                                data-business-name={sub.name}
                                             >
                                                 ✅ Đồng ý
                                             </button>
@@ -788,6 +829,8 @@ export default function AdminPage() {
                                                 onClick={() => handleReject(sub.id, sub.name)}
                                                 disabled={loading}
                                                 className="flex-1 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-colors disabled:opacity-50"
+                                                data-action="reject"
+                                                data-business-name={sub.name}
                                             >
                                                 ❌ Từ chối
                                             </button>
@@ -1083,6 +1126,94 @@ export default function AdminPage() {
                                         Hủy
                                     </button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* ═══════════════════════════════════════════════ */}
+                {/* CONFIRM MODAL — Cannot be bypassed by window.confirm override */}
+                {/* ═══════════════════════════════════════════════ */}
+                {confirmAction && (
+                    <div
+                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+                        onClick={(e) => { if (e.target === e.currentTarget) { setConfirmAction(null); setConfirmInput(""); } }}
+                    >
+                        <div className="bg-neutral-800 rounded-2xl max-w-md w-full border border-neutral-700 shadow-2xl">
+                            {/* Header */}
+                            <div className="p-6 border-b border-neutral-700">
+                                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                                    {confirmAction.type === 'delete' && '🗑️ Xác nhận XÓA'}
+                                    {confirmAction.type === 'approve' && '✅ Xác nhận DUYỆT'}
+                                    {confirmAction.type === 'reject' && '❌ Xác nhận TỪ CHỐI'}
+                                </h2>
+                                <p className="text-neutral-400 text-sm mt-1">
+                                    {confirmAction.type === 'delete'
+                                        ? `Bạn sắp xóa "${confirmAction.name}" khỏi website. Hành động này KHÔNG THỂ hoàn tác!`
+                                        : confirmAction.type === 'approve'
+                                            ? `Duyệt "${confirmAction.name}" lên website?`
+                                            : `Từ chối "${confirmAction.name}"?`
+                                    }
+                                </p>
+                            </div>
+
+                            {/* Body */}
+                            <div className="p-6">
+                                {confirmAction.type === 'delete' ? (
+                                    <div>
+                                        <p className="text-sm text-neutral-300 mb-3">
+                                            Để xác nhận, hãy gõ chính xác tên doanh nghiệp:
+                                        </p>
+                                        <p className="text-sm font-mono bg-neutral-900 text-yellow-400 px-3 py-2 rounded-lg mb-3 select-all">
+                                            {confirmAction.name}
+                                        </p>
+                                        <input
+                                            type="text"
+                                            value={confirmInput}
+                                            onChange={(e) => setConfirmInput(e.target.value)}
+                                            placeholder="Gõ tên doanh nghiệp ở đây..."
+                                            className="w-full px-4 py-3 bg-neutral-700 border border-neutral-600 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-red-500"
+                                            autoFocus
+                                            data-testid="confirm-delete-input"
+                                        />
+                                        {confirmInput.length > 0 && confirmInput !== confirmAction.name && (
+                                            <p className="text-xs text-red-400 mt-2">⚠️ Tên chưa khớp</p>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <p className="text-neutral-300">
+                                        {confirmAction.type === 'approve'
+                                            ? 'Doanh nghiệp sẽ xuất hiện trên website sau khi duyệt.'
+                                            : 'Doanh nghiệp sẽ bị loại khỏi danh sách chờ duyệt.'
+                                        }
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Footer */}
+                            <div className="p-6 border-t border-neutral-700 flex gap-3">
+                                <button
+                                    onClick={() => { setConfirmAction(null); setConfirmInput(""); }}
+                                    className="flex-1 py-3 bg-neutral-700 hover:bg-neutral-600 text-white font-bold rounded-xl transition-colors"
+                                    data-testid="confirm-cancel-btn"
+                                >
+                                    Hủy
+                                </button>
+                                <button
+                                    onClick={confirmAction.onConfirm}
+                                    disabled={confirmAction.type === 'delete' && confirmInput !== confirmAction.name}
+                                    className={`flex-1 py-3 font-bold rounded-xl transition-colors disabled:opacity-30 disabled:cursor-not-allowed ${confirmAction.type === 'delete'
+                                            ? 'bg-red-600 hover:bg-red-500 text-white'
+                                            : confirmAction.type === 'approve'
+                                                ? 'bg-green-600 hover:bg-green-500 text-white'
+                                                : 'bg-orange-600 hover:bg-orange-500 text-white'
+                                        }`}
+                                    data-testid="confirm-action-btn"
+                                >
+                                    {confirmAction.type === 'delete' && '🗑️ Xóa vĩnh viễn'}
+                                    {confirmAction.type === 'approve' && '✅ Duyệt'}
+                                    {confirmAction.type === 'reject' && '❌ Từ chối'}
+                                </button>
                             </div>
                         </div>
                     </div>
