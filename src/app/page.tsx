@@ -2,8 +2,10 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import SubmitBusinessModal from "../components/SubmitBusinessModal";
 import SearchBar from "../components/SearchBar";
+const TetDecorations = dynamic(() => import("../components/TetDecorations"), { ssr: false });
 import { useLanguage } from "../context/LanguageContext";
 import { supabase } from "../lib/supabase";
 
@@ -157,6 +159,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-neutral-900 text-neutral-100 font-sans">
+      {/* Tết Ất Tỵ 2025 Decorations */}
+      <TetDecorations />
+
       {/* Hero Section */}
       <header className="py-16 px-6 text-center bg-gradient-to-b from-neutral-800 to-neutral-900 border-b border-neutral-800">
         {/* Language Toggle */}
