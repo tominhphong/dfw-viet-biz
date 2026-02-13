@@ -255,7 +255,32 @@ export default async function BusinessDetailPage({ params }: PageProps) {
                                 <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                                     📍 Địa chỉ
                                 </h2>
-                                <p className="text-neutral-300">{business.address}</p>
+                                {business.googleMapsLink ? (
+                                    <div className="space-y-3">
+                                        <a
+                                            href={business.googleMapsLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-neutral-300 hover:text-yellow-400 transition-colors underline decoration-neutral-600 hover:decoration-yellow-400"
+                                        >
+                                            {business.address}
+                                        </a>
+                                        <a
+                                            href={business.googleMapsLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-3 p-3 bg-neutral-700/50 rounded-xl text-neutral-300 hover:text-white hover:bg-neutral-700 transition-all"
+                                        >
+                                            <span className="text-xl w-8 text-center">🗺️</span>
+                                            <div>
+                                                <div className="font-medium">Xem trên Google Maps</div>
+                                                <div className="text-xs text-neutral-500">Nhấn để mở bản đồ</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                ) : (
+                                    <p className="text-neutral-300">{business.address}</p>
+                                )}
                             </div>
                         ) : (
                             <div className="bg-neutral-800 rounded-2xl p-6 border border-neutral-700">

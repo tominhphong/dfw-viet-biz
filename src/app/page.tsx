@@ -283,9 +283,20 @@ export default function Home() {
                   {biz.description}
                 </p>
                 {biz.address && (
-                  <div className="text-sm text-neutral-500 flex items-center gap-2">
-                    <span>📍</span> {biz.address}
-                  </div>
+                  biz.googleMapsLink ? (
+                    <a
+                      href={biz.googleMapsLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-neutral-500 hover:text-yellow-400 flex items-center gap-2 transition-colors"
+                    >
+                      <span>📍</span> {biz.address}
+                    </a>
+                  ) : (
+                    <div className="text-sm text-neutral-500 flex items-center gap-2">
+                      <span>📍</span> {biz.address}
+                    </div>
+                  )
                 )}
                 {biz.phone && (
                   <div className="text-sm text-neutral-400 flex items-center gap-2 mt-2">
