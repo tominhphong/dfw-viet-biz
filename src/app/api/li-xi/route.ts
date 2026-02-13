@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '../../../lib/supabase-server';
+import { sendLixiEmail } from '../../../lib/email';
 
 export async function POST(request: NextRequest) {
     try {
@@ -33,28 +34,20 @@ export async function POST(request: NextRequest) {
             console.error('Supabase li-xi error:', error);
         }
 
-        // 2. Call Google Apps Script webhook via GET
-        // Google Apps Script 302 redirect breaks POST (changes to GET per HTTP spec).
-        // Using GET with query params is the most reliable method.
-        const webhookUrl = process.env.GOOGLE_SCRIPT_WEBHOOK_URL;
-        if (webhookUrl) {
+        // 2. Send li xi email via Hostinger SMTP (info@candiachi.com)
+        if (process.env.SMTP_USER && process.env.SMTP_PASS) {
             try {
-                const params = new URLSearchParams({
+                const info = await sendLixiEmail(
                     email,
-                    luckyNumber: String(luckyNumber),
-                    businessName: businessName || 'N/A',
-                });
-                const getUrl = `${webhookUrl}?${params.toString()}`;
-                const webhookRes = await fetch(getUrl, {
-                    method: 'GET',
-                    redirect: 'follow',
-                });
-                console.log('Webhook response:', webhookRes.status, await webhookRes.text());
+                    String(luckyNumber),
+                    businessName || 'N/A'
+                );
+                console.log('Email sent:', info.messageId);
             } catch (err) {
-                console.error('Webhook error:', err);
+                console.error('Email send error:', err);
             }
         } else {
-            console.warn('GOOGLE_SCRIPT_WEBHOOK_URL not set');
+            console.warn('SMTP credentials not configured — email not sent');
         }
 
         return NextResponse.json({ success: true });
