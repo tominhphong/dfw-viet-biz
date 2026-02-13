@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const metadata: Metadata = {
   title: "CầnĐịaChỉ — Danh Bạ Doanh Nghiệp Việt tại DFW",
-  description: "Hướng dẫn toàn diện về ẩm thực, mua sắm và dịch vụ Việt Nam tại Dallas-Fort Worth. 348+ doanh nghiệp Việt.",
+  description: "Nơi doanh nghiệp Việt chia sẻ — nơi người Việt tìm thấy. Mọi thứ bạn cần, chỉ một địa chỉ. 348+ doanh nghiệp Việt tại DFW.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,

@@ -31,7 +31,8 @@ function buildLixiEmailHtml(luckyNumber: string, email: string, businessName: st
 <p style="color:#FDE68A;font-size:48px;font-weight:900;margin:0;letter-spacing:6px;text-shadow:0 2px 8px rgba(0,0,0,0.5)">${luckyNumber}</p>
 <div style="width:64px;height:2px;background-color:#FACC15;margin:10px auto;opacity:0.4;border-radius:2px"></div>
 <p style="color:#FDE68A;font-size:10px;margin:0;opacity:0.6">&#128052; B\u00ednh Ng\u1ecd 2026</p>
-<p style="color:#FDE68A;font-size:10px;margin:2px 0 0;opacity:0.6">V\u1ea1n S\u1ef1 Nh\u01b0 \u00dd \u2014 An Khang Th\u1ecbnh V\u01b0\u1ee3ng</p>
+<p style="color:#FDE68A;font-size:10px;margin:2px 0 0;opacity:0.6">An Khang Th\u1ecbnh V\u01b0\u1ee3ng</p>
+<p style="color:#FDE68A;font-size:10px;margin:2px 0 0;opacity:0.6">V\u1ea1n S\u1ef1 Nh\u01b0 \u00dd</p>
 </td></tr>
 <!-- Bottom decorative corners -->
 <tr><td style="padding:0 12px 8px"><table width="100%"><tr>

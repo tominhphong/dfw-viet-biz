@@ -7,7 +7,7 @@ export const translations = {
     vi: {
         // Header
         title: "CầnĐịaChỉ",
-        subtitle: "Hướng dẫn toàn diện về ẩm thực, mua sắm và dịch vụ Việt Nam tại Dallas-Fort Worth.",
+        subtitle: "Nơi doanh nghiệp Việt chia sẻ — nơi người Việt tìm thấy. Mọi thứ bạn cần, chỉ một địa chỉ.",
         randomButton: "🎲 Để Vũ Trụ Quyết Định",
         addBizButton: "➕ Thêm Doanh Nghiệp",
 
