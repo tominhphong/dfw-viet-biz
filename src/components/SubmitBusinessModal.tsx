@@ -81,6 +81,54 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
     const [imageFiles, setImageFiles] = useState<File[]>([]);
     const [imagePreviews, setImagePreviews] = useState<string[]>([]);
 
+    // Lì xì feature states
+    const [liXiEmail, setLiXiEmail] = useState("");
+    const [luckyNumber, setLuckyNumber] = useState<number | null>(null);
+    const [liXiStep, setLiXiStep] = useState<"greeting" | "result">("greeting");
+    const [liXiSubmitting, setLiXiSubmitting] = useState(false);
+    const [liXiError, setLiXiError] = useState("");
+
+    const handleLiXiSubmit = async () => {
+        if (!liXiEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(liXiEmail)) {
+            setLiXiError("Vui lòng nhập email hợp lệ");
+            return;
+        }
+        setLiXiError("");
+        setLiXiSubmitting(true);
+
+        const number = Math.floor(1000 + Math.random() * 9000);
+
+        try {
+            await fetch("/api/li-xi", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: liXiEmail,
+                    luckyNumber: number,
+                    businessName: formData.businessName,
+                }),
+            });
+        } catch {
+            // Still show number even if save fails
+        }
+
+        setLuckyNumber(number);
+        setLiXiStep("result");
+        setLiXiSubmitting(false);
+    };
+
+    const handleCloseLiXi = () => {
+        setFormData(initialFormData);
+        setImageFiles([]);
+        setImagePreviews([]);
+        setSubmitStatus("idle");
+        setLiXiEmail("");
+        setLuckyNumber(null);
+        setLiXiStep("greeting");
+        setLiXiError("");
+        onClose();
+    };
+
     const validateForm = (): boolean => {
         const newErrors: Partial<FormData> = {};
 
@@ -181,15 +229,11 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
 
             if (response.ok) {
                 setSubmitStatus("success");
+                setLiXiStep("greeting");
+                setLuckyNumber(null);
+                setLiXiEmail("");
                 // Cleanup preview URLs
                 imagePreviews.forEach(url => URL.revokeObjectURL(url));
-                setTimeout(() => {
-                    setFormData(initialFormData);
-                    setImageFiles([]);
-                    setImagePreviews([]);
-                    setSubmitStatus("idle");
-                    onClose();
-                }, 3000);
             } else {
                 setSubmitStatus("error");
             }
@@ -258,15 +302,108 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                 </div>
 
                 {/* Success Message */}
-                {submitStatus === "success" && (
+                {submitStatus === "success" && liXiStep === "greeting" && (
                     <div className="p-6 text-center">
-                        <div className="text-6xl mb-4">✅</div>
-                        <h3 className="text-xl font-bold text-green-400 mb-2">Đã Gửi Thành Công!</h3>
-                        <p className="text-neutral-300">
-                            Thông tin doanh nghiệp của bạn đã được gửi.
-                            <br />
-                            Admin sẽ duyệt và thêm vào website sớm nhất!
+                        {/* Lì xì envelope animation */}
+                        <div className="relative inline-block mb-4">
+                            <div className="text-7xl animate-bounce">🧧</div>
+                            <div className="absolute -top-2 -right-2 text-2xl animate-ping">✨</div>
+                        </div>
+
+                        <h3 className="text-2xl font-bold mb-1" style={{ color: '#FFD700' }}>
+                            🎊 Chúc Mừng Năm Mới!
+                        </h3>
+                        <p className="text-lg text-orange-300 mb-1 font-medium">
+                            Phúc — Lộc — Thọ
                         </p>
+                        <p className="text-neutral-300 mb-1 text-sm">
+                            ✅ Doanh nghiệp của bạn đã được gửi thành công!
+                        </p>
+                        <p className="text-neutral-400 text-xs mb-4">
+                            Admin sẽ duyệt sớm nhất có thể.
+                        </p>
+
+                        {/* Divider */}
+                        <div className="border-t border-dashed border-yellow-600/40 my-4" />
+
+                        {/* Email for lucky number */}
+                        <div className="bg-gradient-to-br from-red-900/40 to-yellow-900/30 border border-yellow-600/30 rounded-xl p-4 mb-4">
+                            <p className="text-yellow-300 font-bold text-sm mb-1">🎁 Nhận Số May Mắn!</p>
+                            <p className="text-neutral-300 text-xs mb-3">
+                                Nhập email để nhận con số may mắn — dùng quay xổ số giải đặc biệt <span className="text-green-400 font-bold">$100</span>!
+                            </p>
+                            <div className="flex gap-2">
+                                <input
+                                    type="email"
+                                    value={liXiEmail}
+                                    onChange={(e) => { setLiXiEmail(e.target.value); setLiXiError(""); }}
+                                    placeholder="email@example.com"
+                                    className="flex-1 px-3 py-2.5 bg-neutral-800 border border-neutral-600 rounded-lg text-white text-sm placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                                    onKeyDown={(e) => e.key === 'Enter' && handleLiXiSubmit()}
+                                />
+                                <button
+                                    onClick={handleLiXiSubmit}
+                                    disabled={liXiSubmitting}
+                                    className="px-4 py-2.5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold rounded-lg transition-all text-sm whitespace-nowrap disabled:opacity-50"
+                                >
+                                    {liXiSubmitting ? "⏳" : "🧧 Nhận Số"}
+                                </button>
+                            </div>
+                            {liXiError && <p className="text-red-400 text-xs mt-2">{liXiError}</p>}
+                        </div>
+
+                        <button
+                            onClick={handleCloseLiXi}
+                            className="text-neutral-500 hover:text-neutral-300 text-xs transition-colors"
+                        >
+                            Bỏ qua, đóng
+                        </button>
+                    </div>
+                )}
+
+                {/* Lucky Number Result */}
+                {submitStatus === "success" && liXiStep === "result" && luckyNumber && (
+                    <div className="p-6 text-center">
+                        <div className="text-5xl mb-3 animate-bounce">🎉</div>
+                        <h3 className="text-xl font-bold text-yellow-300 mb-4">
+                            Đây là Số May Mắn của bạn!
+                        </h3>
+
+                        {/* Lucky number card — lì xì style */}
+                        <div className="relative mx-auto w-56 rounded-2xl overflow-hidden shadow-2xl mb-4"
+                            style={{ background: 'linear-gradient(135deg, #C41E3A 0%, #8B0000 50%, #C41E3A 100%)' }}>
+                            {/* Gold border trim */}
+                            <div className="absolute inset-0 rounded-2xl border-2 border-yellow-400/60" />
+                            {/* Decorative corners */}
+                            <div className="absolute top-2 left-2 text-yellow-400/80 text-lg">✦</div>
+                            <div className="absolute top-2 right-2 text-yellow-400/80 text-lg">✦</div>
+                            <div className="absolute bottom-2 left-2 text-yellow-400/80 text-lg">✦</div>
+                            <div className="absolute bottom-2 right-2 text-yellow-400/80 text-lg">✦</div>
+
+                            <div className="py-6 px-4">
+                                <p className="text-yellow-300/80 text-xs font-medium mb-1">SỐ MAY MẮN</p>
+                                <p className="text-5xl font-black text-yellow-300 tracking-widest"
+                                    style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+                                    {luckyNumber}
+                                </p>
+                                <div className="mt-2 w-16 h-0.5 bg-yellow-400/40 mx-auto rounded-full" />
+                                <p className="text-yellow-200/60 text-xs mt-2">🧧 CầnĐịaChỉ 2025</p>
+                            </div>
+                        </div>
+
+                        <p className="text-neutral-300 text-sm mb-1">
+                            📧 Đã gửi đến <span className="text-yellow-300 font-medium">{liXiEmail}</span>
+                        </p>
+                        <p className="text-neutral-400 text-xs mb-4">
+                            Giữ lại số này! Chúng tôi sẽ quay xổ số giải <span className="text-green-400 font-bold">$100</span> 🎊
+                        </p>
+
+                        <button
+                            onClick={handleCloseLiXi}
+                            className="px-6 py-2.5 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black font-bold rounded-lg transition-all"
+                        >
+                            Đóng 🎊
+                        </button>
                     </div>
                 )}
 
