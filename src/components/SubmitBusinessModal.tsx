@@ -387,7 +387,8 @@ export default function SubmitBusinessModal({ isOpen, onClose }: SubmitBusinessM
                                     {luckyNumber}
                                 </p>
                                 <div className="mt-2 w-16 h-0.5 bg-yellow-400/40 mx-auto rounded-full" />
-                                <p className="text-yellow-200/60 text-xs mt-2">🐴 Bính Ngọ 2026 — Vạn Sự Như Ý</p>
+                                <p className="text-yellow-200/60 text-xs mt-2">🐴 Bính Ngọ 2026</p>
+                                <p className="text-yellow-200/60 text-xs">Vạn Sự Như Ý — An Khang Thịnh Vượng</p>
                             </div>
                         </div>
 
