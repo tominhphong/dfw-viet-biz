@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // 1. Save to Supabase
         const { error } = await supabaseAdmin
             .from('li_xi_entries')
             .insert({
@@ -30,10 +31,16 @@ export async function POST(request: NextRequest) {
 
         if (error) {
             console.error('Supabase li-xi error:', error);
-            return NextResponse.json(
-                { error: 'Failed to save lucky number' },
-                { status: 500 }
-            );
+        }
+
+        // 2. Fire-and-forget: call Google Apps Script webhook (sends email + logs to Sheet)
+        const webhookUrl = process.env.GOOGLE_SCRIPT_WEBHOOK_URL;
+        if (webhookUrl) {
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, luckyNumber, businessName }),
+            }).catch((err) => console.error('Webhook error:', err));
         }
 
         return NextResponse.json({ success: true });

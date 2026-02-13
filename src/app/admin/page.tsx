@@ -114,7 +114,15 @@ const compressImage = (file: File): Promise<File> => {
     });
 };
 
-type TabType = 'businesses' | 'submissions' | 'logs';
+interface LiXiEntry {
+    id: number;
+    email: string;
+    lucky_number: number;
+    business_name: string | null;
+    created_at: string;
+}
+
+type TabType = 'businesses' | 'submissions' | 'logs' | 'lixi';
 
 interface ConfirmAction {
     type: 'delete' | 'approve' | 'reject';
@@ -129,6 +137,7 @@ export default function AdminPage() {
     const [submissions, setSubmissions] = useState<BusinessSubmission[]>([]);
     const [approvedBusinesses, setApprovedBusinesses] = useState<ApprovedBusiness[]>([]);
     const [logs, setLogs] = useState<ActionLog[]>([]);
+    const [liXiEntries, setLiXiEntries] = useState<LiXiEntry[]>([]);
     const [activeTab, setActiveTab] = useState<TabType>('businesses');
     const [approvedSearch, setApprovedSearch] = useState("");
     const [categoryFilter, setCategoryFilter] = useState("All");
@@ -185,6 +194,18 @@ export default function AdminPage() {
 
         if (!error && data) {
             setApprovedBusinesses(data);
+        }
+    };
+
+    // Fetch lì xì entries
+    const fetchLiXiEntries = async () => {
+        const { data, error } = await supabase
+            .from('li_xi_entries')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (!error && data) {
+            setLiXiEntries(data);
         }
     };
 
@@ -349,6 +370,7 @@ export default function AdminPage() {
             fetchSubmissions();
             fetchApprovedBusinesses();
             fetchLogs();
+            fetchLiXiEntries();
         }
     }, [isLoggedIn]);
 
@@ -522,6 +544,7 @@ export default function AdminPage() {
     const tabs: { key: TabType; label: string; count: number }[] = [
         { key: 'businesses', label: '🏢 Doanh Nghiệp', count: approvedBusinesses.length },
         { key: 'submissions', label: '📋 Đơn Duyệt', count: submissions.length },
+        { key: 'lixi', label: '🧧 Lì Xì', count: liXiEntries.length },
         { key: 'logs', label: '📜 Lịch Sử', count: logs.length },
     ];
 
@@ -887,6 +910,53 @@ export default function AdminPage() {
                     </div>
                 )}
 
+                {/* ═══════════════════════════════════════════════ */}
+                {/* TAB: Lì Xì Entries */}
+                {/* ═══════════════════════════════════════════════ */}
+                {activeTab === 'lixi' && (
+                    <div className="space-y-3">
+                        {liXiEntries.length === 0 ? (
+                            <div className="text-center py-20 text-neutral-500">
+                                <p className="text-4xl mb-4">🧧</p>
+                                <p>Chưa có ai nhận số may mắn</p>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="overflow-x-auto rounded-xl border border-neutral-700">
+                                    <table className="min-w-full text-sm">
+                                        <thead className="bg-neutral-800">
+                                            <tr>
+                                                <th className="px-4 py-3 text-left text-neutral-400 font-medium">#</th>
+                                                <th className="px-4 py-3 text-left text-neutral-400 font-medium">Email</th>
+                                                <th className="px-4 py-3 text-center text-neutral-400 font-medium">Số May Mắn</th>
+                                                <th className="px-4 py-3 text-left text-neutral-400 font-medium">Doanh Nghiệp</th>
+                                                <th className="px-4 py-3 text-right text-neutral-400 font-medium">Thời gian</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-neutral-700">
+                                            {liXiEntries.map((entry, index) => (
+                                                <tr key={entry.id} className="hover:bg-neutral-800/50 transition-colors">
+                                                    <td className="px-4 py-3 text-neutral-500">{index + 1}</td>
+                                                    <td className="px-4 py-3 text-white font-medium">{entry.email}</td>
+                                                    <td className="px-4 py-3 text-center">
+                                                        <span className="inline-block bg-red-900/40 text-yellow-300 font-bold px-3 py-1 rounded-lg text-lg tracking-widest">
+                                                            {entry.lucky_number}
+                                                        </span>
+                                                    </td>
+                                                    <td className="px-4 py-3 text-neutral-300">{entry.business_name || '—'}</td>
+                                                    <td className="px-4 py-3 text-right text-neutral-500 text-xs">
+                                                        {new Date(entry.created_at).toLocaleString('vi-VN')}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                )}
+
                 {/* Edit Business Modal */}
                 {editingBusiness && (
                     <div
@@ -1203,10 +1273,10 @@ export default function AdminPage() {
                                     onClick={confirmAction.onConfirm}
                                     disabled={confirmAction.type === 'delete' && confirmInput !== confirmAction.name}
                                     className={`flex-1 py-3 font-bold rounded-xl transition-colors disabled:opacity-30 disabled:cursor-not-allowed ${confirmAction.type === 'delete'
-                                            ? 'bg-red-600 hover:bg-red-500 text-white'
-                                            : confirmAction.type === 'approve'
-                                                ? 'bg-green-600 hover:bg-green-500 text-white'
-                                                : 'bg-orange-600 hover:bg-orange-500 text-white'
+                                        ? 'bg-red-600 hover:bg-red-500 text-white'
+                                        : confirmAction.type === 'approve'
+                                            ? 'bg-green-600 hover:bg-green-500 text-white'
+                                            : 'bg-orange-600 hover:bg-orange-500 text-white'
                                         }`}
                                     data-testid="confirm-action-btn"
                                 >
