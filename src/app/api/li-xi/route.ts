@@ -33,15 +33,20 @@ export async function POST(request: NextRequest) {
             console.error('Supabase li-xi error:', error);
         }
 
-        // 2. Call Google Apps Script webhook (sends email + logs to Sheet)
-        // Must await + follow redirects — Apps Script returns 302
+        // 2. Call Google Apps Script webhook via GET
+        // Google Apps Script 302 redirect breaks POST (changes to GET per HTTP spec).
+        // Using GET with query params is the most reliable method.
         const webhookUrl = process.env.GOOGLE_SCRIPT_WEBHOOK_URL;
         if (webhookUrl) {
             try {
-                const webhookRes = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, luckyNumber, businessName }),
+                const params = new URLSearchParams({
+                    email,
+                    luckyNumber: String(luckyNumber),
+                    businessName: businessName || 'N/A',
+                });
+                const getUrl = `${webhookUrl}?${params.toString()}`;
+                const webhookRes = await fetch(getUrl, {
+                    method: 'GET',
                     redirect: 'follow',
                 });
                 console.log('Webhook response:', webhookRes.status, await webhookRes.text());
