@@ -33,14 +33,23 @@ export async function POST(request: NextRequest) {
             console.error('Supabase li-xi error:', error);
         }
 
-        // 2. Fire-and-forget: call Google Apps Script webhook (sends email + logs to Sheet)
+        // 2. Call Google Apps Script webhook (sends email + logs to Sheet)
+        // Must await + follow redirects — Apps Script returns 302
         const webhookUrl = process.env.GOOGLE_SCRIPT_WEBHOOK_URL;
         if (webhookUrl) {
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, luckyNumber, businessName }),
-            }).catch((err) => console.error('Webhook error:', err));
+            try {
+                const webhookRes = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, luckyNumber, businessName }),
+                    redirect: 'follow',
+                });
+                console.log('Webhook response:', webhookRes.status, await webhookRes.text());
+            } catch (err) {
+                console.error('Webhook error:', err);
+            }
+        } else {
+            console.warn('GOOGLE_SCRIPT_WEBHOOK_URL not set');
         }
 
         return NextResponse.json({ success: true });

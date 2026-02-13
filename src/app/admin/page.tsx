@@ -155,6 +155,11 @@ export default function AdminPage() {
     const [confirmAction, setConfirmAction] = useState<ConfirmAction | null>(null);
     const [confirmInput, setConfirmInput] = useState("");
 
+    // Lottery spinner state
+    const [lotteryWinner, setLotteryWinner] = useState<LiXiEntry | null>(null);
+    const [lotterySpinning, setLotterySpinning] = useState(false);
+    const [lotteryDisplay, setLotteryDisplay] = useState<string>("");
+
     // Fetch pending submissions
     const fetchSubmissions = async () => {
         setLoading(true);
@@ -363,6 +368,65 @@ export default function AdminPage() {
                 setLoading(false);
             },
         });
+    };
+
+    // Handle delete lì xì entry
+    const handleDeleteLiXi = (entry: LiXiEntry) => {
+        setConfirmInput("");
+        setConfirmAction({
+            type: 'delete',
+            id: entry.id,
+            name: `${entry.email} — ${entry.lucky_number}`,
+            onConfirm: async () => {
+                setConfirmAction(null);
+                setConfirmInput("");
+                setLoading(true);
+                setMessage("");
+                setError("");
+
+                try {
+                    const response = await fetch("/api/admin/delete-lixi", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ id: entry.id, password }),
+                    });
+
+                    if (response.ok) {
+                        setMessage(`🗑️ Đã xóa lì xì "${entry.email}" thành công!`);
+                        setLiXiEntries(liXiEntries.filter((e) => e.id !== entry.id));
+                    } else {
+                        const result = await response.json();
+                        setError(result.error || "Có lỗi xảy ra");
+                    }
+                } catch {
+                    setError("Không thể kết nối server");
+                }
+                setLoading(false);
+            },
+        });
+    };
+
+    // Lottery spin
+    const handleLotterySpin = () => {
+        if (liXiEntries.length === 0 || lotterySpinning) return;
+        setLotteryWinner(null);
+        setLotterySpinning(true);
+
+        let tick = 0;
+        const totalTicks = 30;
+        const interval = setInterval(() => {
+            const randomEntry = liXiEntries[Math.floor(Math.random() * liXiEntries.length)];
+            setLotteryDisplay(String(randomEntry.lucky_number));
+            tick++;
+
+            if (tick >= totalTicks) {
+                clearInterval(interval);
+                const winner = liXiEntries[Math.floor(Math.random() * liXiEntries.length)];
+                setLotteryDisplay(String(winner.lucky_number));
+                setLotteryWinner(winner);
+                setLotterySpinning(false);
+            }
+        }, 80 + tick * 5);
     };
 
     useEffect(() => {
@@ -914,45 +978,92 @@ export default function AdminPage() {
                 {/* TAB: Lì Xì Entries */}
                 {/* ═══════════════════════════════════════════════ */}
                 {activeTab === 'lixi' && (
-                    <div className="space-y-3">
+                    <div className="space-y-4">
+                        {/* Lottery Spinner */}
+                        {liXiEntries.length > 0 && (
+                            <div className="rounded-2xl border border-yellow-600/30 p-6 text-center"
+                                style={{ background: 'linear-gradient(135deg, #1a0a0a 0%, #2d0a0a 50%, #1a0a0a 100%)' }}>
+                                <h3 className="text-yellow-300 text-lg font-bold mb-3">🎰 Quay Xổ Số Giải $100</h3>
+
+                                {/* Display */}
+                                <div className="mx-auto w-48 h-20 rounded-xl flex items-center justify-center mb-4 border-2 border-yellow-500/40"
+                                    style={{ background: 'linear-gradient(135deg, #C41E3A 0%, #8B0000 100%)' }}>
+                                    <span className={`text-4xl font-black text-yellow-300 tracking-[8px] transition-all ${lotterySpinning ? 'animate-pulse' : ''
+                                        }`} style={{ textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>
+                                        {lotteryDisplay || '????'}
+                                    </span>
+                                </div>
+
+                                {/* Winner announcement */}
+                                {lotteryWinner && !lotterySpinning && (
+                                    <div className="mb-4 p-3 rounded-xl bg-green-900/30 border border-green-600/30">
+                                        <p className="text-green-400 font-bold text-lg">🎉 NGƯỜI TRÚNG THƯỞNG!</p>
+                                        <p className="text-white font-medium">{lotteryWinner.email}</p>
+                                        <p className="text-neutral-400 text-sm">Số: <span className="text-yellow-300 font-bold">{lotteryWinner.lucky_number}</span> — {lotteryWinner.business_name || 'N/A'}</p>
+                                    </div>
+                                )}
+
+                                <button
+                                    onClick={handleLotterySpin}
+                                    disabled={lotterySpinning || liXiEntries.length === 0}
+                                    className={`px-8 py-3 rounded-xl font-bold text-lg transition-all ${lotterySpinning
+                                            ? 'bg-neutral-700 text-neutral-400 cursor-wait'
+                                            : 'bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black shadow-lg hover:shadow-yellow-500/30'
+                                        }`}
+                                >
+                                    {lotterySpinning ? '🎰 Đang quay...' : '🎰 Quay Số!'}
+                                </button>
+                                <p className="text-neutral-500 text-xs mt-2">{liXiEntries.length} số tham gia</p>
+                            </div>
+                        )}
+
+                        {/* Entries table */}
                         {liXiEntries.length === 0 ? (
                             <div className="text-center py-20 text-neutral-500">
                                 <p className="text-4xl mb-4">🧧</p>
                                 <p>Chưa có ai nhận số may mắn</p>
                             </div>
                         ) : (
-                            <>
-                                <div className="overflow-x-auto rounded-xl border border-neutral-700">
-                                    <table className="min-w-full text-sm">
-                                        <thead className="bg-neutral-800">
-                                            <tr>
-                                                <th className="px-4 py-3 text-left text-neutral-400 font-medium">#</th>
-                                                <th className="px-4 py-3 text-left text-neutral-400 font-medium">Email</th>
-                                                <th className="px-4 py-3 text-center text-neutral-400 font-medium">Số May Mắn</th>
-                                                <th className="px-4 py-3 text-left text-neutral-400 font-medium">Doanh Nghiệp</th>
-                                                <th className="px-4 py-3 text-right text-neutral-400 font-medium">Thời gian</th>
+                            <div className="overflow-x-auto rounded-xl border border-neutral-700">
+                                <table className="min-w-full text-sm">
+                                    <thead className="bg-neutral-800">
+                                        <tr>
+                                            <th className="px-4 py-3 text-left text-neutral-400 font-medium">#</th>
+                                            <th className="px-4 py-3 text-left text-neutral-400 font-medium">Email</th>
+                                            <th className="px-4 py-3 text-center text-neutral-400 font-medium">Số May Mắn</th>
+                                            <th className="px-4 py-3 text-left text-neutral-400 font-medium">Doanh Nghiệp</th>
+                                            <th className="px-4 py-3 text-right text-neutral-400 font-medium">Thời gian</th>
+                                            <th className="px-3 py-3 text-center text-neutral-400 font-medium w-12"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-neutral-700">
+                                        {liXiEntries.map((entry, index) => (
+                                            <tr key={entry.id} className="hover:bg-neutral-800/50 transition-colors">
+                                                <td className="px-4 py-3 text-neutral-500">{index + 1}</td>
+                                                <td className="px-4 py-3 text-white font-medium">{entry.email}</td>
+                                                <td className="px-4 py-3 text-center">
+                                                    <span className="inline-block bg-red-900/40 text-yellow-300 font-bold px-3 py-1 rounded-lg text-lg tracking-widest">
+                                                        {entry.lucky_number}
+                                                    </span>
+                                                </td>
+                                                <td className="px-4 py-3 text-neutral-300">{entry.business_name || '—'}</td>
+                                                <td className="px-4 py-3 text-right text-neutral-500 text-xs">
+                                                    {new Date(entry.created_at).toLocaleString('vi-VN')}
+                                                </td>
+                                                <td className="px-3 py-3 text-center">
+                                                    <button
+                                                        onClick={() => handleDeleteLiXi(entry)}
+                                                        className="text-red-400/60 hover:text-red-400 transition-colors text-sm"
+                                                        title="Xóa"
+                                                    >
+                                                        🗑️
+                                                    </button>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody className="divide-y divide-neutral-700">
-                                            {liXiEntries.map((entry, index) => (
-                                                <tr key={entry.id} className="hover:bg-neutral-800/50 transition-colors">
-                                                    <td className="px-4 py-3 text-neutral-500">{index + 1}</td>
-                                                    <td className="px-4 py-3 text-white font-medium">{entry.email}</td>
-                                                    <td className="px-4 py-3 text-center">
-                                                        <span className="inline-block bg-red-900/40 text-yellow-300 font-bold px-3 py-1 rounded-lg text-lg tracking-widest">
-                                                            {entry.lucky_number}
-                                                        </span>
-                                                    </td>
-                                                    <td className="px-4 py-3 text-neutral-300">{entry.business_name || '—'}</td>
-                                                    <td className="px-4 py-3 text-right text-neutral-500 text-xs">
-                                                        {new Date(entry.created_at).toLocaleString('vi-VN')}
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         )}
                     </div>
                 )}
