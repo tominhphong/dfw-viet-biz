@@ -39,22 +39,22 @@ async function generateLuckyCardPng(luckyNumber: string): Promise<Buffer> {
         // Top-left corner
         React.createElement('div', {
             style: { position: 'absolute' as const, top: '16px', left: '16px', color: '#FACC15', fontSize: '36px', opacity: 0.8 },
-        }, '\u2726'),
+        }, '\u25C6'),
         // Top-right corner
         React.createElement('div', {
             style: { position: 'absolute' as const, top: '16px', right: '16px', color: '#FACC15', fontSize: '36px', opacity: 0.8 },
-        }, '\u2726'),
+        }, '\u25C6'),
         // Bottom-left corner
         React.createElement('div', {
             style: { position: 'absolute' as const, bottom: '16px', left: '16px', color: '#FACC15', fontSize: '36px', opacity: 0.8 },
-        }, '\u2726'),
+        }, '\u25C6'),
         // Bottom-right corner
         React.createElement('div', {
             style: { position: 'absolute' as const, bottom: '16px', right: '16px', color: '#FACC15', fontSize: '36px', opacity: 0.8 },
-        }, '\u2726'),
+        }, '\u25C6'),
         // "SO MAY MAN" label
         React.createElement('div', {
-            style: { color: '#FDE68A', fontSize: '24px', fontWeight: 500, letterSpacing: '4px', marginBottom: '8px', opacity: 0.8 },
+            style: { color: '#FDE68A', fontSize: '24px', fontWeight: 500, letterSpacing: '4px', marginBottom: '8px', opacity: 0.8, textTransform: 'uppercase' as const },
         }, 'SO MAY MAN'),
         // Lucky number
         React.createElement('div', {
