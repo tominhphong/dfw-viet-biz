@@ -1,0 +1,16 @@
+{
+    "// dfw-viet-biz (candiachi.com) - PRIMARY PROJECT": "",
+    "// Optimized for maximum TypeScript intelligence": "",
+    "typescript.tsserver.maxTsServerMemory": 1024,
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/.next/**": true,
+        "**/.git/objects/**": true
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.next": true
+    }
+}

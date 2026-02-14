@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 // To disable after Tết, set SHOW_TET to false
 const SHOW_TET = true;
 
-const TET_DAY = new Date("2026-02-17T00:00:00"); // Mùng 1 Tết
+const DRAW_DAY = new Date("2026-02-21T12:00:00"); // Quay xổ số: Mùng 5 Tết, 12h trưa
 
 const FALLING_ITEMS = ["🌸", "🧧", "🏮", "✨", "🌺", "💮", "🎋"];
 
@@ -25,7 +25,7 @@ function TetBanner() {
     useEffect(() => {
         const update = () => {
             const now = new Date();
-            const diff = TET_DAY.getTime() - now.getTime();
+            const diff = DRAW_DAY.getTime() - now.getTime();
 
             if (diff <= 0) {
                 setInfo({ countdown: "", isTet: true });
@@ -54,17 +54,17 @@ function TetBanner() {
                 <div className="tet-banner-center">
                     {info.isTet ? (
                         <>
-                            <h2 className="tet-greeting">🧧 Chúc Mừng Năm Mới 🧧</h2>
-                            <p className="tet-subtitle">Tết Bính Ngọ 2026 — An Khang Thịnh Vượng</p>
+                            <h2 className="tet-greeting">🎉 Đã Quay Xổ Số! 🎉</h2>
+                            <p className="tet-subtitle">Chúc mừng người trúng giải $100 lì xì Tết!</p>
                         </>
                     ) : (
                         <>
-                            <h2 className="tet-greeting">🧧 Tết Bính Ngọ 2026 đang đến! 🧧</h2>
+                            <h2 className="tet-greeting">🎰 Quay Xổ Số Lì Xì $100 — Mùng 5 Tết! 🧧</h2>
                             <p className="tet-subtitle">
                                 {info.countdown && (
-                                    <>Còn <span className="tet-countdown">{info.countdown}</span> nữa — </>
+                                    <>Còn <span className="tet-countdown">{info.countdown}</span> — </>
                                 )}
-                                Đăng ký doanh nghiệp để nhận lì xì!
+                                Đăng ký doanh nghiệp để nhận số may mắn!
                             </p>
                         </>
                     )}
